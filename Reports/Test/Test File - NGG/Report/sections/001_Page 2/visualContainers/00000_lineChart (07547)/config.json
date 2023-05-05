@@ -1,0 +1,115 @@
+{
+  "name": "075479500ca24d629477",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 624,
+        "y": 80,
+        "z": 1000,
+        "width": 656,
+        "height": 640
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "lineChart",
+    "projections": {
+      "Category": [
+        {
+          "queryRef": "Calendar SQL DQ.Year",
+          "active": true
+        },
+        {
+          "queryRef": "Calendar SQL DQ.MonthNumberOfYear"
+        },
+        {
+          "queryRef": "Calendar SQL DQ.Date"
+        }
+      ],
+      "Y": [
+        {
+          "queryRef": "Measures Table.Sum of Hours"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "c",
+          "Entity": "Calendar SQL DQ",
+          "Type": 0
+        },
+        {
+          "Name": "m",
+          "Entity": "Measures Table",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "Year"
+          },
+          "Name": "Calendar SQL DQ.Year"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "MonthNumberOfYear"
+          },
+          "Name": "Calendar SQL DQ.MonthNumberOfYear"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "Sum of Hours"
+          },
+          "Name": "Measures Table.Sum of Hours"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "Date"
+          },
+          "Name": "Calendar SQL DQ.Date"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 1,
+          "Expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Source": "c"
+                }
+              },
+              "Property": "Year"
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "hasDefaultSort": true
+  }
+}

@@ -1,0 +1,53 @@
+table 'Time Entries SQL DQ'
+	lineageTag: 6a20878a-1063-463b-a7ed-668040c8fe3c
+	ordinal: 3
+
+	partition 'Time Entries SQL DQ-55153015-b70e-4b8b-a129-97f292a3ea0e' = M
+		mode: DirectQuery
+		expression:=
+			let
+			    Source = Sql.Database(server, database),
+			    #"dbo_Time Entries (DQ)" = Source{[Schema="dbo",Item="Time Entries (DQ)"]}[Data],
+			    #"Changed Type" = Table.TransformColumnTypes(#"dbo_Time Entries (DQ)",{{"msdyn_date", type date}})
+			in
+			    #"Changed Type"
+
+		queryGroup: SQL
+
+	column msdyn_date
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: 973293e8-6b32-4953-a9bc-f2b0b148203b
+		sourceColumn: msdyn_date
+		sourceProviderType: date
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column jt_hours
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: 491002c2-ac30-4642-8c58-eeb4e18ed835
+		sourceColumn: jt_hours
+		sourceProviderType: float
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column msdyn_bookableresource
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 13a84967-d45c-4a79-903b-345d6aa9f4ae
+		sourceColumn: msdyn_bookableresource
+		sourceProviderType: nvarchar(max)
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,79 @@
+table 'Time Entries SQL Year'
+	alternateSourcePrecedence: 4
+	isHidden
+	lineageTag: 4e59a9f0-6c42-4c1c-80f8-790e1b4b56d3
+	ordinal: 7
+
+	partition 'Time Entries SQL Year-ec6643c0-5742-4b31-a265-aedb75e11bf2' = M
+		mode: Import
+		expression:=
+			let
+			    Source = Sql.Database(server, database),
+			    #"dbo_Time Entries (DQ)" = Source{[Schema="dbo",Item="Time Entries (DQ)"]}[Data],
+			    #"Extracted Year" = Table.TransformColumns(#"dbo_Time Entries (DQ)",{{"msdyn_date", Date.Year, Int64.Type}}),
+			    #"Renamed Columns" = Table.RenameColumns(#"Extracted Year",{{"msdyn_date", "year"}}),
+			    #"Grouped Rows" = Table.Group(#"Renamed Columns", {"year", "msdyn_bookableresource"}, {{"Count", each Table.RowCount(_), Int64.Type}, {"Sum of Hours", each List.Sum([jt_hours]), type nullable number}})
+			in
+			    #"Grouped Rows"
+
+		queryGroup: SQL
+
+	column msdyn_bookableresource
+		dataType: String
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: be725a0a-c72c-459e-9539-6e1aca63fb87
+		sourceColumn: msdyn_bookableresource
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column Count
+		alternateOf:
+			baseTable: 'Time Entries SQL DQ'.'Time Entries SQL DQ'
+			summarization: Count
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: c79bfa41-78ae-4c5f-b6c0-b4214be42afa
+		sourceColumn: Count
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Sum of Hours'
+		alternateOf:
+			baseColumn: 'Time Entries SQL DQ'.jt_hours
+			summarization: Sum
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 2e0f3283-3da8-4f2b-a989-bb351fbbe213
+		sourceColumn: "Sum of Hours"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column year
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 89cb7c5e-73e0-4fee-bea9-3b7cbf13ce88
+		sourceColumn: year
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	changedProperty = IsHidden
+

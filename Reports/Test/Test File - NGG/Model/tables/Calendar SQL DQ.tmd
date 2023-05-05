@@ -1,0 +1,57 @@
+table 'Calendar SQL DQ'
+	dataCategory: Time
+	lineageTag: 32d88bbe-1bb5-41f3-8222-0eb1cfcf4ba7
+	ordinal: 2
+
+	partition 'Calendar SQL DQ-111cff03-42a9-4f1f-a163-ebf3dfcf6f97' = M
+		mode: DirectQuery
+		expression:=
+			let
+			    Source = Sql.Database(server, database),
+			    dbo_Calendar = Source{[Schema="dbo",Item="Calendar"]}[Data]
+			in
+			    dbo_Calendar
+
+		queryGroup: SQL
+
+	column Date
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isKey
+		isNullable: false
+		lineageTag: c64b928d-dcc7-4082-931c-c2c722f34918
+		sourceColumn: Date
+		sourceProviderType: date
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column MonthNumberOfYear
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isNullable: false
+		lineageTag: 629f7170-0de5-49e9-863a-1c32552d4fd6
+		sourceColumn: MonthNumberOfYear
+		sourceProviderType: int
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isNullable: false
+		lineageTag: a1f2c88d-557a-42b1-a9b7-9c4978f1933f
+		sourceColumn: Year
+		sourceProviderType: int
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+

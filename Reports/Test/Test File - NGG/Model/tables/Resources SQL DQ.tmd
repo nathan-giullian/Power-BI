@@ -1,0 +1,92 @@
+table 'Resources SQL DQ'
+	lineageTag: 68e3bac9-9db8-4d0e-9fc5-9c143f3faa42
+	ordinal: 4
+
+	partition 'Resources SQL DQ-fc949f85-5751-4460-a4ba-898d285e48c5' = M
+		mode: Dual
+		expression:=
+			let
+			    Source = Sql.Database(server, database),
+			    #"dbo_BookableResource (DQ)" = Source{[Schema="dbo",Item="BookableResource (DQ)"]}[Data],
+			    #"Changed Type" = Table.TransformColumnTypes(#"dbo_BookableResource (DQ)",{{"jt_enddate", type date}})
+			in
+			    #"Changed Type"
+
+		queryGroup: SQL
+
+	column bookableresourceid
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 16437236-81bd-465a-9a8c-8a9ebc155d0b
+		sourceColumn: bookableresourceid
+		sourceProviderType: nvarchar(max)
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 2538b760-5926-4201-94f9-40477f7766c6
+		sourceColumn: name
+		sourceProviderType: nvarchar(max)
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_displayonreportsname
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 8396ac6b-e52e-4f88-bb83-85be68b97247
+		sourceColumn: jt_displayonreportsname
+		sourceProviderType: nvarchar(max)
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_enddate
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: ab90a6eb-96d1-4d47-9a62-e2f326debea8
+		sourceColumn: jt_enddate
+		sourceProviderType: date
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column jt_practicename
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 84a0d66b-ff99-415b-899c-5fb6a8e1d643
+		sourceColumn: jt_practicename
+		sourceProviderType: nvarchar(max)
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_targethours
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: e6b3a0e3-c64d-466a-9d67-708b72e29b4a
+		sourceColumn: jt_targethours
+		sourceProviderType: bigint
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_employeetypename
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 54db4e48-9484-442b-961d-8cc76a12b1f2
+		sourceColumn: jt_employeetypename
+		sourceProviderType: nvarchar(max)
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+

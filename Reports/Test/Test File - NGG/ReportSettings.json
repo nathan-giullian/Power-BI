@@ -1,0 +1,11 @@
+{
+  "Version": 2,
+  "ReportSettings": {
+    "UserConsentsToCompositeModels": true
+  },
+  "QueriesSettings": {
+    "TypeDetectionEnabled": true,
+    "RelationshipImportEnabled": true,
+    "Version": "2.91.884.0"
+  }
+}

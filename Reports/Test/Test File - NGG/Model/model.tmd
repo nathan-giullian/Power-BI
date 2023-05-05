@@ -1,0 +1,22 @@
+model Model
+	compatibilityLevel: 1567
+	culture: en-US
+	dataAccessOptions:
+		legacyRedirects
+		returnErrorValuesAsNull
+	defaultMode: DirectQuery
+	defaultPowerBIDataSourceVersion: PowerBI_V3
+	sourceQueryCulture: en-US
+
+queryGroup SQL
+
+	annotation PBI_QueryGroupOrder = 1
+
+annotation PBIDesktopVersion = 2.116.966.0 (23.04)
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["Measures Table","Calendar SQL DQ","Time Entries SQL DQ","Resources SQL DQ","Time Entries SQL Month","Time Entries SQL Date","Time Entries SQL Year","server","database","Time Entries SQL Hybrid","RangeStart","RangeEnd","Time Entries SQL DQ Big"]
+
+annotation __TEdtr = 1
+

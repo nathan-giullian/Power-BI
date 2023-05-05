@@ -1,0 +1,20 @@
+relationship '87b317df-0a08-4b30-9065-b4a94eb66cd8'
+	fromColumn: 'Time Entries SQL Date'.msdyn_bookableresource
+	toColumn: 'Resources SQL DQ'.bookableresourceid
+
+relationship '43063843-544f-4f54-971c-bcab4cda5809'
+	fromColumn: 'Time Entries SQL DQ'.msdyn_bookableresource
+	toColumn: 'Resources SQL DQ'.bookableresourceid
+
+relationship '6bbf1b42-0555-455f-85e2-083bb4023933'
+	fromColumn: 'Time Entries SQL DQ'.msdyn_date
+	toColumn: 'Calendar SQL DQ'.Date
+
+relationship '86208405-1da4-4407-bbb9-acbd0cf28826'
+	fromColumn: 'Time Entries SQL Month'.msdyn_bookableresource
+	toColumn: 'Resources SQL DQ'.bookableresourceid
+
+relationship '45d35d40-e316-4b2b-bc3b-3bf8dd45d6d8'
+	fromColumn: 'Time Entries SQL Year'.msdyn_bookableresource
+	toColumn: 'Resources SQL DQ'.bookableresourceid
+

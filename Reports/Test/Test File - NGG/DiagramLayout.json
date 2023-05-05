@@ -1,0 +1,118 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 96.4847380410023,
+            "y": 192.96947608200458
+          },
+          "nodeIndex": "Measures Table",
+          "size": {
+            "height": 112,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 474.60706150341673,
+            "y": 57.681093394077458
+          },
+          "nodeIndex": "Calendar SQL DQ",
+          "size": {
+            "height": 157.37038724373576,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 512.380410022779,
+            "y": 663.85694760820058
+          },
+          "nodeIndex": "Resources SQL DQ",
+          "size": {
+            "height": 256,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 509.307744874715,
+            "y": 356.33166287015951
+          },
+          "nodeIndex": "Time Entries SQL DQ",
+          "size": {
+            "height": 160,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 73.002521697372174,
+            "y": 440.81640091116179
+          },
+          "nodeIndex": "Time Entries SQL Date",
+          "size": {
+            "height": 184,
+            "width": 300
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 938.29248291571707,
+            "y": 593.46970387243732
+          },
+          "nodeIndex": "Time Entries SQL Month",
+          "size": {
+            "height": 208,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 899.9936218678813,
+            "y": 348.18405466970393
+          },
+          "nodeIndex": "Time Entries SQL Year",
+          "size": {
+            "height": 184,
+            "width": 294.82733485193603
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 851.19241849886282,
+            "y": 93.911144806671729
+          },
+          "nodeIndex": "Time Entries SQL Hybrid",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 76.668216693792132,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

@@ -1,0 +1,70 @@
+table 'Time Entries SQL Hybrid'
+	lineageTag: 86f65e57-6fee-479b-833b-c74d1b99e6cd
+	refreshPolicy:
+		incrementalGranularity: Month
+		incrementalPeriods: 2
+		incrementalPeriodsOffset: -1
+		mode: Hybrid
+		rollingWindowGranularity: Year
+		rollingWindowPeriods: 1
+		sourceExpression:=
+			let
+			    Source = Sql.Database(server, database),
+			    #"dbo_Time Entries (DQ)" = Source{[Schema="dbo",Item="Time Entries (DQ)"]}[Data],
+			    #"Removed Other Columns" = Table.SelectColumns(#"dbo_Time Entries (DQ)",{"msdyn_date", "jt_hours", "msdyn_bookableresource"}),
+			    #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns", each [msdyn_date] >= RangeStart and [msdyn_date] <= RangeEnd)
+			in
+			    #"Filtered Rows"
+
+	ordinal: 8
+
+	partition 'Time Entries SQL Hybrid-907c3fe8-baa0-4e2a-9452-dec681892f0b' = M
+		mode: Import
+		expression:=
+			let
+			    Source = Sql.Database(server, database),
+			    #"dbo_Time Entries (DQ)" = Source{[Schema="dbo",Item="Time Entries (DQ)"]}[Data],
+			    #"Removed Other Columns" = Table.SelectColumns(#"dbo_Time Entries (DQ)",{"msdyn_date", "jt_hours", "msdyn_bookableresource"}),
+			    #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns", each [msdyn_date] >= RangeStart and [msdyn_date] <= RangeEnd)
+			in
+			    #"Filtered Rows"
+
+		queryGroup: SQL
+
+	column msdyn_date
+		dataType: DateTime
+		formatString:= General Date
+		isDataTypeInferred: false
+		lineageTag: 2f3530fe-5035-4c1f-8c65-6973d658d32e
+		sourceColumn: msdyn_date
+		sourceProviderType: datetime2
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_hours
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: 142655cb-82b1-4de9-afae-5e07e1f0dbff
+		sourceColumn: jt_hours
+		sourceProviderType: float
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column msdyn_bookableresource
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 15782fc3-415a-4df1-9d24-5afbad6e2aae
+		sourceColumn: msdyn_bookableresource
+		sourceProviderType: nvarchar(max)
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_IsMQueryFoldable = True
+

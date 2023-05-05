@@ -1,0 +1,70 @@
+table 'Measures Table'
+	lineageTag: 3d2190bd-1dbf-4819-aed6-c84c8014a756
+	ordinal: 1
+
+	partition 'Measures Table-0f99557f-9e4f-4c03-a2c8-b86af3254794' = M
+		mode: Import
+		expression:=
+			let
+			    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+			    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+			in
+			    #"Changed Type"
+
+
+	measure 'Sum of Hours' = SUM ( 'Time Entries SQL DQ'[jt_hours] )
+		displayFolder: "Base Measures"
+		lineageTag: f50806c9-2a62-436c-8f04-2b9799c1df01
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'DQ Scope' = ISINSCOPE ( 'Calendar SQL DQ'[MonthNumberOfYear] )
+		displayFolder: ISINSCOPE
+		formatString:= "TRUE";"TRUE";"FALSE"
+		lineageTag: 9d4350bb-4f66-491f-b737-82a299ce6206
+
+	measure 'MTD Hours' =
+		
+		// IF(
+		//     [DQ Scope],
+		//     TOTALMTD( SUM( 'Time Entries SQL DQ Date'[Sum of Hours] ), 'Calendar SQL DQ'[Date] ),
+		TOTALMTD (
+		    [Sum of Hours],
+		    'Calendar SQL DQ'[Date]
+		)
+		// )
+
+		displayFolder: "Other Measures"
+		lineageTag: 19dccedc-2f55-49ac-a5cc-5d93381cd8a7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Calculate' =
+		
+		CALCULATE (
+		    [Sum of Hours],
+		    DATESMTD ( 'Calendar SQL DQ'[Date] )
+		)
+
+		displayFolder: "Other Measures"
+		lineageTag: ffd967c7-6ef1-4ad6-bc3a-423197af7c33
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Test Measure' = "This is my test measure"
+		lineageTag: af936883-20f7-4e4d-a4c9-00e801ac4dc3
+
+	column Column1
+		dataType: String
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: b36f0984-8487-4fca-919c-eb11a4b48c0e
+		sourceColumn: Column1
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

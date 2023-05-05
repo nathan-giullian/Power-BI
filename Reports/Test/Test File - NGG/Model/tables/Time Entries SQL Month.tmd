@@ -1,0 +1,104 @@
+table 'Time Entries SQL Month'
+	alternateSourcePrecedence: 2
+	isHidden
+	lineageTag: 31504df7-1c79-434c-af84-d8ee41e74021
+	ordinal: 5
+
+	partition 'Time Entries SQL Month-95e91aeb-9c47-446e-9123-3a4b905bdac0' = M
+		mode: Import
+		expression:=
+			let
+			    Source = Sql.Database(server, database),
+			    #"dbo_Time Entries (DQ)" = Source{[Schema="dbo",Item="Time Entries (DQ)"]}[Data],
+			    #"Added Custom" = Table.AddColumn(#"dbo_Time Entries (DQ)", "month", each Date.Month([msdyn_date]), Int64.Type),
+			    #"Added Custom1" = Table.AddColumn(#"Added Custom", "year", each Date.Year([msdyn_date]), Int64.Type),
+			    #"Grouped Rows" = Table.Group(#"Added Custom1", {"year", "month", "msdyn_bookableresource"}, {{"Count", each Table.RowCount(_), Int64.Type}, {"Sum of Hours", each List.Sum([jt_hours]), type nullable number}})
+			in
+			    #"Grouped Rows"
+
+		queryGroup: SQL
+
+	column year
+		alternateOf:
+			baseColumn: 'Calendar SQL DQ'.Year
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 616ba563-329c-4745-a755-0b927db6bc34
+		sourceColumn: year
+		sourceProviderType: bigint
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column month
+		alternateOf:
+			baseColumn: 'Calendar SQL DQ'.MonthNumberOfYear
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 2e815913-51db-4afb-8513-894646ee7508
+		sourceColumn: month
+		sourceProviderType: bigint
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column msdyn_bookableresource
+		dataType: String
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 3cb90b49-ede0-4c6e-be9e-8e78db589ace
+		sourceColumn: msdyn_bookableresource
+		sourceProviderType: nvarchar(max)
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column Count
+		alternateOf:
+			baseTable: 'Time Entries SQL DQ'.'Time Entries SQL DQ'
+			summarization: Count
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 76c8094f-7488-49be-b4ff-575715178600
+		sourceColumn: Count
+		sourceProviderType: int
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Sum of Hours'
+		alternateOf:
+			baseColumn: 'Time Entries SQL DQ'.jt_hours
+			summarization: Sum
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 63966792-c696-4813-9705-6dec41725dd7
+		sourceColumn: "Sum of Hours"
+		sourceProviderType: float
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	changedProperty = IsHidden
+

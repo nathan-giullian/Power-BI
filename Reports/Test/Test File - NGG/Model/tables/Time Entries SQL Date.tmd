@@ -1,0 +1,124 @@
+table 'Time Entries SQL Date'
+	isHidden
+	lineageTag: 709d6bf2-e074-4c4c-b21d-935c73c6a397
+	ordinal: 6
+
+	partition 'Time Entries SQL Date-296b3e06-f4d1-49f5-85c3-8d71d62fead4' = M
+		mode: Import
+		expression:=
+			let
+			    Source = Sql.Database(server, database),
+			    #"dbo_Time Entries (DQ)" = Source{[Schema="dbo",Item="Time Entries (DQ)"]}[Data],
+			    #"Removed Other Columns" = Table.SelectColumns(#"dbo_Time Entries (DQ)",{"msdyn_date", "jt_hours", "msdyn_bookableresource"}),
+			    #"Changed Type" = Table.TransformColumnTypes(#"Removed Other Columns",{{"msdyn_date", type date}}),
+			    #"Grouped Rows" = Table.Group(#"Changed Type", {"msdyn_date", "msdyn_bookableresource"}, {{"Count", each Table.RowCount(_), Int64.Type}, {"Sum of Hours", each List.Sum([jt_hours]), type nullable number}}),
+			    #"Duplicated Column" = Table.DuplicateColumn(#"Grouped Rows", "msdyn_date", "msdyn_date - Copy"),
+			    #"Duplicated Column1" = Table.DuplicateColumn(#"Duplicated Column", "msdyn_date - Copy", "msdyn_date - Copy - Copy"),
+			    #"Renamed Columns" = Table.RenameColumns(#"Duplicated Column1",{{"msdyn_date - Copy", "month"}, {"msdyn_date - Copy - Copy", "year"}}),
+			    #"Extracted Month" = Table.TransformColumns(#"Renamed Columns",{{"month", Date.Month, Int64.Type}}),
+			    #"Extracted Year" = Table.TransformColumns(#"Extracted Month",{{"year", Date.Year, Int64.Type}})
+			in
+			    #"Extracted Year"
+
+		queryGroup: SQL
+
+	column msdyn_date
+		alternateOf:
+			baseColumn: 'Calendar SQL DQ'.Date
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: ddb3cd02-cde5-446f-8cb0-0de364eb9599
+		sourceColumn: msdyn_date
+		sourceProviderType: date
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column msdyn_bookableresource
+		dataType: String
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: bd25bdd3-f04d-47d1-a909-2d3bbbb36baa
+		sourceColumn: msdyn_bookableresource
+		sourceProviderType: nvarchar(max)
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column Count
+		alternateOf:
+			baseTable: 'Time Entries SQL DQ'.'Time Entries SQL DQ'
+			summarization: Count
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: d4a377ae-3041-4304-80ca-1e4d5ea5d068
+		sourceColumn: Count
+		sourceProviderType: int
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Sum of Hours'
+		alternateOf:
+			baseColumn: 'Time Entries SQL DQ'.jt_hours
+			summarization: Sum
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: fd5ce661-6e86-4597-8b74-b7be19d695fa
+		sourceColumn: "Sum of Hours"
+		sourceProviderType: float
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column month
+		alternateOf:
+			baseColumn: 'Calendar SQL DQ'.MonthNumberOfYear
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 94b26870-b274-4cf3-a318-e1641a2f7880
+		sourceColumn: month
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column year
+		alternateOf:
+			baseColumn: 'Calendar SQL DQ'.Year
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: f6168b6a-d9f0-4cce-9747-c9c11445d404
+		sourceColumn: year
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	changedProperty = IsHidden
+

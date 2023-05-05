@@ -1,0 +1,37 @@
+/// This is the SQL server name
+expression server = "dev-ngg.database.windows.net" meta [IsParameterQuery=true, List={"dev-ngg.database.windows.net"}, DefaultValue="dev-ngg.database.windows.net", Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 0adc7a06-2471-41b4-9634-950de053777a
+
+	annotation PBI_ResultType = Text
+
+/// This is the SQL database name
+expression database = "Clients" meta [IsParameterQuery=true, List={"Clients"}, DefaultValue="Clients", Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 22d9aa95-d607-4b64-a39b-827fedf3fbc1
+
+	annotation PBI_ResultType = Text
+
+expression RangeStart = #datetime(2019, 12, 20, 0, 0, 0) meta [IsParameterQuery=true, Type="DateTime", IsParameterQueryRequired=true]
+	lineageTag: b25818ee-29d9-4b6f-882a-6edbcc23b9c2
+
+	annotation PBI_ResultType = DateTime
+
+expression RangeEnd = #datetime(2019, 12, 21, 0, 0, 0) meta [IsParameterQuery=true, Type="DateTime", IsParameterQueryRequired=true]
+	lineageTag: 38c32e72-9fef-47ca-9cec-2b616e23cae9
+
+	annotation PBI_ResultType = DateTime
+
+expression 'Time Entries SQL DQ Big' =
+	let
+	    Source = Sql.Database(server, database),
+	    #"dbo_Time Entries (DQ)" = Source{[Schema="dbo",Item="Time Entries (DQ) Big"]}[Data],
+	    #"Changed Type" = Table.TransformColumnTypes(#"dbo_Time Entries (DQ)",{{"msdyn_date", type date}})
+	in
+	    #"Changed Type"
+
+	lineageTag: 71f2d64c-002a-4ac0-b0e7-ad9bcaa4e31d
+	queryGroup: SQL
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

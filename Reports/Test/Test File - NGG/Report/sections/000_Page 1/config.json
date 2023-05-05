@@ -1,0 +1,29 @@
+{
+  "relationships": [
+    {
+      "source": "987300b01572e00aba40",
+      "target": "cec2af5b225ee2e9bd21",
+      "type": 3
+    },
+    {
+      "source": "cec2af5b225ee2e9bd21",
+      "target": "987300b01572e00aba40",
+      "type": 3
+    }
+  ],
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "194L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

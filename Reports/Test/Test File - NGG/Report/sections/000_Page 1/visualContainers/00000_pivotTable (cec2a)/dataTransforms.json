@@ -1,0 +1,365 @@
+{
+  "objects": {
+    "values": [
+      {
+        "properties": {
+          "fontSize": {
+            "expr": {
+              "Literal": {
+                "Value": "12D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "projectionOrdering": {
+    "Rows": [
+      0,
+      1,
+      2
+    ],
+    "Values": [
+      3,
+      4
+    ]
+  },
+  "projectionActiveItems": {
+    "Rows": [
+      {
+        "queryRef": "Calendar.Year",
+        "suppressConcat": false
+      },
+      {
+        "queryRef": "Calendar SQL DQ.MonthNumberOfYear",
+        "suppressConcat": false
+      },
+      {
+        "queryRef": "Calendar SQL DQ.Date",
+        "suppressConcat": false
+      }
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "Year",
+        "Name": "Calendar.Year",
+        "Type": 3,
+        "Format": "0"
+      },
+      {
+        "Restatement": "MonthNumberOfYear",
+        "Name": "Calendar SQL DQ.MonthNumberOfYear",
+        "Type": 3,
+        "Format": "0"
+      },
+      {
+        "Restatement": "Date",
+        "Name": "Calendar SQL DQ.Date",
+        "Type": 4,
+        "Format": "D"
+      },
+      {
+        "Restatement": "MTD Hours",
+        "Name": "Measures Table.MTD Hours",
+        "Type": 1
+      },
+      {
+        "Restatement": "MTD Calculate",
+        "Name": "Measures Table.MTD Calculate",
+        "Type": 1
+      }
+    ],
+    "Filters": [
+      {
+        "type": 2,
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Calendar SQL DQ"
+              }
+            },
+            "Property": "Year"
+          }
+        }
+      },
+      {
+        "type": 2,
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Calendar SQL DQ"
+              }
+            },
+            "Property": "MonthNumberOfYear"
+          }
+        }
+      },
+      {
+        "type": 0,
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Calendar SQL DQ"
+              }
+            },
+            "Property": "Date"
+          }
+        }
+      },
+      {
+        "type": 2,
+        "expression": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Table"
+              }
+            },
+            "Property": "MTD Hours"
+          }
+        }
+      },
+      {
+        "type": 2,
+        "expression": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Table"
+              }
+            },
+            "Property": "MTD Calculate"
+          }
+        }
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Rows",
+          "Projection": 0,
+          "isActive": true
+        },
+        {
+          "Name": "Rows",
+          "Projection": 1,
+          "isActive": true
+        },
+        {
+          "Name": "Rows",
+          "Projection": 2,
+          "isActive": true
+        },
+        {
+          "Name": "Values",
+          "Projection": 3,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 4,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "Year",
+      "format": "0",
+      "queryName": "Calendar.Year",
+      "roles": {
+        "Rows": true
+      },
+      "sort": 1,
+      "sortOrder": 0,
+      "type": {
+        "category": null,
+        "underlyingType": 260
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Calendar SQL DQ"
+            }
+          },
+          "Property": "Year"
+        }
+      }
+    },
+    {
+      "displayName": "MonthNumberOfYear",
+      "format": "0",
+      "queryName": "Calendar SQL DQ.MonthNumberOfYear",
+      "roles": {
+        "Rows": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 260
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Calendar SQL DQ"
+            }
+          },
+          "Property": "MonthNumberOfYear"
+        }
+      }
+    },
+    {
+      "displayName": "Date",
+      "format": "D",
+      "queryName": "Calendar SQL DQ.Date",
+      "roles": {
+        "Rows": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 519
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Calendar SQL DQ"
+            }
+          },
+          "Property": "Date"
+        }
+      }
+    },
+    {
+      "displayName": "MTD Hours",
+      "queryName": "Measures Table.MTD Hours",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Measures Table"
+            }
+          },
+          "Property": "MTD Hours"
+        }
+      }
+    },
+    {
+      "displayName": "MTD Calculate",
+      "queryName": "Measures Table.MTD Calculate",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Measures Table"
+            }
+          },
+          "Property": "MTD Calculate"
+        }
+      }
+    }
+  ],
+  "expansionStates": [
+    {
+      "roles": [
+        "Rows"
+      ],
+      "levels": [
+        {
+          "queryRefs": [
+            "Calendar.Year"
+          ],
+          "identityKeys": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Calendar SQL DQ"
+                  }
+                },
+                "Property": "Year"
+              }
+            }
+          ],
+          "isPinned": true
+        },
+        {
+          "queryRefs": [
+            "Calendar SQL DQ.MonthNumberOfYear"
+          ],
+          "isCollapsed": true,
+          "identityKeys": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Calendar SQL DQ"
+                  }
+                },
+                "Property": "MonthNumberOfYear"
+              }
+            }
+          ],
+          "isPinned": true
+        },
+        {
+          "queryRefs": [
+            "Calendar SQL DQ.Date"
+          ],
+          "isCollapsed": true,
+          "isPinned": true
+        }
+      ],
+      "root": {
+        "identityValues": null,
+        "children": [
+          {
+            "identityValues": [
+              {
+                "Literal": {
+                  "Value": "2016L"
+                }
+              }
+            ],
+            "children": [
+              {
+                "identityValues": [
+                  {
+                    "Literal": {
+                      "Value": "12L"
+                    }
+                  }
+                ],
+                "isToggled": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
