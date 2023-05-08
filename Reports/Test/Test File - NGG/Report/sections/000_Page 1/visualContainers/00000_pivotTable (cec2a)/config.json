@@ -111,7 +111,7 @@
       ],
       "OrderBy": [
         {
-          "Direction": 1,
+          "Direction": 2,
           "Expression": {
             "Column": {
               "Expression": {
@@ -205,7 +205,6 @@
       }
     ],
     "drillFilterOtherVisuals": true,
-    "hasDefaultSort": true,
     "objects": {
       "values": [
         {
