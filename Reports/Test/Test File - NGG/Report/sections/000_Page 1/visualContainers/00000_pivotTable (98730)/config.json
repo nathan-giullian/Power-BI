@@ -32,6 +32,9 @@
       "Values": [
         {
           "queryRef": "Measures Table.Sum of Hours"
+        },
+        {
+          "queryRef": "Measures Table.Count of Resources"
         }
       ]
     },
@@ -93,6 +96,18 @@
             "Property": "Sum of Hours"
           },
           "Name": "Measures Table.Sum of Hours"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "Count of Resources"
+          },
+          "Name": "Measures Table.Count of Resources",
+          "NativeReferenceName": "Count of Resources"
         }
       ],
       "OrderBy": [
