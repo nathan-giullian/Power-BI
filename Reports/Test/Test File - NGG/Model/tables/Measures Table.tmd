@@ -58,6 +58,10 @@ table 'Measures Table'
 		formatString:= 0
 		lineageTag: 9597809a-7fb3-4b7b-ada7-82665f911772
 
+	measure 'Count of Resources' = COUNTROWS( 'Resources SQL DQ' )
+		formatString:= 0
+		lineageTag: 3abd4520-b7ea-42ec-8989-960497aa3d87
+
 	column Column1
 		dataType: String
 		isDataTypeInferred: false
