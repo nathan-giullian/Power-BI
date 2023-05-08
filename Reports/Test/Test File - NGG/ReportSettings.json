@@ -1,7 +1,6 @@
 {
   "Version": 2,
   "ReportSettings": {
-    "ShowHiddenFields": true,
     "UserConsentsToCompositeModels": true
   },
   "QueriesSettings": {
