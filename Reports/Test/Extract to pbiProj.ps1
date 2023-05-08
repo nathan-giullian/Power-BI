@@ -1,5 +1,5 @@
 Write-host "Are you sure you want to overwrite the current PBTProj files in this folder? "
-#$Result = Read-Host -Prompt "[Y/N]" 
+$Result = Read-Host -Prompt "[Y/N]" 
 if ($Result -eq 'Y') {
 	#$ReportsManifestPath = '.\Reports\Test\DeploymentManifest.json'
 	#$subManifestFile = Get-Content -Path $ReportsManifestPath | ConvertFrom-Json 
