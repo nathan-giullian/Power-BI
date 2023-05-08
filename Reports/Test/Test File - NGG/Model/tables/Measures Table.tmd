@@ -54,6 +54,10 @@ table 'Measures Table'
 	measure 'Test Measure' = "This is my test measure"
 		lineageTag: af936883-20f7-4e4d-a4c9-00e801ac4dc3
 
+	measure 'Count of Date Table' = COUNTROWS( 'Calendar SQL DQ' )
+		formatString:= 0
+		lineageTag: 9597809a-7fb3-4b7b-ada7-82665f911772
+
 	column Column1
 		dataType: String
 		isDataTypeInferred: false
