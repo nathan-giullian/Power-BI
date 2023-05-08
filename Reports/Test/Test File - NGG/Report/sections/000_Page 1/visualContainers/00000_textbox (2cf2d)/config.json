@@ -26,8 +26,7 @@
                     "value": "Here is my title",
                     "textStyle": {
                       "fontWeight": "bold",
-                      "fontSize": "28pt",
-                      "color": "#12239e"
+                      "fontSize": "28pt"
                     }
                   }
                 ]
