@@ -71,6 +71,73 @@
         "Name": "Measures Table.MTD Calculate",
         "Type": 1
       }
+    ],
+    "Filters": [
+      {
+        "type": 2,
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Calendar SQL DQ"
+              }
+            },
+            "Property": "Year"
+          }
+        }
+      },
+      {
+        "type": 2,
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Calendar SQL DQ"
+              }
+            },
+            "Property": "MonthNumberOfYear"
+          }
+        }
+      },
+      {
+        "type": 0,
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Calendar SQL DQ"
+              }
+            },
+            "Property": "Date"
+          }
+        }
+      },
+      {
+        "type": 2,
+        "expression": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Table"
+              }
+            },
+            "Property": "MTD Hours"
+          }
+        }
+      },
+      {
+        "type": 2,
+        "expression": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures Table"
+              }
+            },
+            "Property": "MTD Calculate"
+          }
+        }
+      }
     ]
   },
   "visualElements": [
@@ -112,7 +179,7 @@
       "roles": {
         "Rows": true
       },
-      "sort": 1,
+      "sort": 2,
       "sortOrder": 0,
       "type": {
         "category": null,
