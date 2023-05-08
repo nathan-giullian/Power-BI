@@ -1,0 +1,41 @@
+{
+  "name": "2cf2def97f7b75338268",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 60.571428571428569,
+        "y": 16,
+        "z": 1001,
+        "width": 409.14285714285717,
+        "height": 192
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Here is my title",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "28pt",
+                      "color": "#e044a7"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

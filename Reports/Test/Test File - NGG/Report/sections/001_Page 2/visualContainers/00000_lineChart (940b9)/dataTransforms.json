@@ -1,32 +1,16 @@
 {
-  "objects": {
-    "values": [
-      {
-        "properties": {
-          "fontSize": {
-            "expr": {
-              "Literal": {
-                "Value": "12D"
-              }
-            }
-          }
-        }
-      }
-    ]
-  },
   "projectionOrdering": {
-    "Rows": [
+    "Category": [
       0,
       1,
       2
     ],
-    "Values": [
-      3,
-      4
+    "Y": [
+      3
     ]
   },
   "projectionActiveItems": {
-    "Rows": [
+    "Category": [
       {
         "queryRef": "Calendar.Year",
         "suppressConcat": false
@@ -65,11 +49,6 @@
         "Restatement": "MTD Hours",
         "Name": "Measures Table.MTD Hours",
         "Type": 1
-      },
-      {
-        "Restatement": "MTD Calculate",
-        "Name": "Measures Table.MTD Calculate",
-        "Type": 1
       }
     ]
   },
@@ -77,28 +56,23 @@
     {
       "DataRoles": [
         {
-          "Name": "Rows",
+          "Name": "Category",
           "Projection": 0,
           "isActive": true
         },
         {
-          "Name": "Rows",
+          "Name": "Category",
           "Projection": 1,
           "isActive": true
         },
         {
-          "Name": "Rows",
+          "Name": "Category",
           "Projection": 2,
           "isActive": true
         },
         {
-          "Name": "Values",
+          "Name": "Y",
           "Projection": 3,
-          "isActive": false
-        },
-        {
-          "Name": "Values",
-          "Projection": 4,
           "isActive": false
         }
       ]
@@ -110,7 +84,7 @@
       "format": "0",
       "queryName": "Calendar.Year",
       "roles": {
-        "Rows": true
+        "Category": true
       },
       "sort": 1,
       "sortOrder": 0,
@@ -134,7 +108,7 @@
       "format": "0",
       "queryName": "Calendar SQL DQ.MonthNumberOfYear",
       "roles": {
-        "Rows": true
+        "Category": true
       },
       "type": {
         "category": null,
@@ -156,7 +130,7 @@
       "format": "D",
       "queryName": "Calendar SQL DQ.Date",
       "roles": {
-        "Rows": true
+        "Category": true
       },
       "type": {
         "category": null,
@@ -177,7 +151,7 @@
       "displayName": "MTD Hours",
       "queryName": "Measures Table.MTD Hours",
       "roles": {
-        "Values": true
+        "Y": true
       },
       "type": {
         "category": null,
@@ -192,106 +166,6 @@
           },
           "Property": "MTD Hours"
         }
-      }
-    },
-    {
-      "displayName": "MTD Calculate",
-      "queryName": "Measures Table.MTD Calculate",
-      "roles": {
-        "Values": true
-      },
-      "type": {
-        "category": null,
-        "underlyingType": 259
-      },
-      "expr": {
-        "Measure": {
-          "Expression": {
-            "SourceRef": {
-              "Entity": "Measures Table"
-            }
-          },
-          "Property": "MTD Calculate"
-        }
-      }
-    }
-  ],
-  "expansionStates": [
-    {
-      "roles": [
-        "Rows"
-      ],
-      "levels": [
-        {
-          "queryRefs": [
-            "Calendar.Year"
-          ],
-          "identityKeys": [
-            {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Calendar SQL DQ"
-                  }
-                },
-                "Property": "Year"
-              }
-            }
-          ],
-          "isPinned": true
-        },
-        {
-          "queryRefs": [
-            "Calendar SQL DQ.MonthNumberOfYear"
-          ],
-          "isCollapsed": true,
-          "identityKeys": [
-            {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Calendar SQL DQ"
-                  }
-                },
-                "Property": "MonthNumberOfYear"
-              }
-            }
-          ],
-          "isPinned": true
-        },
-        {
-          "queryRefs": [
-            "Calendar SQL DQ.Date"
-          ],
-          "isCollapsed": true,
-          "isPinned": true
-        }
-      ],
-      "root": {
-        "identityValues": null,
-        "children": [
-          {
-            "identityValues": [
-              {
-                "Literal": {
-                  "Value": "2016L"
-                }
-              }
-            ],
-            "children": [
-              {
-                "identityValues": [
-                  {
-                    "Literal": {
-                      "Value": "12L"
-                    }
-                  }
-                ],
-                "isToggled": true
-              }
-            ]
-          }
-        ]
       }
     }
   ]

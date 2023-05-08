@@ -8,6 +8,6 @@ if ($Result -eq 'Y') {
 		$BPIProjPath = ".\Reports\Test\Test File - NGG"
 		Write-host "Expanding PBIX File: $BPIProjPath to $PBIXFilePath"
 
-		.\Util\PBIToolsCore\pbi-tools.core.exe compile $BPIProjPath -outPath $PBIXFilePath -format PBIX -overwrite True
+		.\Util\PBIToolsCore\pbi-tools.core.exe compile $BPIProjPath -outPath $PBIXFilePath -format PBIT -overwrite True
 	}
 # }
