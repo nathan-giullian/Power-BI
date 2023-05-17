@@ -179,7 +179,7 @@
       "roles": {
         "Rows": true
       },
-      "sort": 2,
+      "sort": 1,
       "sortOrder": 0,
       "type": {
         "category": null,
@@ -203,6 +203,8 @@
       "roles": {
         "Rows": true
       },
+      "sort": 1,
+      "sortOrder": 1,
       "type": {
         "category": null,
         "underlyingType": 260
@@ -225,6 +227,8 @@
       "roles": {
         "Rows": true
       },
+      "sort": 1,
+      "sortOrder": 2,
       "type": {
         "category": null,
         "underlyingType": 519

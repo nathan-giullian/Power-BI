@@ -75,7 +75,7 @@
           ],
           "OrderBy": [
             {
-              "Direction": 2,
+              "Direction": 1,
               "Expression": {
                 "Column": {
                   "Expression": {
@@ -84,6 +84,32 @@
                     }
                   },
                   "Property": "Year"
+                }
+              }
+            },
+            {
+              "Direction": 1,
+              "Expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "c"
+                    }
+                  },
+                  "Property": "MonthNumberOfYear"
+                }
+              }
+            },
+            {
+              "Direction": 1,
+              "Expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "c"
+                    }
+                  },
+                  "Property": "Date"
                 }
               }
             }
