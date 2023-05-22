@@ -1,0 +1,423 @@
+table 'Project Fact'
+	isHidden
+	lineageTag: 1f4f170f-ca58-403d-9e53-02429dd6394d
+	ordinal: 12
+
+	partition 'Project Fact-217a91b0-50d5-4082-8e8b-26df0e04fb6a' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"f2b463bf-5fde-4afe-96ca-991c76bc280c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="f2b463bf-5fde-4afe-96ca-991c76bc280c"]}[Data],
+			    Project_ = #"f2b463bf-5fde-4afe-96ca-991c76bc280c"{[entity="Project",version=""]}[Data],
+			    #"Removed Other Columns" = Table.SelectColumns(Project_,{"Created On", "Modified On", "Effort", "Effort Completed", "Effort Remaining", "Progress", "Scheduled Start", "Actual End", "Actual Start", "Overall Project Status", "Status Update On", "Close Charge Line Completed Date", "Completion Date", "Date Awarded", "End Date", "Kickoff Date", "Project Code", "Start Date", "Project SK", "Opportunity SK", "End Customer SK", "Supervisor SK", "Sales Person SK", "Account SK", "Parent Contact SK", "Practice", "Originating Lead SK"}),
+			    #"Merged Queries" = Table.NestedJoin(#"Removed Other Columns", {"Practice"}, #"Practice", {"Practice"}, "Practice.1", JoinKind.LeftOuter),
+			    #"Expanded Practice.1" = Table.ExpandTableColumn(#"Merged Queries", "Practice.1", {"Practice SK"}, {"Practice SK"}),
+			    #"Removed Columns" = Table.RemoveColumns(#"Expanded Practice.1",{"Practice"}),
+			    #"Changed Type" = Table.TransformColumnTypes(#"Removed Columns",{{"Project Code", Int64.Type}})
+			in
+			    #"Changed Type"
+
+		queryGroup: Facts
+
+	column 'Created On'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: eb5b3596-a626-453f-93c6-24e6edf6df66
+		sourceColumn: "Created On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column Effort
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 3ae8263b-85e0-45a1-acbe-df4609593711
+		sourceColumn: Effort
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Effort Completed'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 925e4449-e741-4557-ad8c-0663b49a40fe
+		sourceColumn: "Effort Completed"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Effort Remaining'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 88ce289f-ed50-43aa-9512-9009ab6ac7cf
+		sourceColumn: "Effort Remaining"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column Progress
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: b23779bc-b967-4b3d-b133-260e1ada884f
+		sourceColumn: Progress
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Scheduled Start'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: b5391415-e066-4262-ab7e-de1b1a3cba3f
+		sourceColumn: "Scheduled Start"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Actual End'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 9960fe57-de38-4995-a0ae-565744d8a966
+		sourceColumn: "Actual End"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Actual Start'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: f24ef72a-dcdd-4b84-a794-d1544fa52185
+		sourceColumn: "Actual Start"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Overall Project Status'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: ea4d1e94-dab0-48d5-af0e-b2bc74d47529
+		sourceColumn: "Overall Project Status"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Status Update On'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 18a3469a-0124-4082-8148-5afa27845460
+		sourceColumn: "Status Update On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Project Code'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: b65cb0ac-a73d-4e2c-9dfe-34d49bc49c64
+		sourceColumn: "Project Code"
+		summarizeBy: Count
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Start Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: d3c6d6fb-ec10-412d-b2e7-e53af87aeb0f
+		sourceColumn: "Start Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'End Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: a6734714-aad7-4bb6-9b19-70f1ea82cafe
+		sourceColumn: "End Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Kickoff Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 587a9ca4-82e0-4d80-b4e6-afe51618eb99
+		sourceColumn: "Kickoff Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Completion Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 80c4e318-f207-411a-862b-e7f694d18290
+		sourceColumn: "Completion Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Close Charge Line Completed Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: ff84ddff-cba7-44b2-9d60-4fdb6d092376
+		sourceColumn: "Close Charge Line Completed Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Date Awarded'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 68ff136c-84c9-4a07-80fb-a55981a2e272
+		sourceColumn: "Date Awarded"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Project SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 39f58c8b-860b-419c-8b9b-3a3a06e723c6
+		sourceColumn: "Project SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Modified On'
+		dataType: DateTime
+		formatString:= General Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 18ea8b29-a6e1-4ad2-8cdb-c0f53f11e210
+		sourceColumn: "Modified On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Account SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: db45c8af-edbd-4db1-bcdd-e7c95b1513a7
+		sourceColumn: "Account SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'End Customer SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 11e62a4c-7d33-4752-8385-fa5fd88141ff
+		sourceColumn: "End Customer SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Practice SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 7dd595cd-0952-4670-a5fa-77903a579b06
+		sourceColumn: "Practice SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Opportunity SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: ff663ebb-71c1-4044-933a-79371193362c
+		sourceColumn: "Opportunity SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Supervisor SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: fb9c1468-9e69-4f34-8322-ca4f51bf1997
+		sourceColumn: "Supervisor SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Sales Person SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 26cf16f1-ef55-4763-8f9b-a12da8a9e0f8
+		sourceColumn: "Sales Person SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Parent Contact SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 49d107e1-668f-4f72-9aa2-30e81734067e
+		sourceColumn: "Parent Contact SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Originating Lead SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 5e43d93b-8277-4570-abd8-b17975028e11
+		sourceColumn: "Originating Lead SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'TA Days to Close' =
+		
+		    SWITCH(
+		        TRUE(),
+		        AND( [RCR Days to Close] <= 7,[RCR Days to Close] > 0),"Within 7 Days",
+		        [RCR Days to Close] < 0, "Expired",
+		        "Open"
+		    )
+		// This needs to live in the consultant request table
+
+		dataType: String
+		lineageTag: 7c936b1d-a2f3-471a-89c3-6e63a43b8f5d
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+	changedProperty = IsHidden
+

@@ -1,0 +1,128 @@
+table 'Roles Totals'
+	lineageTag: b9c9ced2-d4fc-49cd-99d6-00714bebc876
+	ordinal: 27
+
+	partition Partition = CalculationGroup
+		mode: Import
+
+	calculationGroup
+		precedence: 1
+
+		calculationItem LOE =
+			CALCULATE(
+			    SELECTEDMEASURE () / (50* DISTINCTCOUNT('Calendar'[End of Week]))
+			)
+
+
+		calculationItem 'Number of Time Entries' = DISTINCTCOUNT('Time Entry Fact'[Hours])
+
+		calculationItem 'Current Week' =
+			    VAR CurrentDay = TODAY()-1*7
+			    VAR CurrentYear = YEAR(CurrentDay)
+			    VAR CurrentWeek = CALCULATE(MAX('Calendar'[Week of Year]),'Calendar'[Date] = CurrentDay)
+			    VAR PreviousWeek = CALCULATETABLE(VALUES('Calendar'[Date]),'Calendar'[Week of Year]=CurrentWeek,'Calendar'[Year]=CurrentYear)
+			    VAR Result = CALCULATE(SELECTEDMEASURE(), PreviousWeek)
+			    RETURN Result
+
+
+		calculationItem 'Previous Week' =
+			    VAR CurrentDay = TODAY()-2*7
+			    VAR CurrentYear = YEAR(CurrentDay)
+			    VAR CurrentWeek = CALCULATE(MAX('Calendar'[Week of Year]),'Calendar'[Date] = CurrentDay)
+			    VAR PreviousWeek = CALCULATETABLE(VALUES('Calendar'[Date]),'Calendar'[Week of Year]=CurrentWeek,'Calendar'[Year]=CurrentYear)
+			    VAR Result = CALCULATE(SELECTEDMEASURE(), PreviousWeek)
+			    RETURN Result
+
+
+		calculationItem '3 Weeks Prior' =
+			    VAR CurrentDay = TODAY()-3*7
+			    VAR CurrentYear = YEAR(CurrentDay)
+			    VAR CurrentWeek = CALCULATE(MAX('Calendar'[Week of Year]),'Calendar'[Date] = CurrentDay)
+			    VAR PreviousWeek = CALCULATETABLE(VALUES('Calendar'[Date]),'Calendar'[Week of Year]=CurrentWeek,'Calendar'[Year]=CurrentYear)
+			    VAR Result = CALCULATE(SELECTEDMEASURE(), PreviousWeek)
+			    RETURN Result
+
+
+		calculationItem '4 Weeks Prior' =
+			    VAR CurrentDay = TODAY()-4*7
+			    VAR CurrentYear = YEAR(CurrentDay)
+			    VAR CurrentWeek = CALCULATE(MAX('Calendar'[Week of Year]),'Calendar'[Date] = CurrentDay)
+			    VAR PreviousWeek = CALCULATETABLE(VALUES('Calendar'[Date]),'Calendar'[Week of Year]=CurrentWeek,'Calendar'[Year]=CurrentYear)
+			    VAR Result = CALCULATE(SELECTEDMEASURE(), PreviousWeek)
+			    RETURN Result
+
+
+		calculationItem '5 Weeks Prior' =
+			    VAR CurrentDay = TODAY()-5*7
+			    VAR CurrentYear = YEAR(CurrentDay)
+			    VAR CurrentWeek = CALCULATE(MAX('Calendar'[Week of Year]),'Calendar'[Date] = CurrentDay)
+			    VAR PreviousWeek = CALCULATETABLE(VALUES('Calendar'[Date]),'Calendar'[Week of Year]=CurrentWeek,'Calendar'[Year]=CurrentYear)
+			    VAR Result = CALCULATE(SELECTEDMEASURE(), PreviousWeek)
+			    RETURN Result
+
+
+		calculationItem '6 Weeks Prior' =
+			    VAR CurrentDay = TODAY()-6*7
+			    VAR CurrentYear = YEAR(CurrentDay)
+			    VAR CurrentWeek = CALCULATE(MAX('Calendar'[Week of Year]),'Calendar'[Date] = CurrentDay)
+			    VAR PreviousWeek = CALCULATETABLE(VALUES('Calendar'[Date]),'Calendar'[Week of Year]=CurrentWeek,'Calendar'[Year]=CurrentYear)
+			    VAR Result = CALCULATE(SELECTEDMEASURE(), PreviousWeek)
+			    RETURN Result
+
+
+		calculationItem '7 Weeks Prior' =
+			    VAR CurrentDay = TODAY()-7*7
+			    VAR CurrentYear = YEAR(CurrentDay)
+			    VAR CurrentWeek = CALCULATE(MAX('Calendar'[Week of Year]),'Calendar'[Date] = CurrentDay)
+			    VAR PreviousWeek = CALCULATETABLE(VALUES('Calendar'[Date]),'Calendar'[Week of Year]=CurrentWeek,'Calendar'[Year]=CurrentYear)
+			    VAR Result = CALCULATE(SELECTEDMEASURE(), PreviousWeek)
+			    RETURN Result
+
+
+		calculationItem '8 Weeks Prior' =
+			    VAR CurrentDay = TODAY()-8*7
+			    VAR CurrentYear = YEAR(CurrentDay)
+			    VAR CurrentWeek = CALCULATE(MAX('Calendar'[Week of Year]),'Calendar'[Date] = CurrentDay)
+			    VAR PreviousWeek = CALCULATETABLE(VALUES('Calendar'[Date]),'Calendar'[Week of Year]=CurrentWeek,'Calendar'[Year]=CurrentYear)
+			    VAR Result = CALCULATE(SELECTEDMEASURE(), PreviousWeek)
+			    RETURN Result
+
+
+		calculationItem '9 Weeks Prior' =
+			    VAR CurrentDay = TODAY()-9*7
+			    VAR CurrentYear = YEAR(CurrentDay)
+			    VAR CurrentWeek = CALCULATE(MAX('Calendar'[Week of Year]),'Calendar'[Date] = CurrentDay)
+			    VAR PreviousWeek = CALCULATETABLE(VALUES('Calendar'[Date]),'Calendar'[Week of Year]=CurrentWeek,'Calendar'[Year]=CurrentYear)
+			    VAR Result = CALCULATE(SELECTEDMEASURE(), PreviousWeek)
+			    RETURN Result
+
+
+		calculationItem '10 Weeks Prior' =
+			    VAR CurrentDay = TODAY()-10*7
+			    VAR CurrentYear = YEAR(CurrentDay)
+			    VAR CurrentWeek = CALCULATE(MAX('Calendar'[Week of Year]),'Calendar'[Date] = CurrentDay)
+			    VAR PreviousWeek = CALCULATETABLE(VALUES('Calendar'[Date]),'Calendar'[Week of Year]=CurrentWeek,'Calendar'[Year]=CurrentYear)
+			    VAR Result = CALCULATE(SELECTEDMEASURE(), PreviousWeek)
+			    RETURN Result
+
+
+	column Name
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 4a790430-d8c8-479b-b03b-b09ddd1fb5da
+		sortByColumn: Ordinal
+		sourceColumn: Name
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: Int64
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 8e6a314a-228b-4a0b-9b64-8a40d736bd80
+		sourceColumn: Ordinal
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+

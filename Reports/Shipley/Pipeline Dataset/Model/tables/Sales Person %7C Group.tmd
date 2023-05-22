@@ -1,0 +1,169 @@
+table 'Sales Person | Group'
+	lineageTag: 057df742-8475-4c6e-afa6-64e9c89077bd
+	ordinal: 13
+
+	partition 'Sales Person | Group-093b108f-a7a5-4626-ab7d-a08ba398e320' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"f2b463bf-5fde-4afe-96ca-991c76bc280c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="f2b463bf-5fde-4afe-96ca-991c76bc280c"]}[Data],
+			    #"System User_" = #"f2b463bf-5fde-4afe-96ca-991c76bc280c"{[entity="Sales Person | Group",version=""]}[Data],
+			    #"Removed Other Columns" = Table.SelectColumns(#"System User_",{"User ID", "Sales Person", "Email", "Job Title", "Created On", "Disabled Reason", "Modified On", "Is Disabled", "Skills", "Employee End Date", "Employee ID", "Employee Start Date", "Sales Person SK", "Sales Person | Group"}),
+			    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"Sales Person", "Sales Person Name"}})
+			in
+			    #"Renamed Columns"
+
+		queryGroup: Dimensions
+
+	column Email
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: bdb27205-c14f-4688-89e7-ef938985501a
+		sourceColumn: Email
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Skills
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: fe40f514-8c0a-4964-bbe4-5efd4f5c3f5f
+		sourceColumn: Skills
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'User ID'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 5a717f16-edc4-463a-9ceb-0aa58225b916
+		sourceColumn: "User ID"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Job Title'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 067c1a7f-005a-4d70-9005-962263a06d9b
+		sourceColumn: "Job Title"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created On'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: 80df2e02-c032-4d4d-b4b1-cc1d6bdf23c6
+		sourceColumn: "Created On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Disabled Reason'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 0b5fd050-b8b5-4fa0-b0d4-7bb584e96d8d
+		sourceColumn: "Disabled Reason"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Modified On'
+		dataType: DateTime
+		formatString:= General Date
+		isDataTypeInferred: false
+		lineageTag: 035da537-8db8-4d46-91dd-cf2e518b5cb3
+		sourceColumn: "Modified On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Disabled'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 19ab96c2-36d0-42eb-83b7-3327ac0d66c1
+		sourceColumn: "Is Disabled"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Person | Group'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: ec0fc6d4-dc50-41a9-a7b3-1f3b5232b897
+		sourceColumn: "Sales Person | Group"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Person SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: b5ac344b-153d-46e2-a5f0-11a3e9d4f388
+		sourceColumn: "Sales Person SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee ID'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 3185fdf9-a564-4aed-9501-68647b775d2f
+		sourceColumn: "Employee ID"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Person Name'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 06bc5647-cef0-41d2-9284-cb848cb55de1
+		sourceColumn: "Sales Person Name"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee End Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: 5b64a28f-272b-4dff-9fc1-10f7b109927d
+		sourceColumn: "Employee End Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Employee Start Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: a84466ae-7917-4a82-bc77-a549c63e7c9b
+		sourceColumn: "Employee Start Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Include = [Display Salesperson] 
+		dataType: Int64
+		formatString:= 0
+		lineageTag: 22f7960d-7b77-4a27-b03f-2f1c61de6c34
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,286 @@
+table 'Consultant Request Fact'
+	isHidden
+	lineageTag: 77415673-8f44-4de4-b37a-7dde77a1cffd
+	ordinal: 3
+
+	partition 'Consultant Request Fact-38856fc9-6dd8-40f0-bfc9-5b6e1130ca6d' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"f2b463bf-5fde-4afe-96ca-991c76bc280c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="f2b463bf-5fde-4afe-96ca-991c76bc280c"]}[Data],
+			    #"Consultant Request_" = #"f2b463bf-5fde-4afe-96ca-991c76bc280c"{[entity="Consultant Request",version=""]}[Data],
+			    #"Merged Queries" = Table.NestedJoin(#"Consultant Request_", {"Practice"}, #"Practice", {"Practice"}, "Practice.1", JoinKind.LeftOuter),
+			    #"Expanded Practice.1" = Table.ExpandTableColumn(#"Merged Queries", "Practice.1", {"Practice SK"}, {"Practice SK"}),
+			    #"Removed Other Columns" = Table.SelectColumns(#"Expanded Practice.1",{"Created On", "End Date", "Hourly Bill Rate", "Hourly Pay Rate", "NTE Hours", "Consultant Request SK", "Opportunity SK", "End Customer SK", "Supervisor SK", "Sales Person SK", "Account SK", "Project SK", "Parent Contact SK", "Originating Lead SK", "Project Task SK", "Labor Category SK", "Bookable Resource SK", "Practice SK"}),
+			    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns", {"Consultant Request SK"})
+			in
+			    #"Removed Duplicates"
+
+		queryGroup: Facts
+
+	column 'Created On'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 6b447a88-c3e5-48c8-aba8-45607053b82d
+		sourceColumn: "Created On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'End Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: c52422f2-85b7-4c5e-a837-620ec9467e9f
+		sourceColumn: "End Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Hourly Pay Rate'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: a4fad4f2-71b1-47cc-ae71-a859f57e129e
+		sourceColumn: "Hourly Pay Rate"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Hourly Bill Rate'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: fdd40f8f-b6ff-47ab-ba17-300220af13e1
+		sourceColumn: "Hourly Bill Rate"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'NTE Hours'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 374e7ea4-c4d7-4d19-8ccb-6c504db60f38
+		sourceColumn: "NTE Hours"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Consultant Request SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 6f942203-c2db-4f85-88c1-e9604600fe04
+		sourceColumn: "Consultant Request SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Project SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: cfc2b0cc-7807-4912-8cd9-8e2ad08aeb16
+		sourceColumn: "Project SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Opportunity SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 72dc4780-087a-41cf-bc21-aa6d867efe63
+		sourceColumn: "Opportunity SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Account SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 8674d9fc-e088-4e24-9180-d1808de9519c
+		sourceColumn: "Account SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'End Customer SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: c0b51b38-8907-4137-9a02-58c0bf0c9bcf
+		sourceColumn: "End Customer SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Bookable Resource SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: f60e9811-9ca6-4454-a69d-24bbca8b874d
+		sourceColumn: "Bookable Resource SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Practice SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: a0b6b736-5c90-4087-b26a-2abde571d859
+		sourceColumn: "Practice SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Supervisor SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 083d5d0b-7159-44fc-a3bd-eddd303cda75
+		sourceColumn: "Supervisor SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Sales Person SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 2ebd7b79-6271-489e-a7b7-b1259a374ca0
+		sourceColumn: "Sales Person SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Originating Lead SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 4a6fcc1d-8a77-4cb8-9901-52ecd75b27c5
+		sourceColumn: "Originating Lead SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Parent Contact SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 89925ab7-9208-433a-92e5-070dc7a3fb25
+		sourceColumn: "Parent Contact SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Project Task SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: ee04a9d7-737b-4151-ae02-a58a525811ac
+		sourceColumn: "Project Task SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Labor Category SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: cec2bf48-c41c-4bc4-9b4f-951cf0476159
+		sourceColumn: "Labor Category SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'TA Days to Close' =
+		
+		    SWITCH(
+		        TRUE(),
+		        AND( [RCR Days to Close] <= 7,[RCR Days to Close] > 0),"Within 7 Days",
+		        AND( [RCR Days to Close] <= 14,[RCR Days to Close] > 7),"Within 14 Days",
+		        [RCR Days to Close] < 0, "Completed",//Not shown in visual - really is completed TAs with project still open
+		        "Open"
+		    )
+
+		dataType: String
+		lineageTag: 479b88c5-330b-4d75-9da7-cd832dfe725e
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+	changedProperty = IsHidden
+

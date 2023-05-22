@@ -1,0 +1,178 @@
+{
+  "projectionOrdering": {
+    "Values": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "Sales Stage",
+        "Name": "Opportunity.Sales Stage",
+        "Type": 2048
+      },
+      {
+        "Restatement": "Finance Reviewed",
+        "Name": "Opportunity.Finance Reviewed",
+        "Type": 4096,
+        "Format": "\"TRUE\";\"TRUE\";\"FALSE\""
+      },
+      {
+        "Restatement": "Opportunity Qty",
+        "Name": "Measure.Opportunity Qty",
+        "Type": 3,
+        "Format": "0"
+      },
+      {
+        "Restatement": "Opportunity ID",
+        "Name": "Opportunity.Opportunity ID",
+        "Type": 2048
+      }
+    ],
+    "Filters": [
+      {
+        "type": 0,
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Opportunity"
+              }
+            },
+            "Property": "Sales Stage"
+          }
+        }
+      },
+      {
+        "type": 0,
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Opportunity"
+              }
+            },
+            "Property": "Finance Reviewed"
+          }
+        }
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Values",
+          "Projection": 0,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 1,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 2,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 3,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "Sales Stage",
+      "queryName": "Opportunity.Sales Stage",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Opportunity"
+            }
+          },
+          "Property": "Sales Stage"
+        }
+      }
+    },
+    {
+      "displayName": "Finance Reviewed",
+      "format": "\"TRUE\";\"TRUE\";\"FALSE\"",
+      "queryName": "Opportunity.Finance Reviewed",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 5
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Opportunity"
+            }
+          },
+          "Property": "Finance Reviewed"
+        }
+      }
+    },
+    {
+      "displayName": "Opportunity Qty",
+      "format": "0",
+      "queryName": "Measure.Opportunity Qty",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 260
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Measure"
+            }
+          },
+          "Property": "Opportunity Qty"
+        }
+      }
+    },
+    {
+      "displayName": "Opportunity ID",
+      "queryName": "Opportunity.Opportunity ID",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Opportunity"
+            }
+          },
+          "Property": "Opportunity ID"
+        }
+      }
+    }
+  ]
+}

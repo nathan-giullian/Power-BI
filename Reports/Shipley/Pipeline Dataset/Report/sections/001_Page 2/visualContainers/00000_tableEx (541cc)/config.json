@@ -1,0 +1,110 @@
+{
+  "name": "541ccb439030cdb29b45",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 9.481481481481481,
+        "y": 384.5267489711934,
+        "z": 1000,
+        "width": 644.74074074074076,
+        "height": 326.58436213991769
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "tableEx",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "End Customer.End Customer Type"
+        },
+        {
+          "queryRef": "End Customer.End Customer Subtype"
+        },
+        {
+          "queryRef": "Sum(Time Entry Fact.Hours)"
+        },
+        {
+          "queryRef": "Opportunity.Opportunity SK"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "e",
+          "Entity": "End Customer",
+          "Type": 0
+        },
+        {
+          "Name": "t",
+          "Entity": "Time Entry Fact",
+          "Type": 0
+        },
+        {
+          "Name": "o",
+          "Entity": "Opportunity",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "e"
+              }
+            },
+            "Property": "End Customer Type"
+          },
+          "Name": "End Customer.End Customer Type",
+          "NativeReferenceName": "End Customer Type"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "t"
+                  }
+                },
+                "Property": "Hours"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(Time Entry Fact.Hours)",
+          "NativeReferenceName": "Sum of Hours"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "o"
+              }
+            },
+            "Property": "Opportunity SK"
+          },
+          "Name": "Opportunity.Opportunity SK",
+          "NativeReferenceName": "Opportunity SK"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "e"
+              }
+            },
+            "Property": "End Customer Subtype"
+          },
+          "Name": "End Customer.End Customer Subtype",
+          "NativeReferenceName": "End Customer Subtype"
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

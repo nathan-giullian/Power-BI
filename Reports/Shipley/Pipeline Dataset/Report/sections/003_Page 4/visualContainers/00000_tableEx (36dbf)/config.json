@@ -1,0 +1,185 @@
+{
+  "name": "36dbf5c3255ccf839ce2",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 0,
+        "y": 48,
+        "z": 0,
+        "width": 1280,
+        "height": 672.00000000000011
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "tableEx",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "Opportunity.Opportunity"
+        },
+        {
+          "queryRef": "Measure.Estimated Revenue $"
+        },
+        {
+          "queryRef": "Opportunity Fact.Close Probability"
+        },
+        {
+          "queryRef": "Measure.Close Probability"
+        },
+        {
+          "queryRef": "Measure.Weighted Estimated Revenue Pipeline $"
+        },
+        {
+          "queryRef": "Measure.Opportunity $"
+        },
+        {
+          "queryRef": "Opportunity Fact.Estimated Close Date"
+        },
+        {
+          "queryRef": "Opportunity Fact.Actual Close Date"
+        },
+        {
+          "queryRef": "Sales Person | Group.Sales Person | Group"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "o",
+          "Entity": "Opportunity Fact",
+          "Type": 0
+        },
+        {
+          "Name": "o1",
+          "Entity": "Opportunity",
+          "Type": 0
+        },
+        {
+          "Name": "m",
+          "Entity": "Measure",
+          "Type": 0
+        },
+        {
+          "Name": "s",
+          "Entity": "Sales Person | Group",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "o"
+              }
+            },
+            "Property": "Actual Close Date"
+          },
+          "Name": "Opportunity Fact.Actual Close Date",
+          "NativeReferenceName": "Actual Close Date"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "o1"
+              }
+            },
+            "Property": "Opportunity"
+          },
+          "Name": "Opportunity.Opportunity",
+          "NativeReferenceName": "Opportunity"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "o"
+              }
+            },
+            "Property": "Estimated Close Date"
+          },
+          "Name": "Opportunity Fact.Estimated Close Date",
+          "NativeReferenceName": "Estimated Close Date"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "s"
+              }
+            },
+            "Property": "Sales Person Name"
+          },
+          "Name": "Sales Person | Group.Sales Person | Group",
+          "NativeReferenceName": "Sales Person | Group"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "Opportunity $"
+          },
+          "Name": "Measure.Opportunity $",
+          "NativeReferenceName": "Opportunity $"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "Weighted Estimated Revenue Pipeline $"
+          },
+          "Name": "Measure.Weighted Estimated Revenue Pipeline $",
+          "NativeReferenceName": "Weighted Estimated Revenue Pipeline $"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "Estimated Revenue $"
+          },
+          "Name": "Measure.Estimated Revenue $",
+          "NativeReferenceName": "Estimated Revenue $"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "o"
+              }
+            },
+            "Property": "Close Probability"
+          },
+          "Name": "Opportunity Fact.Close Probability",
+          "NativeReferenceName": "Close Probability"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "Close Probability"
+          },
+          "Name": "Measure.Close Probability",
+          "NativeReferenceName": "Close Probability1"
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

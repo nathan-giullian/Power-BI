@@ -1,0 +1,50 @@
+{
+  "name": "52df3c3b45420e1f5321",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "width": 176,
+        "height": 288
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "tableEx",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "Calendar.Year"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "c",
+          "Entity": "Calendar",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "Year"
+          },
+          "Name": "Calendar.Year",
+          "NativeReferenceName": "Year"
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

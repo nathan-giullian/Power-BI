@@ -1,0 +1,236 @@
+table 'Time Entry Fact'
+	isHidden
+	lineageTag: dcf524e8-5b4a-4ff9-9a72-6e94aacf43ec
+	ordinal: 18
+
+	partition 'Time Entry Fact-6a5c223e-e1a8-4135-82b7-8eede71e80a4' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"f2b463bf-5fde-4afe-96ca-991c76bc280c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="f2b463bf-5fde-4afe-96ca-991c76bc280c"]}[Data],
+			    Account_ = #"f2b463bf-5fde-4afe-96ca-991c76bc280c"{[entity="Time Entry Fact",version=""]}[Data],
+			    #"Merged Queries" = Table.NestedJoin(Account_, {"Practice"}, #"Practice", {"Practice"}, "Practice.1", JoinKind.LeftOuter),
+			    #"Expanded Practice.1" = Table.ExpandTableColumn(#"Merged Queries", "Practice.1", {"Practice SK"}, {"Practice SK"}),
+			    #"Removed Columns" = Table.RemoveColumns(#"Expanded Practice.1",{"Practice", "msdyn_timeentryid"})
+			in
+			    #"Removed Columns"
+
+		queryGroup: Facts
+
+	column 'Modified On'
+		dataType: DateTime
+		formatString:= General Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: d691368e-2208-4c6f-955f-991b6b348485
+		sourceColumn: "Modified On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column Date
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 2678a8b9-6e26-4e24-9c53-9d4dab99157a
+		sourceColumn: Date
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column Hours
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 7a549274-43d7-47c9-b96c-4d9fce4e614e
+		sourceColumn: Hours
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Bookable Resource SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: f72abf54-368e-4ea9-baaa-8ed5f82743ad
+		sourceColumn: "Bookable Resource SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Project SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 48c90a79-a80d-4390-b43f-e1fc3f24d47d
+		sourceColumn: "Project SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Opportunity SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 04f8a569-b20c-4db2-8dff-3e8f1563eb87
+		sourceColumn: "Opportunity SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'End Customer SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 5bee73f4-e815-40dd-a1d8-09a562f32c93
+		sourceColumn: "End Customer SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Supervisor SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 9463abb7-76b9-4068-bad1-2c05c3e38967
+		sourceColumn: "Supervisor SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Sales Person SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: a0e69c91-2d1a-4560-b6af-eac41d550082
+		sourceColumn: "Sales Person SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Account SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 59299d4f-e204-473b-aebd-4fd719e1b463
+		sourceColumn: "Account SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Parent Contact SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 3f349b69-ff2b-401e-b29b-00737fb5fd4f
+		sourceColumn: "Parent Contact SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Originating Lead SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 523d0127-e0d7-4d46-bc1e-8e380352f49d
+		sourceColumn: "Originating Lead SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Time Entry Dimension SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: fa86d472-f308-445d-92b6-ad726c448324
+		sourceColumn: "Time Entry Dimension SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Project Task SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 753a6fde-a587-4bbc-80ce-33d6fe2e1643
+		sourceColumn: "Project Task SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Practice SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 37f04c2e-f11b-40a6-aafd-807ceb1c0a7f
+		sourceColumn: "Practice SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Labor Category SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 4a81122c-2e1a-4e68-ae14-742bc4c839da
+		sourceColumn: "Labor Category SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+	changedProperty = IsHidden
+

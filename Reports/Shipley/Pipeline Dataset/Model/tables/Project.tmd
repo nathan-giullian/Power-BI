@@ -1,0 +1,514 @@
+table Project
+	lineageTag: 8d1030c3-ae1f-4047-8461-4ffe0758a2ed
+	ordinal: 6
+
+	partition 'Project-82bd441f-c5aa-41f0-ba3e-dd4c962516ef' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"f2b463bf-5fde-4afe-96ca-991c76bc280c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="f2b463bf-5fde-4afe-96ca-991c76bc280c"]}[Data],
+			    Project_ = #"f2b463bf-5fde-4afe-96ca-991c76bc280c"{[entity="Project",version=""]}[Data],
+			    #"Removed Columns" = Table.RemoveColumns(Project_,{"Effort", "Effort Completed", "Effort Remaining", "Progress", "Scheduled Start", "Actual Start", "Status Update On", "Start Date", "End Date", "Kickoff Date", "Completion Date", "Close Charge Line Completed Date", "Date Awarded", "Modified On", "Effort Hours NTE", "End Customer SK", "Supervisor SK", "Sales Person SK", "Account SK", "Parent Contact SK", "Practice", "msdyn_projectmanager", "Sales Order ID", "Originating Opportunity ID"}),
+			    #"Removed Duplicates" = Table.Distinct(#"Removed Columns", {"Project SK"}),
+			    #"Added Conditional Column" = Table.AddColumn(#"Removed Duplicates", "CPK Sort", each if [CPK] = "Yes" then 1 else if [CPK] = "No" then 2 else if [CPK] = "N/A" then 3 else 4, Int64.Type),
+			    #"Added Conditional Column1" = Table.AddColumn(#"Added Conditional Column", "IPK Sort", each if [IPK] = "Yes" then 1 else if [IPK] = "No" then 2 else if [IPK] = "N/A" then 3 else 4, Int64.Type)
+			in
+			    #"Added Conditional Column1"
+
+		queryGroup: Dimensions
+
+	column 'Created On'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: e5e25376-334a-45e2-9d49-62d0cc342054
+		sourceColumn: "Created On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column State
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 3c1f423b-31f2-436e-8dd3-f3c6ec8de3e7
+		sourceColumn: State
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 47f1e3c3-5082-4068-9af7-afa20146438a
+		sourceColumn: Status
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Business Case'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 081fc48d-f277-47c9-84ab-a8bc008c8456
+		sourceColumn: "Business Case"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: e748dbbf-55da-4a25-b08a-355bdf4600a2
+		sourceColumn: Description
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Program
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 5131e892-8323-46da-b849-7198061bbab2
+		sourceColumn: Program
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Overall Project Status'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 64400d51-5cec-406a-a819-e19a8f130007
+		sourceColumn: "Overall Project Status"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Schedule Performance'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 4abb0151-0547-42c1-a35b-86ed88042694
+		sourceColumn: "Schedule Performance"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost Performance'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 3cdc7c12-dc0c-4191-8da4-683eb7481c1a
+		sourceColumn: "Cost Performance"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Billable
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: db5e3d85-70d4-4fbf-b314-c155fc4bfe1f
+		sourceColumn: Billable
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Billable1
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 027fb8ab-d692-4bc1-aaf5-05c90c92511a
+		sourceColumn: Billable1
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Required Next'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 8a60d2e0-3dd7-4bb9-8391-c4322fe7c245
+		sourceColumn: "Required Next"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Available Next'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 951b2d0a-b4f5-4014-9c66-0fe5aea4171b
+		sourceColumn: "Available Next"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Flag'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: ef6bc04c-5065-46e2-be2c-273cd6afaaf8
+		sourceColumn: "Project Flag"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Explanation
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: d206fe11-5a35-44c8-b34d-4bb9b0d0b287
+		sourceColumn: Explanation
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Restricted Function'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: fade541f-af6a-47bc-946f-061508ddea5b
+		sourceColumn: "Restricted Function"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Active
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 9332315a-feb1-44b4-9f07-6ee105a7f23a
+		sourceColumn: Active
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Code'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 5473071e-8726-49c3-8024-cb5e9ab5df47
+		sourceColumn: "Project Code"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Company
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 3e95d8d0-c059-4a84-a2a3-69496e0659ff
+		sourceColumn: Company
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Risk Level'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: f6d519ba-3700-4310-af2f-2300cfd54cb5
+		sourceColumn: "Risk Level"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Firewall
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: bc6026b1-987e-428a-8e3f-9914b9763527
+		sourceColumn: Firewall
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Engagement Status'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 58be90ce-8dd8-4a5f-aa08-9cbb6e57c2f8
+		sourceColumn: "Engagement Status"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column IPK
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: d545d6eb-51ae-46fb-bf37-3d9ca06247ec
+		sortByColumn: 'IPK Sort'
+		sourceColumn: IPK
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = SortByColumn
+
+	column CPK
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: bfe302d8-2106-4afb-91ae-447dbf6edcee
+		sortByColumn: 'CPK Sort'
+		sourceColumn: CPK
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = SortByColumn
+
+	column 'EQM Risk Status'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 270f6067-e679-400d-8764-0ac5233a47a3
+		sourceColumn: "EQM Risk Status"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Consultant Closeout Report'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: bfc6ff3d-23e3-4ebf-8254-864b9d8d76c1
+		sourceColumn: "Consultant Closeout Report"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Consultant Interview'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: aa4d8f89-a546-4407-8f7d-a66b305767ea
+		sourceColumn: "Consultant Interview"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Consultant Net Promoter Score'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 377a35e9-963f-4ae3-ade2-a2a7e3258fdd
+		sourceColumn: "Consultant Net Promoter Score"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Suggested Improvements'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 6ef81ccf-a263-4f23-afa2-b2df18b46f4f
+		sourceColumn: "Suggested Improvements"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Closed Recorded'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 713edf1b-66ea-4f15-8a08-11eef3042b83
+		sourceColumn: "Closed Recorded"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Notes
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 9063d91b-3bbf-454a-a50f-1cd10f7bf1ed
+		sourceColumn: Notes
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Interview Completed'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 48b713d2-4330-466b-8c9f-0210679a90bc
+		sourceColumn: "Interview Completed"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Client Closeout Interview Completed'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 3dff7324-8fd0-483d-b41a-e91839ba443e
+		sourceColumn: "Client Closeout Interview Completed"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Close Charge Line Completed'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 59436581-b8cb-4b92-9da2-fba2e43ca099
+		sourceColumn: "Close Charge Line Completed"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sync To DataBasics'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 91ae31dd-205f-4eb5-a5ed-107a2d2dda97
+		sourceColumn: "Sync To DataBasics"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Confirm All Time Entries Completed'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: a30c9b7d-dfa4-4dc6-9f7f-21c965416fdc
+		sourceColumn: "Confirm All Time Entries Completed"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Win Details'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 78b65e03-283f-4ca1-ada2-f6272abfbc9f
+		sourceColumn: "Win Details"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Interview Completed 1'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 9469f455-2ba7-4c97-9b29-b6212cd749b8
+		sourceColumn: "Interview Completed 1"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 7c9581a0-93b7-4a9a-be3d-589a82d68c57
+		sourceColumn: "Project SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 7bc9e996-dcd1-4706-888d-3125acfb99e3
+		sourceColumn: "Opportunity SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Originating Lead SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 5e87f1a9-6a6c-417c-a4f6-73c82eb5b26c
+		sourceColumn: "Originating Lead SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Project
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: fcf3b159-81eb-497c-8c9b-e5f1a2ce7746
+		sourceColumn: Project
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project ID'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 469a07bc-1423-46d3-924a-5f1ef0abfa53
+		sourceColumn: "Project ID"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_projectactiveindicatorname
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: e53b8170-6db6-4b58-928d-27d567860758
+		sourceColumn: jt_projectactiveindicatorname
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Type'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 91d21c93-5bb0-4f1c-b6a2-a3c3d2c9d8e4
+		sourceColumn: "Project Type"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Client Closeout'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: db5909cd-efc7-46d1-b898-cc71bd326a4d
+		sourceColumn: "Client Closeout"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CPK Sort'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: bcb842bd-6e54-45bf-bd24-9bdd0d71672f
+		sourceColumn: "CPK Sort"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = User
+
+	column 'IPK Sort'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 7fea4de8-1d9d-413e-a746-79bf68388977
+		sourceColumn: "IPK Sort"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = User
+
+	column 'Actual End'
+		dataType: DateTime
+		formatString:= Short Date
+		isDataTypeInferred: false
+		lineageTag: be3f2b07-9916-46bb-b280-746e6a2e1cfe
+		sourceColumn: "Actual End"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Percent of Project Used Group' =
+		SWITCH( 
+		    TRUE(),
+		    AND([Hours Used Percentage] >= 80, [Hours Used Percentage] < 90), "80% Used",
+		    AND([Hours Used Percentage] >= 90, [Hours Used Percentage] < 100), "90% Used",
+		    [Hours Used Percentage] > 100, "Over","Open"
+		)
+
+		dataType: String
+		lineageTag: a2ab04ba-e990-4680-8125-73c7ffda9551
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days to Project Close Group' =
+		SWITCH(
+		TRUE(),
+		AND([Project Days to close] <= 14, [Project Days to close] > 7), "Within 14 Days",
+		AND([Project Days to close] <= 7, [Project Days to close] > 0), "Within 7 Days",
+		[Project Days to close] <= 0, "Over", "Open"
+		)
+
+		dataType: String
+		lineageTag: fd588cad-4495-4289-b569-76c375767fc8
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

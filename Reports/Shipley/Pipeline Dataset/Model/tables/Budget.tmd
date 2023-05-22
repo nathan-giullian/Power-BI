@@ -1,0 +1,60 @@
+table Budget
+	lineageTag: e4f11428-7683-4a44-ace5-00ab48ac6f5b
+	ordinal: 21
+
+	partition 'Budget-83e86835-2041-437c-af64-fa65cbbcffb8' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"bc3b7432-52fb-4c89-8486-99fb169eac7c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="bc3b7432-52fb-4c89-8486-99fb169eac7c"]}[Data],
+			    Goals_ = #"bc3b7432-52fb-4c89-8486-99fb169eac7c"{[entity="Goals",version=""]}[Data],
+			    #"Filtered Rows" = Table.SelectRows(Goals_, each ([Type] = "Budget")),
+			    #"Renamed Columns" = Table.RenameColumns(#"Filtered Rows",{{"Goal", "Budget"}}),
+			    #"Merged Queries" = Table.NestedJoin(#"Renamed Columns", {"Practice"}, #"Practice", {"Practice"}, "Practice.1", JoinKind.LeftOuter),
+			    #"Expanded Practice.1" = Table.ExpandTableColumn(#"Merged Queries", "Practice.1", {"Practice SK"}, {"Practice SK"}),
+			    #"Removed Columns" = Table.RemoveColumns(#"Expanded Practice.1",{"First Name", "Last Name", "Initials", "Practice", "Type", "Employee ID"})
+			in
+			    #"Removed Columns"
+
+		queryGroup: Facts
+
+	column Month
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: f270f49d-c2f5-47f3-831c-5e1536a86fe9
+		sourceColumn: Month
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Budget
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: f9ee6f2e-ba25-4927-ad55-566d65e2d8fe
+		sourceColumn: Budget
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Practice SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: ee3b279c-305f-4beb-a19e-aa1cd8158e02
+		sourceColumn: "Practice SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

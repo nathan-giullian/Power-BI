@@ -1,0 +1,128 @@
+table 'Opportunity History'
+	lineageTag: 0bfee381-00f9-4060-9e5f-ff39101d7bb3
+	ordinal: 26
+
+	partition 'Opportunity History-5054cd4b-f3b6-4b93-8f12-fa10eb8ad5bb' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"bc3b7432-52fb-4c89-8486-99fb169eac7c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="bc3b7432-52fb-4c89-8486-99fb169eac7c"]}[Data],
+			    Actuals_ = #"bc3b7432-52fb-4c89-8486-99fb169eac7c"{[entity="Opportunity History",version=""]}[Data]
+			in
+			    Actuals_
+
+		queryGroup: Facts
+
+	column Id
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 92c15a90-9c63-4526-91a2-54a74f45d4e3
+		sourceColumn: Id
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountId
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 91f7de19-9fee-4090-8e73-949fa03ff119
+		sourceColumn: AccountId
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Name'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 76089d9b-a510-4deb-8d19-060f3483831a
+		sourceColumn: "Opportunity Name"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column StageName
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: ea5a4eeb-9aa4-48cb-81b7-30a47c7ab1aa
+		sourceColumn: StageName
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 30a8df0b-1699-42a4-9e07-baa8e10ff2da
+		sourceColumn: Amount
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Close Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: f608baa6-caef-4bb2-9e9f-346dc7e87421
+		sourceColumn: "Close Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'P Win'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 91f50a43-153c-41d7-9e53-d3093d4f51cb
+		sourceColumn: "P Win"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weighted Amount'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 86911dbe-01cf-4d24-8c11-bf538a001642
+		sourceColumn: "Weighted Amount"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column OwnerId
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: cc7718bc-2de0-4981-98a0-96e7151a015e
+		sourceColumn: OwnerId
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Person SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: f5103899-0b2d-46ea-87f5-dd2175ac6a2f
+		sourceColumn: "Sales Person SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Person | Group'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 4611ebbe-16e5-4578-a31e-8df4ecfbaff0
+		sourceColumn: "Sales Person | Group"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

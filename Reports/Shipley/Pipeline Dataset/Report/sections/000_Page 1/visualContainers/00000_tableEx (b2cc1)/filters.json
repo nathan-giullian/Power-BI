@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Filter49fad25f6e065fbd8ed6",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "Opportunity"
+          }
+        },
+        "Property": "Opportunity ID"
+      }
+    },
+    "filter": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "o",
+          "Entity": "Opportunity",
+          "Type": 0
+        }
+      ],
+      "Where": [
+        {
+          "Condition": {
+            "In": {
+              "Expressions": [
+                {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Source": "o"
+                      }
+                    },
+                    "Property": "Opportunity ID"
+                  }
+                }
+              ],
+              "Values": [
+                [
+                  {
+                    "Literal": {
+                      "Value": "'31427EA1-D3DD-4D6A-951A-090580C14C6A'"
+                    }
+                  }
+                ],
+                [
+                  {
+                    "Literal": {
+                      "Value": "'A5CC1AAE-5483-4180-BD10-04A4A599493A'"
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "type": "Categorical",
+    "howCreated": 0,
+    "objects": {},
+    "isHiddenInViewMode": false
+  }
+]

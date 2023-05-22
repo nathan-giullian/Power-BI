@@ -1,0 +1,259 @@
+{
+  "name": "23575de603bbbe320a49",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 200.00000000000003,
+        "y": 48,
+        "z": 1000,
+        "width": 1024,
+        "height": 608
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "pivotTable",
+    "projections": {
+      "Rows": [
+        {
+          "queryRef": "Calendar.Year",
+          "active": true
+        },
+        {
+          "queryRef": "Calendar.Quarter Name",
+          "active": true
+        },
+        {
+          "queryRef": "Calendar.Month Year",
+          "active": true
+        }
+      ],
+      "Values": [
+        {
+          "queryRef": "Measure.All Bookings $"
+        },
+        {
+          "queryRef": "Measure.Opp History Bookings $"
+        },
+        {
+          "queryRef": "Measure.Bookings $"
+        }
+      ],
+      "Columns": [
+        {
+          "queryRef": "Sales Person | Group.Sales Person | Group",
+          "active": true
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "c",
+          "Entity": "Calendar",
+          "Type": 0
+        },
+        {
+          "Name": "m",
+          "Entity": "Measure",
+          "Type": 0
+        },
+        {
+          "Name": "s",
+          "Entity": "Sales Person | Group",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "Year"
+          },
+          "Name": "Calendar.Year",
+          "NativeReferenceName": "Year"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "Month Year"
+          },
+          "Name": "Calendar.Month Year",
+          "NativeReferenceName": "Month Year"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "Bookings $"
+          },
+          "Name": "Measure.Bookings $",
+          "NativeReferenceName": "Bookings $"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "Quarter Name"
+          },
+          "Name": "Calendar.Quarter Name",
+          "NativeReferenceName": "Quarter Name"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "s"
+              }
+            },
+            "Property": "Sales Person | Group"
+          },
+          "Name": "Sales Person | Group.Sales Person | Group",
+          "NativeReferenceName": "Sales Person | Group"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "All Bookings $"
+          },
+          "Name": "Measure.All Bookings $",
+          "NativeReferenceName": "All Bookings $"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "Opp History Bookings $"
+          },
+          "Name": "Measure.Opp History Bookings $",
+          "NativeReferenceName": "Opp History Bookings $"
+        }
+      ]
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Calendar.Year"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Calendar"
+                    }
+                  },
+                  "Property": "Year"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Calendar.Quarter Name"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Calendar"
+                    }
+                  },
+                  "Property": "Quarter Name"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Calendar.Month Year"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {
+          "identityValues": null,
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "2023L"
+                  }
+                }
+              ],
+              "isToggled": true,
+              "children": [
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'Q2'"
+                      }
+                    }
+                  ],
+                  "isToggled": true
+                },
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'Q1'"
+                      }
+                    }
+                  ],
+                  "isToggled": true
+                }
+              ]
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "2024L"
+                  }
+                }
+              ],
+              "isToggled": true
+            }
+          ]
+        }
+      }
+    ],
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,70 @@
+table 'Time Entry'
+	lineageTag: 5b601892-3061-444f-a576-ff01fa6a2061
+	ordinal: 19
+
+	partition 'Time Entry-e34dd652-7fd2-4ca2-b615-158462b61a35' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"f2b463bf-5fde-4afe-96ca-991c76bc280c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="f2b463bf-5fde-4afe-96ca-991c76bc280c"]}[Data],
+			    Lead_ = #"f2b463bf-5fde-4afe-96ca-991c76bc280c"{[entity="Time Entry",version=""]}[Data],
+			    #"Renamed Columns" = Table.RenameColumns(Lead_,{{"msdyn_entrystatusname", "Entry Status"}, {"msdyn_externaldescription", "External Description"}, {"msdyn_typename", "Entry Type"}})
+			in
+			    #"Renamed Columns"
+
+		queryGroup: Dimensions
+
+	column 'Entry Status'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: e3b7c8fc-c8e3-4e4b-9496-ddf52ecf8b83
+		sourceColumn: "Entry Status"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'External Description'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 648017bc-3a7c-4bfa-911e-d8bfdd5b3951
+		sourceColumn: "External Description"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Entry Type'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: a7f1e7d8-b35a-4add-ad0e-cec76a2b51e7
+		sourceColumn: "Entry Type"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Latest Modified Date'
+		dataType: DateTime
+		formatString:= General Date
+		isDataTypeInferred: false
+		lineageTag: 0f0373f9-f43e-4edd-ae2f-0edc149fc710
+		sourceColumn: "Latest Modified Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time Entry Dimension SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: fdafd05c-aee6-4440-8bf2-62b50334f392
+		sourceColumn: "Time Entry Dimension SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

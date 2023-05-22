@@ -1,0 +1,149 @@
+table Account
+	lineageTag: 66628384-9fbf-419c-89e3-142b0efaa89f
+	ordinal: 1
+
+	partition 'Account-840eeb43-ad4e-469e-8c72-4220dfabc2ec' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"f2b463bf-5fde-4afe-96ca-991c76bc280c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="f2b463bf-5fde-4afe-96ca-991c76bc280c"]}[Data],
+			    Account_ = #"f2b463bf-5fde-4afe-96ca-991c76bc280c"{[entity="Account",version=""]}[Data],
+			    #"Removed Other Columns" = Table.SelectColumns(Account_,{"Account ID", "Account", "Created On", "Modified On", "Parent Account", "Industry", "Client Number", "Customer Type", "Total Estimated Revenue", "Division", "Account SK", "Sales Person SK", "Primary Contact SK"})
+			in
+			    #"Removed Other Columns"
+
+		queryGroup: Dimensions
+
+	column Industry
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: c6731aae-9a50-45bb-b1be-94bea9bd58f7
+		sourceColumn: Industry
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Type'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: d8828c41-baf7-4b28-965e-4a12a5810b42
+		sourceColumn: "Customer Type"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Client Number'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: f2ecda40-26b2-4ef2-b337-10180bf6cda9
+		sourceColumn: "Client Number"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Estimated Revenue'
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: 81093b18-3574-4493-8197-4fe6a8fbf698
+		sourceColumn: "Total Estimated Revenue"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Account SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: d653cc02-1f83-4be4-b7d2-68f68a77dfb1
+		sourceColumn: "Account SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 34abeb3b-a3c5-4ca0-bec6-9da8ad81ac8d
+		sourceColumn: Account
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parent Account'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 4adffb62-d166-4135-ba04-009553256bcc
+		sourceColumn: "Parent Account"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account ID'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: bc832282-c732-472a-bc68-c4b173e8ee27
+		sourceColumn: "Account ID"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created On'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: 85bf3116-10dd-4696-9a18-aa18d8f77ecd
+		sourceColumn: "Created On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Modified On'
+		dataType: DateTime
+		formatString:= General Date
+		isDataTypeInferred: false
+		lineageTag: 22200552-96a3-4de2-a9e7-3795e0aef9d8
+		sourceColumn: "Modified On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Division
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 02fdd1e1-3980-4f1c-8e52-919ad730acdf
+		sourceColumn: Division
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Person SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: a58f69eb-00ed-44cb-a73e-4f3339908d11
+		sourceColumn: "Sales Person SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Primary Contact SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 2c576335-3261-41a2-b3de-d188c6cd5ad9
+		sourceColumn: "Primary Contact SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

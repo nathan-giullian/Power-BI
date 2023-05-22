@@ -1,0 +1,115 @@
+{
+  "name": "62615acb7065415c0591",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 636,
+        "y": 0,
+        "width": 617,
+        "height": 375,
+        "z": 2000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "tableEx",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "Bookable Resource.Name"
+        },
+        {
+          "queryRef": "Sum(Time Entry Fact.Hours)"
+        },
+        {
+          "queryRef": "Calendar.Date"
+        },
+        {
+          "queryRef": "Project.Project"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "b",
+          "Entity": "Bookable Resource",
+          "Type": 0
+        },
+        {
+          "Name": "t",
+          "Entity": "Time Entry Fact",
+          "Type": 0
+        },
+        {
+          "Name": "c",
+          "Entity": "Calendar",
+          "Type": 0
+        },
+        {
+          "Name": "p",
+          "Entity": "Project",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "b"
+              }
+            },
+            "Property": "Bookable Resource"
+          },
+          "Name": "Bookable Resource.Name",
+          "NativeReferenceName": "Name"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "t"
+                  }
+                },
+                "Property": "Hours"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(Time Entry Fact.Hours)",
+          "NativeReferenceName": "Sum of Hours"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "Date"
+          },
+          "Name": "Calendar.Date",
+          "NativeReferenceName": "Date"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "p"
+              }
+            },
+            "Property": "Project"
+          },
+          "Name": "Project.Project",
+          "NativeReferenceName": "Project"
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

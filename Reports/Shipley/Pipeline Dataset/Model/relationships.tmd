@@ -1,0 +1,343 @@
+relationship 'c0a736cb-6100-4825-92f7-e809b2048ec6'
+	fromColumn: Actuals.Date
+	toColumn: Calendar.Date
+
+relationship '4eafb1cd-a901-49c0-9216-1b82daa8f783'
+	fromColumn: 'Consultant Request Fact'.'Created On'
+	toColumn: Calendar.Date
+
+relationship 'f581e4f0-be49-4320-bdf6-952a88a8ca66'
+	fromColumn: 'Project Fact'.'Created On'
+	toColumn: Calendar.Date
+
+relationship '5dded332-0752-47e0-b001-bb1e931818ce'
+	fromColumn: 'Consultant Request Fact'.'Account SK'
+	toColumn: Account.'Account SK'
+
+relationship '7fcdad52-89f1-4a8c-9ac7-d23aed17ed28'
+	fromColumn: 'Opportunity Fact'.'Account SK'
+	toColumn: Account.'Account SK'
+
+relationship '87246652-40df-4e0d-a764-832ef25af762'
+	fromColumn: 'Project Fact'.'Account SK'
+	toColumn: Account.'Account SK'
+
+relationship '65d27b92-88f5-475b-8c0c-c518514996de'
+	fromColumn: 'Consultant Request Fact'.'Bookable Resource SK'
+	toColumn: 'Bookable Resource'.'Bookable Resource SK'
+
+relationship '0d7b159d-04ed-43d6-8c41-b131febd4d19'
+	fromColumn: 'Consultant Request Fact'.'End Customer SK'
+	toColumn: 'End Customer'.'End Customer SK'
+
+relationship 'cc66c04d-f548-49e3-a1e8-efaacb51ae3a'
+	fromColumn: 'Opportunity Fact'.'End Customer SK'
+	toColumn: 'End Customer'.'End Customer SK'
+
+relationship 'c69aba31-3b5b-47fc-9066-21b49ce2a3e3'
+	fromColumn: 'Project Fact'.'End Customer SK'
+	toColumn: 'End Customer'.'End Customer SK'
+
+relationship '8ec57e5e-6df1-4032-996c-d3c793d56e59'
+	fromColumn: 'Consultant Request Fact'.'Opportunity SK'
+	toColumn: Opportunity.'Opportunity SK'
+
+relationship '9f70fa1a-da99-4225-850a-f73f3d6fe530'
+	fromColumn: 'Opportunity Fact'.'Parent Contact SK'
+	toColumn: Contact.'Contact SK'
+
+relationship 'af111731-4610-4979-8806-ba573b32e493'
+	fromColumn: 'Consultant Request Fact'.'Supervisor SK'
+	toColumn: Supervisor.'Supervisor SK'
+
+relationship '50ff668e-6b45-4e39-b8fc-964ff322680a'
+	fromColumn: 'Project Fact'.'Supervisor SK'
+	toColumn: Supervisor.'Supervisor SK'
+
+relationship 'b8646e71-95b3-43dc-8608-05786365c624'
+	fromColumn: 'Opportunity Fact'.'Supervisor SK'
+	toColumn: Supervisor.'Supervisor SK'
+
+relationship '68a01df4-e21a-4b9d-b810-768de6939d32'
+	fromColumn: 'Project Fact'.'Parent Contact SK'
+	toColumn: Contact.'Contact SK'
+
+relationship '8d580f05-5cf1-4e46-87bf-b43a9bad2248'
+	fromColumn: 'Opportunity Fact'.'Project SK'
+	toColumn: Project.'Project SK'
+
+relationship 'c798f3b5-d60f-4b2e-a8f3-9c51b47a4099'
+	fromColumn: 'Project Task Fact'.'Account SK'
+	toColumn: Account.'Account SK'
+
+relationship '2b75f964-cb36-45bb-ab4f-70c8e70450d4'
+	fromColumn: 'Time Entry Fact'.'Account SK'
+	toColumn: Account.'Account SK'
+
+relationship 'b5542d3a-1bd6-4235-b013-8e89243eb8ac'
+	fromColumn: 'Time Entry Fact'.'Bookable Resource SK'
+	toColumn: 'Bookable Resource'.'Bookable Resource SK'
+
+relationship 'f02ad61d-f96a-4d4e-ac82-b0fba30d4d6f'
+	fromColumn: 'Project Task Fact'.'Opportunity SK'
+	toColumn: Opportunity.'Opportunity SK'
+
+relationship '11475e41-280f-45a6-81f2-0d808ead3ff9'
+	fromColumn: 'Project Task Fact'.'End Customer SK'
+	toColumn: 'End Customer'.'End Customer SK'
+
+relationship 'be6e249c-7031-48b7-b92a-4baadee49d6b'
+	fromColumn: 'Time Entry Fact'.'End Customer SK'
+	toColumn: 'End Customer'.'End Customer SK'
+
+relationship '65373043-ac62-4df0-9796-e3d5b262114d'
+	fromColumn: 'Project Task Fact'.'Supervisor SK'
+	toColumn: Supervisor.'Supervisor SK'
+
+relationship 'b03fb0e9-bd76-4a65-ac47-1a46746398d7'
+	fromColumn: 'Consultant Request Fact'.'Consultant Request SK'
+	toColumn: 'Consultant Request'.'Consultant Request SK'
+
+relationship '24b5df2d-adea-4e1e-8503-0dfa7849b1f3'
+	fromColumn: 'Project Fact'.'Project SK'
+	toColumn: Project.'Project SK'
+
+relationship '91c6a87b-11e6-4373-adee-25dd8d678d89'
+	fromColumn: 'Project Task Fact'.'Project Task SK'
+	toColumn: 'Project Task'.'Project Task SK'
+
+relationship '8ba5aac3-cf41-4ded-a0c2-9cabab7ee019'
+	crossFilteringBehavior: BothDirections
+	fromColumn: 'Project Task Fact'.'Project SK'
+	toColumn: Project.'Project SK'
+
+relationship '67d8b43a-ba4e-42e9-b2a1-119942a0edb9'
+	fromColumn: 'Opportunity Fact'.'Opportunity SK'
+	toColumn: Opportunity.'Opportunity SK'
+
+relationship '4e525566-f9dc-49b9-8319-10f1347fe999'
+	fromColumn: 'Time Entry Fact'.'Time Entry Dimension SK'
+	toColumn: 'Time Entry'.'Time Entry Dimension SK'
+
+relationship 'b8da4417-953b-4138-9b8f-e4a27dbf2adf'
+	fromColumn: 'Time Entry Fact'.'Opportunity SK'
+	toColumn: Opportunity.'Opportunity SK'
+
+relationship '0819f336-1dfd-4a3d-889d-76b1ce24e904'
+	fromColumn: 'Consultant Request Fact'.'Labor Category SK'
+	toColumn: 'Labor Category'.'Labor Category SK'
+
+relationship 'e7e28ba2-7f86-4b44-b2f8-a31674dfc0dd'
+	fromColumn: 'Time Entry Fact'.'Parent Contact SK'
+	toColumn: Contact.'Contact SK'
+
+relationship '128afb94-1b5a-4247-92bf-909e7f6b1e6e'
+	fromColumn: 'Time Entry Fact'.'Project Task SK'
+	toColumn: 'Project Task'.'Project Task SK'
+
+relationship '94681b1b-f870-46e0-8744-a6638061bd6d'
+	fromColumn: 'Time Entry Fact'.'Supervisor SK'
+	toColumn: Supervisor.'Supervisor SK'
+
+relationship 'c55c12cd-9d4b-47a3-90c0-ca3e6c28bfec'
+	fromColumn: 'Consultant Request Fact'.'Project Task SK'
+	toColumn: 'Project Task'.'Project Task SK'
+
+relationship '9b5ca63f-326f-41b2-8bf6-8a4112e9849b'
+	fromColumn: 'Consultant Request Fact'.'Project SK'
+	toColumn: Project.'Project SK'
+
+relationship '9aac962d-b694-4de2-97c0-7727ee2c9554'
+	fromColumn: 'Time Entry Fact'.'Project SK'
+	toColumn: Project.'Project SK'
+
+relationship '50b368fd-c85a-4dd4-b0c4-93e600c29912'
+	fromColumn: 'Project Fact'.'Opportunity SK'
+	toColumn: Opportunity.'Opportunity SK'
+
+relationship '76b6b9aa-7357-4f48-815d-fa6bdaa7b8fa'
+	fromColumn: 'Project Task Fact'.'Created On'
+	toColumn: Calendar.Date
+
+relationship '05f85737-5c4c-4ea0-92e1-708e20e0f6d1'
+	fromColumn: 'Time Entry Fact'.Date
+	toColumn: Calendar.Date
+
+relationship 'a6ac5b48-4f7c-406f-953c-531f068fa448'
+	fromColumn: 'Project Task Fact'.'Parent Contact SK'
+	toColumn: Contact.'Contact SK'
+
+relationship '3ef6e2c7-7c41-4f83-95da-805d6c942ff0'
+	fromColumn: 'Project Task Fact'.'Consultant Request SK'
+	toColumn: 'Consultant Request'.'Consultant Request SK'
+
+relationship 'aff07f39-cd77-4c89-9a62-cb75bbff59d4'
+	fromColumn: 'Consultant Request Fact'.'Practice SK'
+	toColumn: Practice.'Practice SK'
+
+relationship '8a3958f2-dcb9-44fa-90b5-d86f71eabf3b'
+	fromColumn: 'Opportunity Fact'.'Practice SK'
+	toColumn: Practice.'Practice SK'
+
+relationship '8186d459-7a34-4332-a39a-115a80e9a2e2'
+	fromColumn: Goal.'Practice SK'
+	toColumn: Practice.'Practice SK'
+
+relationship 'f2de5706-f8cb-4917-87a4-a82fd67d25a2'
+	fromColumn: 'Project Fact'.'Practice SK'
+	toColumn: Practice.'Practice SK'
+
+relationship 'ebd94e1b-0285-42c8-9099-14c800f81dfe'
+	fromColumn: 'Project Task Fact'.'Practice SK'
+	toColumn: Practice.'Practice SK'
+
+relationship '1182fc32-506f-4840-a4bb-70360f2e7db0'
+	fromColumn: 'Time Entry Fact'.'Practice SK'
+	toColumn: Practice.'Practice SK'
+
+relationship 'd28d497b-144f-43b1-a357-3b809aa08472'
+	fromColumn: Budget.'Practice SK'
+	toColumn: Practice.'Practice SK'
+
+relationship '1aa5a55c-b240-4efa-9cef-fb55a47bec15'
+	fromColumn: 'Opportunity Fact'.'Project SK'
+	toCardinality: Many
+	toColumn: 'Project Task'.'Project SK'
+
+relationship 'e0d19fb8-b484-46dc-8308-2896babf381d'
+	fromColumn: 'Consultant Request Fact'.'Parent Contact SK'
+	toColumn: Contact.'Contact SK'
+
+relationship '8e28fbe0-a68f-4e72-b5bb-a02cd687e76a'
+	fromColumn: 'Time Entry Fact'.'Project Task SK'
+	toCardinality: Many
+	toColumn: 'Consultant Request'.'Project Task SK'
+
+relationship '59901edb-27fe-b8b8-2ba1-908e3e92139e'
+	fromColumn: Goal.Month
+	toCardinality: Many
+	toColumn: Calendar.'Start of Month'
+
+relationship '660e72d1-6692-9867-7c04-6bfa3c906dac'
+	fromColumn: Budget.Month
+	toCardinality: Many
+	toColumn: Calendar.'Start of Month'
+
+relationship 'ea114857-7b3a-4c91-b983-43748906b18b'
+	fromColumn: Actuals.'Account SK'
+	toColumn: Account.'Account SK'
+
+relationship 'e7ca9f55-a9ac-4d39-9567-5dd4d5c9e9a4'
+	fromColumn: Actuals.'Project SK'
+	toColumn: Project.'Project SK'
+
+relationship '151e47e3-d020-46fd-9536-7f55de805c8f'
+	fromColumn: Actuals.'Opportunity SK'
+	toColumn: Opportunity.'Opportunity SK'
+
+relationship '5a2fa9f8-4c24-4c85-804f-e2d9c50034c9'
+	fromColumn: Actuals.'End Customer SK'
+	toColumn: 'End Customer'.'End Customer SK'
+
+relationship '43f4b9ee-490a-4165-9eb8-abe58bfcf1cc'
+	fromColumn: Actuals.'Supervisor SK'
+	toColumn: Supervisor.'Supervisor SK'
+
+relationship '8f0d1dee-4426-4d41-ac93-5c70fea140c0'
+	fromColumn: Actuals.'Sales Person SK'
+	toColumn: 'Sales Person | Group'.'Sales Person SK'
+
+relationship '975e6138-1ac4-4ce7-bb5b-4df59bcdea57'
+	fromColumn: Actuals.'Parent Contact SK'
+	toColumn: Contact.'Contact SK'
+
+relationship 'c1b1d6df-ddb8-4870-a5b0-25e5ecdce71b'
+	fromColumn: 'Project Task Fact'.'Sales Person SK'
+	toColumn: 'Sales Person | Group'.'Sales Person SK'
+
+relationship '2eda0c78-9f7a-4468-a43e-7123c39dcc9b'
+	fromColumn: 'Opportunity Fact'.'Sales Person SK'
+	toColumn: 'Sales Person | Group'.'Sales Person SK'
+
+relationship 'd1309f9c-90de-423e-b670-94b2cd3fce57'
+	fromColumn: 'Consultant Request Fact'.'Sales Person SK'
+	toColumn: 'Sales Person | Group'.'Sales Person SK'
+
+relationship '88ed8cea-6827-4341-8ec7-0edbc6581345'
+	fromColumn: 'Time Entry Fact'.'Sales Person SK'
+	toColumn: 'Sales Person | Group'.'Sales Person SK'
+
+relationship 'a1245e60-d5e4-48d7-810d-b5b4d3febd28'
+	fromColumn: 'Project Fact'.'Sales Person SK'
+	toColumn: 'Sales Person | Group'.'Sales Person SK'
+
+relationship '0010a961-3bb4-4b3f-8f53-1b48aa0b7da0'
+	fromColumn: 'Opportunity Fact'.'Opportunity Date'
+	toColumn: Calendar.Date
+
+relationship 'f3fabf99-49d7-4494-bc96-68a886aebbad'
+	fromColumn: Goal.'Sales Person SK'
+	toColumn: 'Sales Person | Group'.'Sales Person SK'
+
+relationship 'e54f28a4-51c7-4367-afce-9bab6681cd81'
+	fromColumn: 'Project Fact'.'Actual End'
+	isActive: false
+	toColumn: Calendar.Date
+
+relationship 'd0fefe69-47c3-4a4c-a6f6-e22aeabdff5f'
+	fromColumn: 'Project Team Fact'.Practice
+	toColumn: Practice.Practice
+
+	annotation PBI_IsFromSource = FS
+
+relationship '4834f2d7-da15-44f9-8fdd-49b8d97f52c7'
+	fromColumn: 'Project Team Fact'.'Project SK'
+	toColumn: Project.'Project SK'
+
+relationship 'a09c2e1d-a4b4-4a59-8aff-66c743b9150b'
+	fromColumn: 'Project Team Fact'.'Bookable Resource SK'
+	toColumn: 'Bookable Resource'.'Bookable Resource SK'
+
+relationship '2c57babf-86a2-46ab-b84d-b281a6294063'
+	fromColumn: 'Opportunity Fact'.'Actual Close Date'
+	isActive: false
+	toColumn: Calendar.Date
+
+relationship '9eeb0fd0-0c16-4d79-a13e-c62a8ce8a25a'
+	fromColumn: 'Opportunity Fact'.'Estimated Close Date'
+	isActive: false
+	toColumn: Calendar.Date
+
+relationship '3c311d3d-570c-4219-a3cf-25d1e9d004f6'
+	fromColumn: Actuals.'Practice SK'
+	toColumn: Practice.'Practice SK'
+
+relationship 'e8b148e3-365c-4225-957b-dfe61c585a96'
+	crossFilteringBehavior: BothDirections
+	fromColumn: 'Consultant Request'.'Opportunity SK'
+	isActive: false
+	toColumn: 'Opportunity Fact'.'Opportunity SK'
+
+relationship '5785e95e-bf00-48be-8fd5-71a2d8efc4e4'
+	fromColumn: 'Project Task Fact'.'Labor Category SK'
+	toColumn: 'Labor Category'.'Labor Category SK'
+
+relationship '517ab671-95f2-4723-b353-ee203b084cb1'
+	fromColumn: 'Time Entry Fact'.'Labor Category SK'
+	toColumn: 'Labor Category'.'Labor Category SK'
+
+relationship 'c283a061-1e9d-4922-8adb-49eaca4b1d7f'
+	fromColumn: Actuals.Practice
+	isActive: false
+	toColumn: Practice.Practice
+
+	annotation PBI_IsFromSource = FS
+
+relationship '392b3c0d-fc8c-4dbd-8e1d-95fcdfff1337'
+	fromColumn: 'Opportunity History'.'Sales Person SK'
+	toColumn: 'Sales Person | Group'.'Sales Person SK'
+
+relationship '457083ba-e37c-4e0c-8261-d67e4f801c2b'
+	fromColumn: 'Opportunity History'.'Close Date'
+	toColumn: Calendar.Date
+

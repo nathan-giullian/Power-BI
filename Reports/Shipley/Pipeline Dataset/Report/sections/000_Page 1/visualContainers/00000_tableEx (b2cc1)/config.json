@@ -1,0 +1,150 @@
+{
+  "name": "b2cc113d67931d9d83b2",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 16,
+        "y": 0,
+        "z": 0,
+        "width": 1200,
+        "height": 704
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "tableEx",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "Sales Person | Group.Sales Person | Group"
+        },
+        {
+          "queryRef": "Sales Person | Group.Sales Person SK"
+        },
+        {
+          "queryRef": "Opportunity Fact.Sales Person SK"
+        },
+        {
+          "queryRef": "Opportunity Fact.Actual Close Date"
+        },
+        {
+          "queryRef": "Opportunity.Opportunity"
+        },
+        {
+          "queryRef": "Opportunity.Opportunity SK"
+        },
+        {
+          "queryRef": "Opportunity.Opportunity ID"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "s",
+          "Entity": "Sales Person | Group",
+          "Type": 0
+        },
+        {
+          "Name": "o",
+          "Entity": "Opportunity Fact",
+          "Type": 0
+        },
+        {
+          "Name": "o1",
+          "Entity": "Opportunity",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "s"
+              }
+            },
+            "Property": "Sales Person Name"
+          },
+          "Name": "Sales Person | Group.Sales Person | Group",
+          "NativeReferenceName": "Sales Person | Group"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "s"
+              }
+            },
+            "Property": "Sales Person SK"
+          },
+          "Name": "Sales Person | Group.Sales Person SK",
+          "NativeReferenceName": "Sales Person SK"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "o"
+              }
+            },
+            "Property": "Sales Person SK"
+          },
+          "Name": "Opportunity Fact.Sales Person SK",
+          "NativeReferenceName": "Sales Person SK1"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "o"
+              }
+            },
+            "Property": "Actual Close Date"
+          },
+          "Name": "Opportunity Fact.Actual Close Date",
+          "NativeReferenceName": "Actual Close Date"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "o1"
+              }
+            },
+            "Property": "Opportunity"
+          },
+          "Name": "Opportunity.Opportunity",
+          "NativeReferenceName": "Opportunity"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "o1"
+              }
+            },
+            "Property": "Opportunity SK"
+          },
+          "Name": "Opportunity.Opportunity SK",
+          "NativeReferenceName": "Opportunity SK"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "o1"
+              }
+            },
+            "Property": "Opportunity ID"
+          },
+          "Name": "Opportunity.Opportunity ID",
+          "NativeReferenceName": "Opportunity ID"
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

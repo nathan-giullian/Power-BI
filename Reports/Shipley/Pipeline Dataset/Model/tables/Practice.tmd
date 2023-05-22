@@ -1,0 +1,44 @@
+table Practice
+	lineageTag: fbfd04df-f4af-4423-9f07-5131c549f580
+	ordinal: 22
+
+	partition 'Practice-bcde955e-28b4-49ef-9e3a-e8dcda481edd' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"bc3b7432-52fb-4c89-8486-99fb169eac7c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="bc3b7432-52fb-4c89-8486-99fb169eac7c"]}[Data],
+			    Actuals_ = #"bc3b7432-52fb-4c89-8486-99fb169eac7c"{[entity="Actuals",version=""]}[Data],
+			    #"Removed Other Columns" = Table.SelectColumns(Actuals_,{"Practice"}),
+			    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+			    #"Added Index" = Table.AddIndexColumn(#"Removed Duplicates", "Practice SK", 1, 1, Int64.Type)
+			in
+			    #"Added Index"
+
+		queryGroup: Dimensions
+
+	column Practice
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 63dce1cb-adc0-4a98-aacb-adda395aae56
+		sourceColumn: Practice
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Practice SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 4bbbb634-da2a-4299-abd7-2e223e176b8e
+		sourceColumn: "Practice SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

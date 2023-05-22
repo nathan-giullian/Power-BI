@@ -1,0 +1,659 @@
+table 'Opportunity Fact'
+	isHidden
+	lineageTag: e8c25ebe-89e3-4bbd-a7c3-9d0f4f4bea84
+	ordinal: 5
+
+	partition 'Opportunity Fact-21ac520f-6c82-4fea-9877-3e900e672dde' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"f2b463bf-5fde-4afe-96ca-991c76bc280c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="f2b463bf-5fde-4afe-96ca-991c76bc280c"]}[Data],
+			    Opportunity_ = #"f2b463bf-5fde-4afe-96ca-991c76bc280c"{[entity="Opportunity",version=""]}[Data],
+			    #"Merged Queries" = Table.NestedJoin(Opportunity_, {"Practice"}, #"Practice", {"Practice"}, "Practice.1", JoinKind.LeftOuter),
+			    #"Expanded Practice.1" = Table.ExpandTableColumn(#"Merged Queries", "Practice.1", {"Practice SK"}, {"Practice SK"}),
+			    #"Choose Columns" = Table.SelectColumns(#"Expanded Practice.1",{"Created On", "Modified On", "Actual Close Date", "Actual Value", "Exchange Rate", "Budget Amount", "Close Probability", "Discount Amount", "Discount Percentage", "Estimated Close Date", "Estimated Value", "Final Decision Date", "Freight Amount", "Schedule Follow Up Prospect", "Schedule Follow Up Qualify", "Schedule Proposal Meeting", "Total Amount", "Total Amount Less Freight", "Total Discount Amount", "Total Line Item Amount", "Total Line Item Discount Amount", "Present Final Proposal", "Bill Rate", "jt_cost", "Current Year Forecast", "Current Year Weighted Forecast", "Project End Date", "Project Start Date", "jt_expecteddraftrfpreleasedate", "Final RFP Date", "Next Year Forecast", "Next Year Weighted Forecast", "jt_payrate", "Proposal Submission Date", "Estimated Revenue Total", "Estimated Revenue Total Date", "Opportunity Date", "Opportunity SK", "End Customer SK", "Supervisor SK", "Sales Person SK", "Account SK", "Project SK", "Parent Contact SK", "Originating Lead SK", "Practice SK"})
+			in
+			    #"Choose Columns"
+
+		queryGroup: Facts
+
+	column 'Created On'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 3f956d0b-ffeb-49ad-b2d8-11e18c383f82
+		sourceColumn: "Created On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Modified On'
+		dataType: DateTime
+		formatString:= General Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 292e568b-4d60-44d4-bd45-d3364aeb3f59
+		sourceColumn: "Modified On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Actual Close Date'
+		dataType: DateTime
+		formatString:= Short Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: d98ff1a4-4f13-42c7-9a37-ec96b090de8c
+		sourceColumn: "Actual Close Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Actual Value'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 4be867eb-aa1f-479a-8268-a9da731d68bf
+		sourceColumn: "Actual Value"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Exchange Rate'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 610cb471-180d-4fe7-bb35-7f692450e9ad
+		sourceColumn: "Exchange Rate"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Budget Amount'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 7ed7c5a0-6444-4f3e-9845-f6385c08997a
+		sourceColumn: "Budget Amount"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Close Probability'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 5aee3ca4-e58f-475a-811e-c123c8c83104
+		sourceColumn: "Close Probability"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Discount Amount'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: cdfc1cce-76f6-493c-8971-3394cbafbea4
+		sourceColumn: "Discount Amount"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Discount Percentage'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: d78da25f-13f7-45b7-b9bb-42afdc8592a6
+		sourceColumn: "Discount Percentage"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Estimated Close Date'
+		dataType: DateTime
+		formatString:= Short Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: a75d5ae9-b52d-4bc0-9a01-1d76eb792750
+		sourceColumn: "Estimated Close Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Estimated Value'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 6d597a52-7f64-46ae-a647-1666e6fdb256
+		sourceColumn: "Estimated Value"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Final Decision Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 375b271d-03eb-4033-84a9-b1a85a7384e7
+		sourceColumn: "Final Decision Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Freight Amount'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 4365ea87-2d3e-48c1-a4fa-7fd7253c57c2
+		sourceColumn: "Freight Amount"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Schedule Follow Up Prospect'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 840896f1-a257-49e2-bdcd-a35894bbea17
+		sourceColumn: "Schedule Follow Up Prospect"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Schedule Follow Up Qualify'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 87503f8f-06a3-4208-9111-51b72d27301a
+		sourceColumn: "Schedule Follow Up Qualify"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Schedule Proposal Meeting'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 4453f06f-4998-454e-b7b3-e7db43f0d66b
+		sourceColumn: "Schedule Proposal Meeting"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Total Amount'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: f83d1f58-ec85-4f57-8556-3bfbbc705c12
+		sourceColumn: "Total Amount"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Total Amount Less Freight'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: b273913b-1a8e-40de-b2a9-3e3d4034887f
+		sourceColumn: "Total Amount Less Freight"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Total Discount Amount'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 291a2a17-6a1e-4fd2-a02a-a23624deaee7
+		sourceColumn: "Total Discount Amount"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Total Line Item Amount'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: d4dac0e6-8139-410e-9d77-904affa0e1b9
+		sourceColumn: "Total Line Item Amount"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Total Line Item Discount Amount'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: ba368bb2-c75a-4b02-ae58-d0747ddc15d9
+		sourceColumn: "Total Line Item Discount Amount"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column jt_cost
+		dataType: String
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 5edd6bf8-b962-45f8-8934-9688ada88ea8
+		sourceColumn: jt_cost
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Current Year Forecast'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 729eebd2-4977-47b8-8e52-f61dd25c16e6
+		sourceColumn: "Current Year Forecast"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Current Year Weighted Forecast'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: b17f3410-41c7-41fc-8cfd-394c38af6054
+		sourceColumn: "Current Year Weighted Forecast"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column jt_expecteddraftrfpreleasedate
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: fbf2e5df-f5b8-412c-9c84-fd000b9a8e8a
+		sourceColumn: jt_expecteddraftrfpreleasedate
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Final RFP Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 70811b82-0589-4800-ad7d-60a417fa4a62
+		sourceColumn: "Final RFP Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Next Year Forecast'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: b993ddd9-0ed8-4cc0-b75c-c00a76f569b3
+		sourceColumn: "Next Year Forecast"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Next Year Weighted Forecast'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 320d89f1-c34f-42aa-a116-3ca254209dab
+		sourceColumn: "Next Year Weighted Forecast"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column jt_payrate
+		dataType: String
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: ae3ca20c-ed38-44a5-94cd-1be2493f2f05
+		sourceColumn: jt_payrate
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Proposal Submission Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: c84ac387-1c81-42c4-930e-0d292b5495a4
+		sourceColumn: "Proposal Submission Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Opportunity SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: f95423de-d636-41a6-9e46-7b157d13cc73
+		sourceColumn: "Opportunity SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Account SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 4982d1f9-50c0-44d4-b37a-1a01afd44b2d
+		sourceColumn: "Account SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Sales Person SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 0fbb6cf4-9cff-4bad-85f9-f10b27373caa
+		sourceColumn: "Sales Person SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'End Customer SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 6cea9427-a9e4-489c-a2f4-9f4efed0eeb8
+		sourceColumn: "End Customer SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Parent Contact SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: f3d29a42-5954-402c-a107-182903a4d783
+		sourceColumn: "Parent Contact SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Practice SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 52ab697a-1808-47e9-9736-2a7e8746bc15
+		sourceColumn: "Practice SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Originating Lead SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 85df809b-88bb-45e1-9bbc-1249ec4c0c9b
+		sourceColumn: "Originating Lead SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Bill Rate'
+		dataType: String
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 574ab9bb-1793-4fe1-89a7-cfdc77a17327
+		sourceColumn: "Bill Rate"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Supervisor SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 5ff5e749-b0d4-4e47-a5ab-8f162bb6cc11
+		sourceColumn: "Supervisor SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Project SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 008b6bb6-b248-4658-a7f9-c1113851791f
+		sourceColumn: "Project SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Present Final Proposal'
+		dataType: Boolean
+		formatString:= "TRUE";"TRUE";"FALSE"
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: f79f1497-898d-4770-ace5-4927601be82d
+		sourceColumn: "Present Final Proposal"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Estimated Revenue Total'
+		dataType: Double
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 69b0a128-04da-4ee0-9820-4967ae3751e0
+		sourceColumn: "Estimated Revenue Total"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		changedProperty = IsHidden
+
+	column 'Estimated Revenue Total Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 8ce02dae-7b90-4f73-b201-a70837a10bca
+		sourceColumn: "Estimated Revenue Total Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		changedProperty = IsHidden
+
+	column 'Opportunity Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: bc383733-af8e-4f7b-a3ea-38d169cf39e6
+		sourceColumn: "Opportunity Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Project End Date'
+		dataType: DateTime
+		formatString:= Short Date
+		isDataTypeInferred: false
+		lineageTag: 1de9cce4-4db7-411a-b70b-39ad9103ead4
+		sourceColumn: "Project End Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Project Start Date'
+		dataType: DateTime
+		formatString:= Short Date
+		isDataTypeInferred: false
+		lineageTag: ddabe359-43ae-4978-8d15-9e06d53ae97f
+		sourceColumn: "Project Start Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+	changedProperty = IsHidden
+

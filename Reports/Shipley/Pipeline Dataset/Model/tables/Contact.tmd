@@ -1,0 +1,135 @@
+table Contact
+	lineageTag: 63647f59-94c8-4c42-b24b-b63c6cea0bc3
+	ordinal: 11
+
+	partition 'Contact-5954bdce-aa97-448d-a158-2e2077b2ef90' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"f2b463bf-5fde-4afe-96ca-991c76bc280c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="f2b463bf-5fde-4afe-96ca-991c76bc280c"]}[Data],
+			    Contact_ = #"f2b463bf-5fde-4afe-96ca-991c76bc280c"{[entity="Contact",version=""]}[Data]
+			in
+			    Contact_
+
+		queryGroup: Dimensions
+
+	column 'Job Title'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 6b4add63-85e9-4965-9df8-c622dabcf0f0
+		sourceColumn: "Job Title"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last Stay In Touch Request Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: c7d3f3f0-7a00-4b81-b21a-d673a870bd28
+		sourceColumn: "Last Stay In Touch Request Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Last Stay In Touch Save Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: 04264820-f437-46e5-bd08-2690263679b6
+		sourceColumn: "Last Stay In Touch Save Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Notes
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: ed5f3088-0f51-46a8-812c-32a0949ea117
+		sourceColumn: Notes
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shipley Relationship Type'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: caa56d0b-e091-49ed-907c-02acdd499c01
+		sourceColumn: "Shipley Relationship Type"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contact SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 84a9ff0e-71e2-42ba-bb0f-e1863f04db4f
+		sourceColumn: "Contact SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Contact ID'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: bfef2810-ac7d-4e73-aa76-c6703794b663
+		sourceColumn: "Contact ID"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contact
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: cafdbb8e-7299-4166-b47f-2ade8b38752c
+		sourceColumn: Contact
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Email Address'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 690feff5-4c08-4cc0-902d-39c7847a131a
+		sourceColumn: "Email Address"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created On'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: 364c979d-635b-47f6-98b2-25fa7a5cd18b
+		sourceColumn: "Created On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Account SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: a7318cca-68fa-4a8f-8707-40f69192d476
+		sourceColumn: "Account SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

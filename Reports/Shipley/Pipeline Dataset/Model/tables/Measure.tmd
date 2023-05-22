@@ -1,0 +1,998 @@
+table Measure
+	lineageTag: 6d1cc0ef-e93d-4bb9-8c8f-96b733cd1e72
+	ordinal: 23
+
+	partition 'Measure-e6d9ae6d-39e7-43fc-b9e5-a83df3b03360' = M
+		mode: Import
+		expression:=
+			let
+			    UtcNowTime = DateTime.From(DateTimeZone.UtcNow()),
+			    UtcNowDate = Date.From(UtcNowTime),
+			    Source = #"Daylight Savings (Ref)",
+			  #"Filtered rows 1" = Table.SelectRows(Source, each [Year] = Date.Year(UtcNowTime)),
+			  #"Added custom" = Table.AddColumn(#"Filtered rows 1", "Last Refresh MT", each if UtcNowDate >= [DST Start] and UtcNowDate <= [DST End] then UtcNowTime - #duration(0,6,0,0) else UtcNowTime - #duration(0,7,0,0), type datetime),
+			  #"Added custom 1" = Table.AddColumn(#"Added custom", "Last Refresh UTC", each UtcNowTime, type datetime),
+			  #"Removed columns" = Table.RemoveColumns(#"Added custom 1", {"Year", "DST Start", "DST End"})
+			in
+			    #"Removed columns"
+
+
+	measure '# Active Accounts' =
+		
+		CALCULATE (
+		    DISTINCTCOUNT ( 'Project Fact'[Project SK] ),
+		    Project[Active] = "Yes"
+		)
+
+		displayFolder: Project
+		formatString:= 0
+		lineageTag: d9503dab-702e-4d5b-8d50-f2f19ba015da
+
+	measure 'Bookings Qty' =
+		
+		CALCULATE ( [Opportunity Qty], Opportunity[Finance Reviewed] )
+
+		displayFolder: Opportunity
+		formatString:= 0
+		lineageTag: c749417b-d507-44de-af96-4960e3447789
+
+	measure 'Open Pipeline Qty' =
+		
+		CALCULATE (
+		    [Opportunity Qty],
+		    NOT ( Opportunity[Finance Reviewed] ),
+		    NOT ( Opportunity[Sales Stage] IN { "Close Loss", "Cancel Revenue" } )
+		)
+
+		displayFolder: Opportunity
+		formatString:= 0
+		lineageTag: d2aab43a-df34-435e-96a8-5ea5e3219ea0
+
+	measure 'Opportunity Days to close' =
+		
+		SUMX (
+		    'Opportunity Fact',
+		    DATEDIFF ( TODAY (), 'Opportunity Fact'[Estimated Close Date], DAY )
+		)
+
+		displayFolder: Opportunity
+		formatString:= 0
+		lineageTag: 1a37d9bb-9a30-48e7-850b-b63fa495147a
+
+	measure 'Opportunity Qty' =
+		
+		COUNTROWS ( 'Opportunity Fact' )
+
+		displayFolder: Opportunity
+		formatString:= 0
+		lineageTag: a51b41c5-dea3-4650-b129-8f662c1933d2
+
+	measure 'Weighted $ > 75% PWin' =
+		
+		CALCULATE (
+		    [Weighted Pipeline $],
+		    'Opportunity Fact'[Close Probability] / 100 >= .75
+		)
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 5e806a5a-d3aa-4863-9346-6d3be98c55ad
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Bookings $' =
+		
+		CALCULATE ( [Opportunity $], Opportunity[Finance Reviewed] )
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 2e162422-657e-47b5-9b44-37680ff39cb9
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Bookings $ YTD' =
+		
+		CALCULATE ( [Bookings $], DATESYTD ( 'Calendar'[Date] ) )
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: c24f61c1-4d0a-4127-bcbc-86b89bd95a73
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Open Pipeline $' =
+		
+		CALCULATE (
+		    [Opportunity $],
+		    NOT ( Opportunity[Finance Reviewed] ),
+		    NOT ( Opportunity[Sales Stage] IN { "Close Loss", "Cancel Revenue", "Close Won" } )
+		)
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 59ed19bb-6767-4dec-b098-4dcd86ad3216
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Opportunity $' =
+		
+		VAR todayyear =
+		    YEAR ( TODAY () )
+		VAR selectedyear = [Selected Year]
+		VAR result =
+		    SWITCH (
+		        TRUE (),
+		        todayyear = selectedyear, [Current Year Forecast $],
+		        todayyear + 1 = selectedyear, CALCULATE ( [Next Year Forecast $], ALL ( 'Calendar' ) ),
+		        ISBLANK ( selectedyear )
+		            || [Current Year Forecast $] = 0, [Estimated Revenue $],
+		        [Estimated Revenue $]
+		    )
+		RETURN
+		    result
+		//Use Estimated Revenue Total if it equals Current Year Forecast, else use Current Year Forecast. Then if looking at the next year use the Next Year Forecast field
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 606a1e46-60f1-43b9-8ffc-836eec405a3d
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Weighted Pipeline $' =
+		
+		CALCULATE (
+		    [Weighted $],
+		    NOT ( Opportunity[Finance Reviewed] ),
+		    NOT ( Opportunity[Sales Stage] IN { "Close Loss", "Cancel Revenue", "Close Won" } )
+		)
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 7a93af8c-9330-4078-80a6-fe9aa1affe4d
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Weighted $' =
+		
+		SUMX (
+		    'Opportunity Fact',
+		    'Opportunity Fact'[Close Probability] / 100 * [Opportunity $]
+		)
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 7587a4b1-308c-4358-a133-8b1c32f1daaf
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Sales' =
+		
+		SUM ( Actuals[Credit Amt] )
+
+		displayFolder: Actuals
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 3aa0cc22-c4a9-43a0-ac23-23864228d43f
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Sales PY' =
+		
+		CALCULATE ( [Total Sales], SAMEPERIODLASTYEAR ( 'Calendar'[Date] ) )
+
+		displayFolder: Actuals
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 1e6fcf7e-19e8-4044-a486-a073431181f5
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Sales QTD' =
+		
+		CALCULATE ( [Total Sales], DATESQTD ( 'Calendar'[Date] ) )
+
+		displayFolder: Actuals
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: d817a9b2-c7a0-4918-aed6-b327255720fc
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Sales YTD' =
+		
+		CALCULATE ( [Total Sales], DATESYTD ( 'Calendar'[Date] ) )
+
+		displayFolder: Actuals
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 81862a1d-afb8-4c09-92c7-e51283a552fc
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Bookings to Goal YTD' =
+		
+		DIVIDE ( [Bookings $ YTD], [Total Sales Goal YTD] )
+
+		displayFolder: Goal
+		formatString:= 0.00%;-0.00%;0.00%
+		lineageTag: 3ea2f446-1371-46e9-b188-2af6a32e94ea
+
+	measure 'Total Sales Goal YTD' =
+		
+		CALCULATE ( [Total Sales Goal], DATESYTD ( 'Calendar'[Date] ) )
+
+		displayFolder: Goal
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 5be53326-88c0-413d-8528-831ddca673ae
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Sales to Goal YTD' =
+		
+		DIVIDE ( [Total Sales YTD], [Total Sales Goal YTD] )
+
+		displayFolder: Goal
+		formatString:= 0.00%;-0.00%;0.00%
+		lineageTag: ba93d176-c10d-4ac4-9a79-b46a7ad0e79e
+
+	measure 'Sales to Goal' =
+		
+		DIVIDE ( [Total Sales], [Total Sales Goal] )
+
+		displayFolder: Goal
+		formatString:= 0.00%;-0.00%;0.00%
+		lineageTag: 757c2bb7-90dc-4ecc-bbbb-8d8a5b2aae14
+
+	measure 'Total Budget' =
+		
+		SUM ( Budget[Budget] )
+
+		displayFolder: Goal
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: e806993a-50c1-4030-82b6-c2f8238002d1
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Goal' =
+		
+		[Total Budget] + [Total Sales Goal]
+
+		displayFolder: Goal
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 69177b2d-9cc8-440c-ba67-5329a7c905aa
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Sales Goal' =
+		
+		SUM ( 'Goal'[Goal] )
+
+		displayFolder: Goal
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: eb2c2214-44ab-42b1-b7c0-ac7f33ff100c
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Sales Goal PY' =
+		
+		CALCULATE ( [Total Sales Goal], SAMEPERIODLASTYEAR ( 'Calendar'[Date] ) )
+
+		displayFolder: Goal
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 8aba934c-f950-486a-9c0d-8c14f9abde19
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Acitve Clients' =
+		
+		CALCULATE (
+		    [Client Count],
+		    Project[Engagement Status] <> "Engagement Completed"
+		)
+
+		displayFolder: Project
+		formatString:= 0
+		lineageTag: 191426a2-a5f2-438b-bebe-033f2fb1402e
+
+	measure 'Client Closeout' =
+		
+		VAR ytddates =
+		    DATESYTD ( 'Calendar'[Date] )
+		VAR result =
+		    CALCULATE (
+		        [Total Engagements],
+		        Project[Client Closeout Interview Completed] = "Yes",
+		        //Make sure this is the interview field
+		        'Project Fact'[Actual End] IN ytddates
+		    )
+		RETURN
+		    result
+
+		displayFolder: Project
+		formatString:= 0
+		lineageTag: 07b6f50a-055e-4cf2-922c-f15e5cce01ee
+
+	measure 'Client Count' =
+		
+		DISTINCTCOUNT ( 'Project Fact'[Account SK] )
+
+		displayFolder: Project
+		formatString:= 0
+		lineageTag: 456b3d0c-701b-4d5a-b4b1-4e79a3b8c491
+
+	measure 'Consultant Closeout' =
+		
+		VAR ytddates =
+		    DATESYTD ( 'Calendar'[Date] )
+		VAR result =
+		    CALCULATE (
+		        [TA Count],
+		        NOT ( ISBLANK ( 'Project Team Fact'[Completion Date] ) ),
+		        Project[Actual End] IN ytddates
+		    )
+		RETURN
+		    result
+
+		displayFolder: "Project Team (TA)"
+		formatString:= 0
+		lineageTag: d711b0ff-d57a-4f11-89ec-34e25d5b8bc9
+
+	measure 'Consultant Closeout Interview' =
+		
+		VAR ytddates =
+		    DATESYTD ( 'Calendar'[Date] )
+		VAR result =
+		    CALCULATE (
+		        [TA Count],
+		        'Project Team Fact'[Interview Completed] = "Yes",
+		        Project[Actual End] IN ytddates
+		    )
+		RETURN
+		    result
+
+		displayFolder: "Project Team (TA)"
+		formatString:= 0
+		lineageTag: f288006d-a76b-4fe3-8362-84b3fd513e73
+
+	measure 'Pending Closeout' =
+		
+		CALCULATE (
+		    [Total Engagements],
+		    'Project Fact'[Actual End] <= TODAY (),
+		    NOT ( ISBLANK ( 'Project Fact'[Actual End] ) ),
+		    OR (
+		        Project[Client Closeout Interview Completed] IN { "No", "" },
+		        ISBLANK ( Project[Client Closeout Interview Completed] )
+		    )
+		)
+
+		displayFolder: Project
+		formatString:= 0
+		lineageTag: eac31051-dc2a-4fcf-9006-962a61aeaf40
+
+	measure 'Total Engagements' =
+		
+		COUNTROWS ( 'Project Fact' )
+
+		displayFolder: Project
+		formatString:= 0
+		lineageTag: 45c57603-3988-4a42-958d-b902b2415745
+
+	measure 'CPK Completion %' =
+		
+		DIVIDE (
+		    [CPKs Completed],
+		    CALCULATE ( [Total Engagements], Project[CPK] <> "N/A", Project[State] = "Active" )
+		)
+
+		displayFolder: Project
+		formatString:= 0.00%;-0.00%;0.00%
+		lineageTag: 46936320-ff3c-4a37-a4ec-26519677c01d
+
+	measure 'CPKs Completed' =
+		
+		CALCULATE (
+		    [Total Engagements],
+		    Project[CPK] = "Yes", // Project[CPK] <> "N/A"
+		    Project[State] = "Active"
+		)
+
+		displayFolder: Project
+		formatString:= 0
+		lineageTag: 91ea3b9c-1987-4c70-bad8-e167dc515b68
+
+	measure 'IPK Completion %' =
+		
+		DIVIDE (
+		    [IPKs Completed],
+		    CALCULATE ( [Total Engagements], Project[IPK] <> "N/A", Project[State] = "Active" )
+		)
+
+		displayFolder: Project
+		formatString:= 0.00%;-0.00%;0.00%
+		lineageTag: d09ad8ec-2b99-491c-9d25-32a17ebbd956
+
+	measure 'IPKs Completed' =
+		
+		CALCULATE (
+		    [Total Engagements],
+		    Project[IPK] = "Yes", // Project[IPK] <> "N/A"
+		    Project[State] = "Active"
+		)
+
+		displayFolder: Project
+		formatString:= 0
+		lineageTag: a29fbdeb-86fc-4548-ae0b-65638d27ce36
+
+	measure 'RCR Days to Close' =
+		
+		SUMX (
+		    'Consultant Request Fact',
+		    DATEDIFF ( TODAY (), 'Consultant Request Fact'[End Date], DAY )
+		)
+		// Needs to be updated to use the finish date from the project team table
+
+		displayFolder: "Request for Consultant Resources"
+		formatString:= 0
+		lineageTag: d7eefe95-628d-408e-b717-b4fc9864b42a
+
+	measure 'Total Open RCRs' =
+		
+		CALCULATE (
+		    [Opportunity Qty],
+		    Opportunity[Resourcing Status]
+		        IN {
+		        "1. Pending",
+		        "2. Multiple Candidates Requested",
+		        "3. Resumes sent to the RVP"
+		    },
+		    USERELATIONSHIP( 'Consultant Request'[Opportunity SK], 'Opportunity Fact'[Opportunity SK] )
+		)
+		//This used to have [Total RCRs] as the measure
+		//Old name was Total Active RCRs
+
+		displayFolder: "Request for Consultant Resources"
+		formatString:= 0
+		lineageTag: 4341d40a-2243-42e7-8a17-a19615a99403
+
+	measure 'Total Open TAs' =
+		
+		CALCULATE (
+		    [Project Task Count],
+		    'Labor Category'[Labor Category] <> "Project Manager",
+		    Project[Engagement Status] <> "Engagement Completed",
+		    //Is this needed?
+		    //Practice[Practice] <> "Global",
+		    //Is this needed?
+		    NOT ( CONTAINSSTRING ( 'Bookable Resource'[Bookable Resource], "Richter" ) ),
+		    //This is a bookable resource that is on the project team table
+		    NOT ( CONTAINSSTRING ( 'Bookable Resource'[Bookable Resource], "Mulherin" ) )
+		)
+
+		displayFolder: "Project Team (TA)"
+		formatString:= 0
+		lineageTag: bd5792c1-950e-47e5-8066-f5ddc297fc86
+
+	measure 'Total RCRs' =
+		
+		COUNTROWS ( 'Consultant Request Fact' )
+
+		displayFolder: "Request for Consultant Resources"
+		formatString:= 0
+		lineageTag: 81be006e-d96b-4d72-90e9-a594b2945a7d
+
+	measure 'Approved Hours' =
+		
+		CALCULATE (
+		    SUM ( 'Time Entry Fact'[Hours] ),
+		    'Time Entry'[Entry Status] = "Approved"
+		)
+
+		displayFolder: "Time Entry"
+		lineageTag: 0864fd82-c482-43b6-acc8-873c99f151a4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Submitted Hours' =
+		
+		SUM ( 'Time Entry Fact'[Hours] )
+
+		displayFolder: "Time Entry"
+		lineageTag: a8dc1234-615e-406e-a289-d5615cf788d6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '# Active Contacts' =
+		
+		CALCULATE (
+		    DISTINCTCOUNTNOBLANK ( 'Project Fact'[Parent Contact SK] ),
+		    Project[Active] = "Yes"
+		)
+
+		displayFolder: Contact
+		formatString:= 0
+		lineageTag: 8e2e52b1-2538-4d50-be66-10c4e99228f5
+
+	measure '# Contacts' =
+		
+		VAR SelectedAccounts =
+		    VALUES ( Account[Account SK] )
+		VAR Result =
+		    CALCULATE ( COUNTROWS ( Contact ), Contact[Account SK] IN SelectedAccounts )
+		RETURN
+		    Result
+
+		displayFolder: Contact
+		formatString:= 0
+		lineageTag: 9d911f86-6891-45a1-924b-36edfea9d126
+
+	measure 'Labor Category Count' =
+		
+		COUNT ( 'Labor Category'[Labor Category SK] )
+
+		displayFolder: "Labor Category"
+		formatString:= 0
+		lineageTag: 052790de-487a-4f23-8334-860be4b88d08
+
+	measure 'Bookings to Goal' =
+		
+		DIVIDE ( [Bookings $], [Total Sales Goal] )
+
+		displayFolder: Goal
+		formatString:= 0.00%;-0.00%;0.00%
+		lineageTag: cbf15980-5464-4e18-964f-d41dc9af8d4c
+
+	measure 'Open Pipeline Qty > 75% PWin' =
+		
+		CALCULATE (
+		    [Open Pipeline Qty],
+		    'Opportunity Fact'[Close Probability] / 100 >= .75
+		)
+
+		displayFolder: Opportunity
+		formatString:= 0
+		lineageTag: db8ab221-805c-461c-9e2d-fe90e61e2753
+
+	measure 'Selected Year' =
+		
+		SELECTEDVALUE ( 'Calendar'[Year] )
+
+		formatString:= 0
+		lineageTag: 1236e2e8-5dd1-4185-accc-a1f336c591b0
+
+	measure 'Close Won Opportunities' =
+		
+		CALCULATE (
+		    [Opportunity Qty],
+		    Opportunity[Sales Stage] = "Close Won"
+		    // Opportunity[Finance Reviewed]
+		)
+
+		displayFolder: Opportunity
+		formatString:= 0
+		lineageTag: 5d49f043-4f6e-442c-90e3-193a9244f28d
+
+	measure 'Close Loss Opportunities' =
+		
+		CALCULATE ( [Opportunity Qty], Opportunity[Sales Stage] = "Close Loss" )
+
+		displayFolder: Opportunity
+		formatString:= 0
+		lineageTag: 3408750e-e21b-4a59-bb6c-2ad241adbcf9
+
+	measure 'Canceled Revenue Opportunities' =
+		
+		CALCULATE ( [Opportunity Qty], Opportunity[Sales Stage] = "Cancel Revenue" )
+
+		displayFolder: Opportunity
+		formatString:= 0
+		lineageTag: 4a033942-7f33-4f92-a818-d3c01e3a0476
+
+	measure 'Sales to Goal PY' =
+		
+		DIVIDE ( [Total Sales PY], [Total Sales Goal PY] )
+
+		displayFolder: Goal
+		formatString:= 0.00%;-0.00%;0.00%
+		lineageTag: 9597bd48-0fed-4806-b76a-48be94c35ca1
+
+	measure 'TA Days to Close Base' =
+		
+		SUMX (
+		    'Project Task Fact',
+		    DATEDIFF ( TODAY (), 'Project Task Fact'[Finish Date], DAY )
+		)
+
+		displayFolder: "Project Team (TA)"
+		formatString:= 0
+		lineageTag: 7cd21d74-0fa4-4385-afe5-d24e7df6c907
+
+	measure 'TA Count' =
+		
+		COUNTROWS ( 'Project Team Fact' )
+
+		displayFolder: "Project Team (TA)"
+		formatString:= 0
+		lineageTag: 6e3403e8-c5bc-4b28-b7e0-d23ec6c3a258
+
+	measure 'Training TA Count' =
+		
+		CALCULATE ( [Total Open TAs], Practice[Practice] = "Training" )
+
+		displayFolder: "Project Team (TA)"
+		formatString:= 0
+		lineageTag: 86c10b1e-b6dd-4510-b987-2945fe4527f6
+
+	measure 'Not Training TA Count' =
+		
+		CALCULATE ( [Total Open TAs], Practice[Practice] <> "Training" )
+
+		displayFolder: "Project Team (TA)"
+		formatString:= 0
+		lineageTag: 28da770b-a6a0-48db-8b6d-90aaf959048b
+
+	measure 'Display Salesperson' =
+		
+		VAR corporate =
+		    MAX ( 'Sales Person | Group'[Sales Person | Group] ) in { "Corporate Accounts", "Corporate Sales" }
+		VAR hasemployeeid =
+		    IF ( MAX ( 'Sales Person | Group'[Employee ID] ) = BLANK (), FALSE (), TRUE () )
+		VAR startdate =
+		    MAX ( 'Sales Person | Group'[Employee Start Date] )
+		VAR adjustedstartdate =
+		    SWITCH (
+		        TRUE (),
+		        NOT ( hasemployeeid ), BLANK (),
+		        hasemployeeid && ISBLANK ( startdate ), DATE ( 1990, 1, 1 ),
+		        startdate
+		    )
+		VAR enddate =
+		    MAX ( 'Sales Person | Group'[Employee End Date] )
+		VAR adjustedenddate =
+		    SWITCH (
+		        TRUE (),
+		        NOT ( hasemployeeid ), BLANK (),
+		        hasemployeeid && ISBLANK ( enddate ), TODAY () + 400,
+		        enddate
+		    )
+		VAR employmentdates =
+		    DATESBETWEEN ( 'Calendar'[Date], adjustedstartdate, adjustedenddate )
+		VAR daterange =
+		    VALUES ( 'Calendar'[Date] )
+		VAR overlap =
+		    IF (
+		        ISBLANK ( adjustedstartdate ),
+		        0,
+		        COUNTROWS ( INTERSECT ( employmentdates, daterange ) )
+		    )
+		VAR result =
+		    IF ( overlap > 0 || corporate, 1, 0 )
+		RETURN
+		    result
+
+		formatString:= 0
+		lineageTag: f803d2ca-c6fc-4b32-a96d-00a4aa3043d5
+
+	measure 'Next Year Forecast $' =
+		
+		SUM ( 'Opportunity Fact'[Next Year Forecast] )
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 04e0bd2e-dd2f-4a3c-ad3a-3e4b11ae666d
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Next Year Bookings $' =
+		
+		CALCULATE ( [Next Year Forecast $], Opportunity[Finance Reviewed] )
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 7b8951b1-4f7a-4395-a6ed-70cfe48e7123
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Current Year Forecast $' =
+		
+		SUM ( 'Opportunity Fact'[Current Year Forecast] )
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 09337beb-1bc2-4abe-b7de-e08b5adc9620
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Current Year Bookings $' =
+		
+		CALCULATE ( [Current Year Forecast $], Opportunity[Finance Reviewed] )
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 829c0143-bbbd-4133-9f29-c83ab0b09e1f
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Current Year Pipeline $' =
+		
+		CALCULATE (
+		    [Current Year Forecast $],
+		    NOT ( Opportunity[Finance Reviewed] ),
+		    NOT ( Opportunity[Sales Stage] IN { "Close Loss", "Cancel Revenue", "Close Won" } )
+		)
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 4d8142d1-98c4-4e01-a875-cef8bb3b9e69
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Next Year Pipeline $' =
+		
+		CALCULATE (
+		    [Next Year Forecast $],
+		    NOT ( Opportunity[Finance Reviewed] ),
+		    NOT ( Opportunity[Sales Stage] IN { "Close Loss", "Cancel Revenue", "Close Won" } )
+		)
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: d4bb5976-7039-442c-ab3e-dafcabe3d8de
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Weighted Current Year Pipeline $' =
+		
+		SUMX (
+		    'Opportunity Fact',
+		    'Opportunity Fact'[Close Probability] / 100 * [Current Year Pipeline $]
+		)
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 6c431cc4-8a8d-43b5-b704-92b6239b9c52
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Weighted Next Year Pipeline $' =
+		
+		SUMX (
+		    'Opportunity Fact',
+		    'Opportunity Fact'[Close Probability] / 100 * [Next Year Pipeline $]
+		)
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 42015713-3946-4b76-971b-4f0b003b06f9
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Estimated Revenue $' =
+		
+		SUM ( 'Opportunity Fact'[Estimated Revenue Total] )
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 22890d16-112e-40b6-9b4b-0d5bdd6aeb6f
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Close Probability' =
+		
+		SUMX (
+		    'Opportunity Fact',
+		    'Opportunity Fact'[Close Probability] / 100 * 1
+		)
+
+		formatString:= 0%;-0%;0%
+		lineageTag: 31fab6ca-c4dd-4202-82d9-e8efcf1dc5bf
+
+	measure 'Estimated Revenue Pipeline $' =
+		
+		CALCULATE (
+		    [Estimated Revenue $],
+		    NOT ( Opportunity[Finance Reviewed] ),
+		    NOT ( Opportunity[Sales Stage] IN { "Close Loss", "Cancel Revenue", "Close Won" } )
+		)
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 0cabbd35-fd0b-4898-9bdc-9e4033ec4737
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Estimated Revenue Bookings $' =
+		
+		CALCULATE ( [Estimated Revenue $], Opportunity[Finance Reviewed] )
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 30f9e2a2-6837-497a-8492-33f49bb0a88f
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Weighted Estimated Revenue Pipeline $' =
+		
+		SUMX (
+		    'Opportunity Fact',
+		    'Opportunity Fact'[Close Probability] / 100 * [Estimated Revenue Pipeline $]
+		)
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: e268a4bd-b973-4c62-a479-e3e33277700f
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Title Sales to Goal by Channel' = [Selected Year] & " Sales to Goal by Channel"
+		displayFolder: Helpers
+		lineageTag: b7f6d751-414a-4015-ba56-2ef407fb521a
+
+	measure 'Title Sales to Goal by Practice' = [Selected Year] & " Sales to Goal by Practice"
+		displayFolder: Helpers
+		lineageTag: d34836ef-b58d-4d4b-bc30-af962cc842ff
+
+	measure 'Title Sales to Goal Total' = [Selected Year] & " Sales to Goal - Total"
+		displayFolder: Helpers
+		lineageTag: 54e1a1fd-e872-4ff9-8311-751b1fe6321b
+
+	measure 'Project Task Count' = COUNTROWS( 'Project Task Fact' )
+		formatString:= 0
+		lineageTag: dfff107c-6274-471c-8627-4630a7b1ccec
+
+	measure '# Active Projects' =
+		
+		CALCULATE(
+		    [Total Engagements],
+		    Project[State] = "Active"
+		)
+
+		formatString:= 0
+		lineageTag: 7f47fb83-7345-4fb8-aedc-e4a4466d601c
+
+	measure 'Bookings $ CYTD' =
+		
+		CALCULATE ( [Current Year Bookings $], DATESYTD ( 'Calendar'[Date] ) )
+
+		displayFolder: Opportunity
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 002a4c80-c1ed-46fc-a503-7f32c5237fcb
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'NTE Hours' =
+		
+		SUM( 'Project Task Fact'[NTE Hours] )
+
+		formatString:= 0
+		lineageTag: e37f1082-7a71-48f2-bf3b-fcea1d741bf3
+
+	measure 'Opp History Bookings $' = SUM( 'Opportunity History'[Amount] )
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: b2853f14-c601-4c3a-9b1c-0c915a1acf2f
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Opp History Weighted Bookings $' = SUM( 'Opportunity History'[Weighted Amount] )
+		formatString:= 0
+		lineageTag: 63e32f58-1bd0-4720-bdf2-e3286aa56231
+
+	measure 'All Bookings $' = [Opp History Bookings $] + [Bookings $]
+		formatString:= \$#,0;(\$#,0);\$#,0
+		lineageTag: 21f3d5b1-f8a2-42d5-93af-897e58b8733c
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Hours Remaining' = [NTE Hours] - [Submitted Hours]
+		lineageTag: 699f71e8-79e6-49cb-ab7f-2536265b03a9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Hours Used Percentage' = (SUM('Project Task Fact'[Completed Hours]) / [NTE Hours]) 
+		formatString:= 0.00%;-0.00%;0.00%
+		lineageTag: c6b13649-f911-4ee2-8f50-ef960c25f6d5
+
+	measure 'Hours to Date' = SUM('Project Task Fact'[Completed Hours])
+		lineageTag: 0edb81a2-6fbe-4ab4-b536-fb75fc1043f0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Current LOE' = [Submitted Hours] / (50* DISTINCTCOUNT('Calendar'[End of Week]))
+		formatString:= 0.00%;-0.00%;0.00%
+		lineageTag: 03cb895b-0088-4e7d-834b-c54a55174d83
+
+	measure 'Number of Time Entries' = DISTINCTCOUNT('Time Entry Fact'[Hours])
+		displayFolder: "Time Entry"
+		formatString:= 0
+		lineageTag: 07e03273-24e4-4111-8a2f-e6238454ea6c
+
+	measure 'Project Days to close' =
+		
+		    DATEDIFF ( TODAY (), [Task Close Date Max], DAY )
+
+		formatString:= 0
+		lineageTag: 5d7141db-878c-4044-824d-0e0824e067a5
+
+	measure 'Task Close Date Max' = MAXX('Project Task Fact', 'Project Task Fact'[Finish Date])
+		formatString:= General Date
+		lineageTag: 0955747d-a3e0-4c37-a803-77a748714fa6
+
+	measure 'Number of Tasks Charged' = DISTINCTCOUNT('Time Entry Fact'[Project Task SK])
+		formatString:= 0
+		lineageTag: 15b9b956-7fba-4506-bdf0-9946449f901d
+
+	measure 'Resource Project Task Count' = DISTINCTCOUNT('Project Task Fact'[Task])
+		formatString:= 0
+		lineageTag: c563bec6-6071-4107-9391-e17492f6e41a
+
+	measure 'Owning Salesperson' =
+		VAR SelectedProject = SELECTEDVALUE('Project Fact'[Project SK])
+		    VAR RelatedSalesSK = Calculate(Max('Project Fact'[Sales Person SK]), 'Project Fact'[Project SK] = SelectedProject)
+		    VAR OwningSales = CALCULATE(
+		            SELECTEDVALUE('Sales Person | Group'[Sales Person Name]),
+		            'Sales Person | Group'[Sales Person SK] = RelatedSalesSK
+		        )
+		    VAR Result = IF ( OwningSales = BLANK (), "All", OwningSales )
+		    Return Result
+		        
+
+		lineageTag: eb2e144c-e225-47bd-b2ae-cbefd310dd34
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Owning Customer' =
+		VAR SelectedProject = SELECTEDVALUE('Project Fact'[Project SK])
+		    VAR EndCustSK = Calculate(Max('Project Fact'[End Customer SK]), 'Project Fact'[Project SK] = SelectedProject)
+		    VAR OwningCustomer = CALCULATE(
+		            SELECTEDVALUE('End Customer'[End Customer Type]),
+		            'End Customer'[End Customer SK] = EndCustSK
+		        )
+		    VAR Result = IF ( OwningCustomer = BLANK (), "All", OwningCustomer )
+		    Return Result
+		        
+
+		lineageTag: a1cac461-863c-421a-abbc-0c47fa316dc4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Current Week Calc' =
+		
+		    VAR CurrentDay = TODAY()-3*7
+		    VAR CurrentYear = YEAR(CurrentDay)
+		    VAR CurrentWeek = CALCULATE(MAX('Calendar'[Week of Year]),'Calendar'[Date] = CurrentDay)
+		    VAR PreviousWeek = CALCULATETABLE(VALUES('Calendar'[Date]),'Calendar'[Week of Year]=CurrentWeek,'Calendar'[Year]=CurrentYear)
+		    VAR Result = CALCULATE([Submitted Hours], PreviousWeek)
+		    RETURN Result
+
+		lineageTag: 6a485c80-f792-4374-906b-b9518ec30f45
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Last Refresh MT'
+		dataType: DateTime
+		displayFolder: Hidden
+		formatString:= General Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: ae05cb23-769f-4ddc-bf75-5132130c9cea
+		sourceColumn: "Last Refresh MT"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	column 'Last Refresh UTC'
+		dataType: DateTime
+		displayFolder: Hidden
+		formatString:= General Date
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 466df41e-9ad8-453f-ac3c-2211f838fd92
+		sourceColumn: "Last Refresh UTC"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

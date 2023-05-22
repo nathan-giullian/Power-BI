@@ -1,0 +1,54 @@
+table 'Labor Category'
+	lineageTag: 1c750694-a3cd-445c-9508-ae42bb3f4898
+	ordinal: 20
+
+	partition 'Labor Category-ce701ef3-d0fa-4c1e-845e-c0eb3fa005a8' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"f2b463bf-5fde-4afe-96ca-991c76bc280c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="f2b463bf-5fde-4afe-96ca-991c76bc280c"]}[Data],
+			    Lead_ = #"f2b463bf-5fde-4afe-96ca-991c76bc280c"{[entity="Labor Category",version=""]}[Data],
+			    #"Changed Type" = Table.TransformColumnTypes(Lead_,{{"createdon", type date}}),
+			    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"statecodename", "statuscodename"}),
+			    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"jt_name", "Labor Category"}, {"jt_baserolelookupid", "Base Role Lookup ID"}, {"createdon", "Created On"}, {"modifiedon", "Modified On"}}),
+			    #"Removed Columns1" = Table.RemoveColumns(#"Renamed Columns",{"Created On", "Modified On"})
+			in
+			    #"Removed Columns1"
+
+		queryGroup: Dimensions
+
+	column 'Base Role Lookup ID'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 64dce172-ebba-4a0d-9185-9e68854e81b2
+		sourceColumn: "Base Role Lookup ID"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Labor Category'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: fbd29ed2-f682-45de-bf38-31dc7a9a660c
+		sourceColumn: "Labor Category"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Labor Category SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 2b10690b-38dd-4dda-a394-4a2c143b3ea1
+		sourceColumn: "Labor Category SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

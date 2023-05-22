@@ -1,0 +1,100 @@
+{
+  "name": "f02c8280722a67271e8e",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 8,
+        "y": 0,
+        "z": 0,
+        "width": 560,
+        "height": 656
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "tableEx",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "Opportunity.Sales Stage"
+        },
+        {
+          "queryRef": "Opportunity.Finance Reviewed"
+        },
+        {
+          "queryRef": "Measure.Opportunity Qty"
+        },
+        {
+          "queryRef": "Opportunity.Opportunity ID"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "o",
+          "Entity": "Opportunity",
+          "Type": 0
+        },
+        {
+          "Name": "m",
+          "Entity": "Measure",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "o"
+              }
+            },
+            "Property": "Sales Stage"
+          },
+          "Name": "Opportunity.Sales Stage",
+          "NativeReferenceName": "Sales Stage"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "o"
+              }
+            },
+            "Property": "Finance Reviewed"
+          },
+          "Name": "Opportunity.Finance Reviewed",
+          "NativeReferenceName": "Finance Reviewed"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "Opportunity Qty"
+          },
+          "Name": "Measure.Opportunity Qty",
+          "NativeReferenceName": "Opportunity Qty"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "o"
+              }
+            },
+            "Property": "Opportunity ID"
+          },
+          "Name": "Opportunity.Opportunity ID",
+          "NativeReferenceName": "Opportunity ID"
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

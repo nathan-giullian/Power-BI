@@ -1,0 +1,149 @@
+{
+  "name": "e6eadc0a7ee6d5c58e65",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 9.481481481481481,
+        "y": 0,
+        "z": 0,
+        "width": 617.3497942386831,
+        "height": 375.04526748971193
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "pivotTable",
+    "projections": {
+      "Rows": [
+        {
+          "queryRef": "Opportunity.Opportunity",
+          "active": true
+        },
+        {
+          "queryRef": "Project.Project"
+        }
+      ],
+      "Values": [
+        {
+          "queryRef": "Sum(Opportunity Fact.Budget Amount)"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "p",
+          "Entity": "Project",
+          "Type": 0
+        },
+        {
+          "Name": "o",
+          "Entity": "Opportunity",
+          "Type": 0
+        },
+        {
+          "Name": "o1",
+          "Entity": "Opportunity Fact",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "p"
+              }
+            },
+            "Property": "Project"
+          },
+          "Name": "Project.Project",
+          "NativeReferenceName": "Project"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "o"
+              }
+            },
+            "Property": "Opportunity"
+          },
+          "Name": "Opportunity.Opportunity",
+          "NativeReferenceName": "Opportunity"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "o1"
+                  }
+                },
+                "Property": "Budget Amount"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(Opportunity Fact.Budget Amount)",
+          "NativeReferenceName": "Sum of Budget Amount"
+        }
+      ]
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Opportunity.Opportunity"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Opportunity"
+                    }
+                  },
+                  "Property": "Opportunity"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Project.Project"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Project"
+                    }
+                  },
+                  "Property": "Project"
+                }
+              }
+            ],
+            "isPinned": true
+          }
+        ],
+        "root": {
+          "identityValues": null
+        }
+      }
+    ],
+    "drillFilterOtherVisuals": true,
+    "hasDefaultSort": true
+  }
+}

@@ -1,0 +1,45 @@
+table 'Measure Modifier'
+	lineageTag: cf834411-55d9-462c-a338-4db3fc42dd11
+	ordinal: 25
+
+	partition Partition = CalculationGroup
+		mode: Import
+
+	calculationGroup
+
+		calculationItem YTD = CALCULATE ( SELECTEDMEASURE (), DATESYTD ( 'Calendar'[Date] ) )
+
+		calculationItem 'By Actual Close Date' =
+			CALCULATE (
+			    SELECTEDMEASURE (),
+			    USERELATIONSHIP ( 'Calendar'[Date], 'Opportunity Fact'[Actual Close Date] )
+			)
+
+
+		calculationItem 'By Estimated Close Date' =
+			CALCULATE (
+			    SELECTEDMEASURE (),
+			    USERELATIONSHIP ( 'Calendar'[Date], 'Opportunity Fact'[Estimated Close Date] )
+			)
+
+
+	column Name
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 5cbfda5a-3e36-4d83-b94e-bfcf5fff1ba4
+		sortByColumn: Ordinal
+		sourceColumn: Name
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: Int64
+		isDataTypeInferred: false
+		isHidden
+		lineageTag: 30769dad-a0f7-4d80-a72d-c8c48036aee9
+		sourceColumn: Ordinal
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+

@@ -1,0 +1,1016 @@
+/// We needed to add the finance reviewed column from the legacy query because for some reason the data doesn't show in the dataverse connector which is what the dataflow is using.
+table Opportunity
+	lineageTag: d2cdd2a9-e12e-4d9b-8acd-94415e660664
+	ordinal: 15
+
+	partition 'Opportunity-3c434901-252e-4237-b41f-653883863ba4' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"f2b463bf-5fde-4afe-96ca-991c76bc280c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="f2b463bf-5fde-4afe-96ca-991c76bc280c"]}[Data],
+			    Opportunity_ = #"f2b463bf-5fde-4afe-96ca-991c76bc280c"{[entity="Opportunity",version=""]}[Data],
+			    #"Removed Other Columns" = Table.RemoveColumns(Opportunity_,{"Modified On", "Actual Close Date", "Actual Value", "Exchange Rate", "Budget Amount", "Discount Amount", "Discount Percentage", "Estimated Close Date", "Estimated Value", "Final Decision Date", "Freight Amount", "Schedule Follow Up Prospect", "Schedule Follow Up Qualify", "Schedule Proposal Meeting", "Total Amount", "Total Amount Less Freight", "Total Discount Amount", "Total Line Item Amount", "Total Line Item Discount Amount", "jt_cost", "Current Year Forecast", "Current Year Weighted Forecast", "Project End Date", "Project Start Date", "jt_expecteddraftrfpreleasedate", "Final RFP Date", "Next Year Forecast", "Next Year Weighted Forecast", "jt_payrate", "Proposal Submission Date", "Account SK", "Sales Person SK", "End Customer SK", "Parent Contact SK"}),
+			    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"Name", "Opportunity"}}),
+			    #"Added Conditional Column" = Table.AddColumn(#"Renamed Columns", "BPF Stage Sort", each if [BPF Stage] = "Qualify" then 1 else if [BPF Stage] = "Resourcing Status" then 2 else if [BPF Stage] = "Client Status" then 3 else if [BPF Stage] = "TA" then 4 else if [BPF Stage] = "Close" then 5 else null, Int64.Type),
+			    //All steps after this comment won't be needed when Mirosoft fixes the dataverse connector. For some reason the field jt_financereviewed is null for every connector except for the legacy dynamics connector which is wha we are merging below
+			    #"Merged Queries" = Table.NestedJoin(#"Added Conditional Column", {"Opportunity ID"}, #"Legacy Finance Reviewed", {"opportunityid"}, "Legacy Finance Reviewed", JoinKind.LeftOuter),
+			    #"Expanded Legacy Finance Reviewed" = Table.ExpandTableColumn(#"Merged Queries", "Legacy Finance Reviewed", {"jt_financereviewed"}, {"jt_financereviewed"}),
+			    #"Removed Columns" = Table.RemoveColumns(#"Expanded Legacy Finance Reviewed",{"Finance Reviewed"}),
+			    #"Renamed Columns1" = Table.RenameColumns(#"Removed Columns",{{"jt_financereviewed", "Finance Reviewed"}})
+			in
+			    #"Renamed Columns1"
+
+		queryGroup: Dimensions
+
+	column Opportunity
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: d075dcac-4c24-4eaa-a8f3-e1e5dda5e9ac
+		sourceColumn: Opportunity
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Budget Status'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 2ab13ca9-d35c-4714-8be1-f673d78870f4
+		sourceColumn: "Budget Status"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Budget Type'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: c99b49f2-68b1-479e-94c1-390187d24495
+		sourceColumn: "Budget Type"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Close Probability'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: eab3c9e3-38f6-47d0-8320-96bfe56db9a0
+		sourceColumn: "Close Probability"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Complete Internal Review'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 0b8317fc-275c-4a34-aa20-89424491a971
+		sourceColumn: "Complete Internal Review"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Confirm Interest'
+		dataType: Boolean
+		formatString:= "TRUE";"TRUE";"FALSE"
+		isDataTypeInferred: false
+		lineageTag: daea2ed1-4833-463c-ba5d-9dc10f23a1fd
+		sourceColumn: "Confirm Interest"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Situation'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 1cee9bcc-2ec0-45e1-979c-ab00ce6868f8
+		sourceColumn: "Current Situation"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Need'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 934e194f-bc1c-4323-a0a3-dde787b21473
+		sourceColumn: "Customer Need"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Pain Points'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: b86ff58f-e230-4bdc-9fa5-9c2b046c19fe
+		sourceColumn: "Customer Pain Points"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Decision Maker'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: f80fb7ca-cde6-45df-8979-b3f72b2afaf6
+		sourceColumn: "Decision Maker"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: a0d52814-6cae-418f-94cd-453e5623a979
+		sourceColumn: Description
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Develop Proprosal'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 276c9f74-4aef-420d-8c6c-f48ca5251b49
+		sourceColumn: "Develop Proprosal"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Evaluate Fit'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: d55cef73-05c6-4056-9487-ac3e22f95082
+		sourceColumn: "Evaluate Fit"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resolve Feedback'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: c6fe9ff3-c05a-43f6-bf53-a237e7b81a29
+		sourceColumn: "Resolve Feedback"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'File Debrief'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: b64cf770-0d23-40e9-9f9b-c43d113fba90
+		sourceColumn: "File Debrief"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Complete Final Proposal'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: ae2a9e0f-4214-4d51-b554-7e764ab383d8
+		sourceColumn: "Complete Final Proposal"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Initial Communication'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 5fee6096-d47a-4c68-8aad-168551821fa6
+		sourceColumn: "Initial Communication"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Private'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 1a88455b-2176-4e54-951f-92d4f572af24
+		sourceColumn: "Is Private"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Revenue System Calculated'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 30e135e3-958b-4c07-9a26-9fded84899c8
+		sourceColumn: "Is Revenue System Calculated"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Need
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 0042f668-b473-488c-bdd8-3bc78b7a42ef
+		sourceColumn: Need
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Rating'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 7a01eec4-b785-4b6a-a6c3-06cff0f2fdbf
+		sourceColumn: "Opportunity Rating"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Participates In Workflow'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: defc20dd-ab1d-484b-95f7-4724ad81aa59
+		sourceColumn: "Participates In Workflow"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pricing Error'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: dad468a5-7421-4b50-99e0-6d6f5291b877
+		sourceColumn: "Pricing Error"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Priority
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: cf1348e0-415b-42d8-aee2-edddc0247c9a
+		sourceColumn: Priority
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Purchase Process'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: c98e516b-2100-4a31-9719-cbe8aebcd753
+		sourceColumn: "Purchase Process"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Purchase Time Frame'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: e8c33953-7ba5-4824-a302-ba943e23e619
+		sourceColumn: "Purchase Time Frame"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Stage'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 2905d484-cb97-4663-b2ba-e36666414b7c
+		sourceColumn: "Sales Stage"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Present Proposal'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 82960fa7-1159-417a-bf72-6589c78bd094
+		sourceColumn: "Present Proposal"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Capture Proposal Feedback'
+		dataType: Boolean
+		formatString:= "TRUE";"TRUE";"FALSE"
+		isDataTypeInferred: false
+		lineageTag: 3d066df5-a559-4eab-86c6-cc265ced363e
+		sourceColumn: "Capture Proposal Feedback"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Proposed Solution'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: e06969f4-0f1b-4e90-af94-cc397f418189
+		sourceColumn: "Proposed Solution"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pursuit Decision'
+		dataType: Boolean
+		formatString:= "TRUE";"TRUE";"FALSE"
+		isDataTypeInferred: false
+		lineageTag: e81b996d-ce29-4fd6-9df3-dfdb5a5ca80f
+		sourceColumn: "Pursuit Decision"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Qualification Comments'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: b0c14d2c-57e2-4643-81f6-0f12063206f5
+		sourceColumn: "Qualification Comments"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Quote Comments'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: e0257a05-c00f-47e3-b2f5-e5eb72441e30
+		sourceColumn: "Quote Comments"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Send Thank You Note'
+		dataType: Boolean
+		formatString:= "TRUE";"TRUE";"FALSE"
+		isDataTypeInferred: false
+		lineageTag: ecd69258-37c9-4abe-b400-cfaa2568be78
+		sourceColumn: "Send Thank You Note"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: cda0242f-107b-43e8-aa24-a6c1b61b2b87
+		sourceColumn: Status
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Step Name'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: d2e96fc9-5015-4508-8315-4a3469f2fba4
+		sourceColumn: "Step Name"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Timeline
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 12a94423-6b25-47b4-9d7b-16b7d54f1829
+		sourceColumn: Timeline
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Present Final Proposal'
+		dataType: Boolean
+		formatString:= "TRUE";"TRUE";"FALSE"
+		isDataTypeInferred: false
+		lineageTag: bbc049f4-07a0-4e86-ac77-1598375d9326
+		sourceColumn: "Present Final Proposal"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time Spent By Me On Email and Meetings'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 55d4c825-e8b6-4195-bbd5-a7dbaad81f03
+		sourceColumn: "Time Spent By Me On Email and Meetings"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Forecast Category'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 891cf9e0-121d-458d-aa85-438bfdc315c3
+		sourceColumn: "Forecast Category"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Score'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: a694003f-5c07-4a2f-bca1-55f3d37dedc3
+		sourceColumn: "Opportunity Score"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Grade'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 88b33bab-0b9a-4c74-b9c4-c24b6e8f099d
+		sourceColumn: "Opportunity Grade"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Score Reasons'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: ea7fc2f2-1d38-4285-ab30-31572ed08d65
+		sourceColumn: "Score Reasons"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Score History'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 2017ebb1-99d6-4f4d-a78c-8628a4b191db
+		sourceColumn: "Score History"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Score Trend'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: e0f185ce-f818-44ec-8073-da52206cb86b
+		sourceColumn: "Opportunity Score Trend"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Type'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 6f06589c-28ea-472d-bc42-f5133651b8d8
+		sourceColumn: "Order Type"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_additionalresourcinginformation
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 028f4abf-2226-4882-8666-2093ca673512
+		sourceColumn: jt_additionalresourcinginformation
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'BPF Stage'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 52d57eb0-39f8-42a5-a99f-02e01ca40dcf
+		sortByColumn: 'BPF Stage Sort'
+		sourceColumn: "BPF Stage"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		changedProperty = SortByColumn
+
+	column jt_clientlcterminology
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: e6a82ad8-97f6-48bb-929b-25aac13b2408
+		sourceColumn: jt_clientlcterminology
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_clientstatusname
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: d03ee7ac-eac9-4219-bda9-6c5c91a08c00
+		sourceColumn: jt_clientstatusname
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_clienttype
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: a6d3c098-9e0b-466f-a1fc-d9d8bfa17e8d
+		sourceColumn: jt_clienttype
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_contractnumber
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 0096a9f3-d34b-4196-b4dc-e63665904a26
+		sourceColumn: jt_contractnumber
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Program'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 3408c68a-5528-4976-bcfe-405f15505a67
+		sourceColumn: "Customer Program"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_deliverylocation
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 1d143bbf-a163-4e91-8127-578a4fec87e4
+		sourceColumn: jt_deliverylocation
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_expensesauthorizedandlimitations
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 844ae9ca-f6cb-4aa6-bd08-fadfc8493fe4
+		sourceColumn: jt_expensesauthorizedandlimitations
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Firewall
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: fc675db1-6510-4b63-bc23-5fd551423ecc
+		sourceColumn: Firewall
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_level
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 77d7466d-53cd-41c0-9380-3ce8f9e7292b
+		sourceColumn: jt_level
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_leveldropdownname
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 426205de-0e65-44c4-8260-3c3cd2c69069
+		sourceColumn: jt_leveldropdownname
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_logisticspocphoneemail
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 6448eeb8-7f68-43fe-b158-05e53cbbd5cd
+		sourceColumn: jt_logisticspocphoneemail
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NE Client Source'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 45e13422-e4a2-42a0-87ce-36fa3fc7029c
+		sourceColumn: "NE Client Source"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_notes
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: e89aef02-06e7-423c-8714-2792af439989
+		sourceColumn: jt_notes
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_notestoaccounting
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 0b9f185a-5f7f-40e9-9dd6-470d6bb9766f
+		sourceColumn: jt_notestoaccounting
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_othertainformation1
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 6b0c4ebb-1f8f-42fb-a519-69b296866aeb
+		sourceColumn: jt_othertainformation1
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_ponumber
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: d5b2b2db-f617-43de-9dce-b3af93b9b5ca
+		sourceColumn: jt_ponumber
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_pricingtiername
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 71eb4ecc-56f7-4a5a-9557-f718e5b191f1
+		sourceColumn: jt_pricingtiername
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Programming Information'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 1d56cf12-6331-44a7-9f1e-657c4d43f66e
+		sourceColumn: "Programming Information"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Purchase Order Contract Number'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 0057e6ca-1321-4b77-a9c7-2b1609ec554c
+		sourceColumn: "Purchase Order Contract Number"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_resumetailoringinstructions
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 65efae60-932e-4d16-97d4-60a07539bca3
+		sourceColumn: jt_resumetailoringinstructions
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_solicitationnumber
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 1441ba0b-6eef-4c96-ac42-850672af1f27
+		sourceColumn: jt_solicitationnumber
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_trainer
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: a81a3e46-555f-4fa3-95a6-1e664411bbd0
+		sourceColumn: jt_trainer
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_trainingcourse
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: b838bd87-d956-46a4-b40c-3852fd43f43a
+		sourceColumn: jt_trainingcourse
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_ultimatecustomertypename
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 47c9bc4b-e1a6-419c-badd-6d0b1ca05194
+		sourceColumn: jt_ultimatecustomertypename
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: abcdfeeb-e661-4a21-bc6b-b2ea7661383d
+		sourceColumn: "Opportunity SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Originating Lead SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 909f77f1-07b0-461f-b575-e72677fea139
+		sourceColumn: "Originating Lead SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Bill Rate'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 0d3e25c5-72a2-4045-8f85-e2834341a021
+		sourceColumn: "Bill Rate"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Delivery Method'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: a8993cf6-a7cb-4459-86cb-20ed88589827
+		sourceColumn: "Delivery Method"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Exclusivity
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: b176932e-96ee-4e29-be0b-87c19f6eeaf8
+		sourceColumn: Exclusivity
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Supervisor SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 24a882d8-ef62-4c69-bd31-faedee22caf7
+		sourceColumn: "Supervisor SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 3bd39d94-cde5-4eda-b4df-5febb93ec341
+		sourceColumn: "Project SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity ID'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 33fd1491-d239-4df1-98b4-70d4d563dec5
+		sourceColumn: "Opportunity ID"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created On'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: 4c6eeaf3-8ab5-42cb-9533-03c52f338811
+		sourceColumn: "Created On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Classified
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 116fc406-2c0b-4e35-a762-4d5bbff99d47
+		sourceColumn: Classified
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_commercialname
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 411987fa-5dda-4f48-b46a-c28b45e9eeaa
+		sourceColumn: jt_commercialname
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Expected End Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: c68ed895-0a7c-49f6-9943-d8be763cc601
+		sourceColumn: "Expected End Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Expected Start Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: 4629df96-1690-4220-97ca-71f9f0dfb56f
+		sourceColumn: "Expected Start Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column jt_fedcivilianname
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 3dbaef05-2e6c-46b6-ac19-80577ba1c43c
+		sourceColumn: jt_fedcivilianname
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fed DOD'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: f873be7d-e252-4243-811f-7a4f271809b6
+		sourceColumn: "Fed DOD"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_internationalname
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 95f0a203-7133-43a5-b994-5b35e5e51e80
+		sourceColumn: jt_internationalname
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_laborcategoryname
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 9a8785a8-2351-41f1-a61c-4c8c4eacbe97
+		sourceColumn: jt_laborcategoryname
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lead Source'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 43ef05f9-5c41-4aca-b79c-508b460ecd7b
+		sourceColumn: "Lead Source"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NTE Hours'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: d6886aa2-f988-41ea-895d-701e6d8b9456
+		sourceColumn: "NTE Hours"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_originatingproject
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: d4ffe3e3-67cc-4d47-9c8b-dadfbf89d912
+		sourceColumn: jt_originatingproject
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Practice
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: fc436048-8b6c-4aa0-a962-25fd047ca93d
+		sourceColumn: Practice
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project POC ID'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 8ecc021c-c60c-43af-828c-af5af5c8deea
+		sourceColumn: "Project POC ID"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resourcing Status'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 091108ec-f58b-4f78-a261-478336b0f492
+		sourceColumn: "Resourcing Status"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resume Due Date'
+		dataType: DateTime
+		formatString:= General Date
+		isDataTypeInferred: false
+		lineageTag: 2d66b4c1-98c6-43a9-b978-c674b45980ad
+		sourceColumn: "Resume Due Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shipley Client Type'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: b81ab233-b45d-4ee5-a83c-71ab5104668d
+		sourceColumn: "Shipley Client Type"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column jt_statelocalgovernmentname
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: f2927ab1-a15d-4d92-8bb8-956005dee74e
+		sourceColumn: jt_statelocalgovernmentname
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Estimated Revenue Total'
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: a1413938-bf5b-4f00-ac0c-910915662347
+		sourceColumn: "Estimated Revenue Total"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Estimated Revenue Total Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: 03203201-f2f1-4e19-9e68-4806a90e4eaf
+		sourceColumn: "Estimated Revenue Total Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Days to Close Group' =
+		
+		    SWITCH(
+		        TRUE(),
+		        Opportunity[Finance Reviewed], BLANK(),
+		        AND([Opportunity Days to close] <= 7 , [Opportunity Days to close] > 0),"Within 7 Days",
+		        [Opportunity Days to close] < 0, "Overdue","Open"
+		        )
+
+		dataType: String
+		lineageTag: 9c02075a-5a97-4f0c-9699-bdae1eff6ce3
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Link' = "https://shipley.crm.dynamics.com/main.aspx?appid=e6195ff0-2706-ed11-82e4-000d3a573597&pagetype=entityrecord&etn=opportunity&id=" & Opportunity[Opportunity ID]
+		dataCategory: WebUrl
+		dataType: String
+		lineageTag: 62b20ab2-2f4b-406f-96e7-4fcab2d7ed70
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: c92d31df-54af-4b42-a642-a9a4f5d7dde4
+		sourceColumn: "Opportunity Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'BPF Stage Sort'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: bdc5f8d0-aa0b-4534-a868-437ea58d8f80
+		sourceColumn: "BPF Stage Sort"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Finance Reviewed'
+		dataType: Boolean
+		formatString:= "TRUE";"TRUE";"FALSE"
+		isDataTypeInferred: false
+		lineageTag: 1ccd2006-3418-41b5-aa5e-a9ed036c739d
+		sourceColumn: "Finance Reviewed"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

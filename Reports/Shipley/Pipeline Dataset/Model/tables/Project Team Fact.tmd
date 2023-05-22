@@ -1,0 +1,197 @@
+table 'Project Team Fact'
+	lineageTag: c4f52b5c-99b8-47b5-976e-749675da377f
+	ordinal: 24
+
+	partition 'Project Team Fact-cb79afdf-62d4-472c-b8ae-113863d07e86' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"f2b463bf-5fde-4afe-96ca-991c76bc280c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="f2b463bf-5fde-4afe-96ca-991c76bc280c"]}[Data],
+			    Account_ = #"f2b463bf-5fde-4afe-96ca-991c76bc280c"{[entity="Project Team",version=""]}[Data],
+			    #"Merged Queries" = Table.NestedJoin(Account_, {"Practice"}, #"Practice", {"Practice"}, "Practice.1", JoinKind.LeftOuter),
+			    #"Expanded Practice.1" = Table.ExpandTableColumn(#"Merged Queries", "Practice.1", {"Practice SK"}, {"Practice SK"})
+			in
+			    #"Expanded Practice.1"
+
+		queryGroup: Facts
+
+	column 'Created On'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: b6b03f5c-a219-4d56-b279-d176d1940afc
+		sourceColumn: "Created On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Resource Category'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: bb82183d-bf6e-4c53-a176-388d0e5a8610
+		sourceColumn: "Resource Category"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Completion Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: f7cba5d3-5f4d-460e-959f-b4f6f46c85f5
+		sourceColumn: "Completion Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Interview Completed'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 58a2bb5e-bb78-4381-98bb-d1eac0117f0e
+		sourceColumn: "Interview Completed"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Team SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: f5e9822f-7c07-41e0-b950-2aa9a056fb89
+		sourceColumn: "Project Team SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: ecef5be0-9c87-4e00-bffb-e2574ba0fd7a
+		sourceColumn: "Project SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Practice
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 3a39717a-8ac8-437d-b48d-2ec4b427435a
+		sourceColumn: Practice
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 0e910c76-e838-44ae-a947-4ebed434b8d5
+		sourceColumn: "Opportunity SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'End Customer SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 8d29d8e4-1f02-40b7-a1f0-0313fe2cca8d
+		sourceColumn: "End Customer SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Supervisor SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: b9337532-3fb3-47d6-b0fd-ae6bfb194684
+		sourceColumn: "Supervisor SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Person SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: fd03054c-3e1c-486d-9c8d-8d820f9be692
+		sourceColumn: "Sales Person SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 1ccdb7cc-6a6d-45a8-8476-d9136a5e2035
+		sourceColumn: "Account SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parent Contact SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 9d28185e-733d-44eb-8732-1add17cb40a9
+		sourceColumn: "Parent Contact SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Originating Lead SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 6741f9a3-b992-4981-9a6c-7e65c6c5c28b
+		sourceColumn: "Originating Lead SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Practice SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 141852a2-564b-49ce-a09d-6cfe01853b35
+		sourceColumn: "Practice SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Finish
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: 554a371f-eb23-4a36-bf5c-5c16f46ef7f3
+		sourceColumn: Finish
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Bookable Resource SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: dd7be57c-af18-4f77-b2cb-c87874c2dd12
+		sourceColumn: "Bookable Resource SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

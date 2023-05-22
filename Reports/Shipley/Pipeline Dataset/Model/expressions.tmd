@@ -1,0 +1,161 @@
+expression 'Date_Dim (Ref)' =
+	let
+	  #"*PARAMETERS*" = 1,
+	  YearsBack = 5,
+	  YearsForward = 5,
+	  DynamicStartDate = #date(Date.Year(DateTimeZone.FixedUtcNow()) - YearsBack,1,1),
+	  DynamicEndDate = #date(Date.Year(DateTimeZone.FixedUtcNow()) + YearsForward,12,31),
+	  Today = Date.From(DateTime.LocalNow()),
+	  FiscalYearStartMonth = 7,
+	  // This parameter determines the first year of this date dimension. Dates will begin on the 1st of January of the year written.
+	  FromYear = Date.Year(DynamicStartDate),
+	  // This parameter determines the last year of this date dimension. The final date of the table will be December 31st of the year written.
+	  ToYear = Date.Year(DynamicEndDate),
+	  // Use this parameter to set the month number that is the start of your organization's fiscal/financial year. (Example: If your fiscal year starts July, 7 should be written here.)
+	  StartofFiscalYear = FiscalYearStartMonth,
+	  // This parameter determines the day considered the first day of the week.
+	  firstDayofWeek = Day.Monday,
+	  // Clear depiction of the first day of your table.
+	  FromDate = DynamicStartDate,
+	  // Clear depiction of the last day of your table.
+	  ToDate = DynamicEndDate,
+	  #"*DATE TABLE*" = 1,
+	  Source = List.Dates(
+	    FromDate,
+	    Duration.Days(ToDate-FromDate)+1,
+	    #duration(1,0,0,0)
+	    ),
+	  #"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+	  #"Renamed Columns" = Table.RenameColumns(#"Converted to Table", {{"Column1", "Date"}}),
+	  #"Inserted Date Key" = Table.AddColumn(#"Renamed Columns", "Date Key", each Text.From(Date.Year([Date])) & Text.PadStart(Text.From(Date.Month([Date])),2,"0") & Text.PadStart(Text.From(Date.Day([Date])),2,"0"), type text),
+	  #"Changed Type" = Table.TransformColumnTypes(#"Inserted Date Key", {{"Date", type date}, {"Date Key", Int64.Type}}),
+	  #"Inserted Year" = Table.AddColumn(#"Changed Type", "Year", each Date.Year([Date]), Int64.Type),
+	  #"Inserted Start of Year" = Table.AddColumn(#"Inserted Year", "Start of Year", each Date.StartOfYear([Date]), type date),
+	  #"Inserted End of Year" = Table.AddColumn(#"Inserted Start of Year", "End of Year", each Date.EndOfYear([Date]), type date),
+	  #"Inserted Month" = Table.AddColumn(#"Inserted End of Year", "Month", each Date.Month([Date]), Int64.Type),
+	  #"Inserted Start of Month" = Table.AddColumn(#"Inserted Month", "Start of Month", each Date.StartOfMonth([Date]), type date),
+	  #"Inserted End of Month" = Table.AddColumn(#"Inserted Start of Month", "End of Month", each Date.EndOfMonth([Date]), type date),
+	  #"Inserted Days in Month" = Table.AddColumn(#"Inserted End of Month", "Days in Month", each Date.DaysInMonth([Date]), Int64.Type),
+	  #"Inserted Day" = Table.AddColumn(#"Inserted Days in Month", "Day", each Date.Day([Date]), Int64.Type),
+	  #"Inserted Day Name" = Table.AddColumn(#"Inserted Day", "Day Name", each Date.DayOfWeekName([Date]), type text),
+	  #"Inserted Day of Week" = Table.AddColumn(#"Inserted Day Name", "Day of Week", each Date.DayOfWeek([Date]), Int64.Type),
+	  #"Inserted Day of Year" = Table.AddColumn(#"Inserted Day of Week", "Day of Year", each Date.DayOfYear([Date]), Int64.Type),
+	  #"Inserted Month Name" = Table.AddColumn(#"Inserted Day of Year", "Month Name", each Date.MonthName([Date]), type text),
+	  #"Inserted Quarter" = Table.AddColumn(#"Inserted Month Name", "Quarter", each Date.QuarterOfYear([Date]), Int64.Type),
+	  #"Inserted Start of Quarter" = Table.AddColumn(#"Inserted Quarter", "Start of Quarter", each Date.StartOfQuarter([Date]), type date),
+	  #"Inserted End of Quarter" = Table.AddColumn(#"Inserted Start of Quarter", "End of Quarter", each Date.EndOfQuarter([Date]), type date),
+	  #"Inserted Week of Year" = Table.AddColumn(#"Inserted End of Quarter", "Week of Year", each Date.WeekOfYear([Date], firstDayofWeek), Int64.Type),
+	  #"Inserted Week of Month" = Table.AddColumn(#"Inserted Week of Year", "Week of Month", each Date.WeekOfMonth([Date], firstDayofWeek), Int64.Type),
+	  #"Inserted Start of Week" = Table.AddColumn(#"Inserted Week of Month", "Start of Week", each Date.StartOfWeek([Date], firstDayofWeek), type date),
+	  #"Inserted End of Week" = Table.AddColumn(#"Inserted Start of Week", "End of Week", each Date.EndOfWeek([Date], firstDayofWeek), type date),
+	  FiscalMonthBaseIndex = 13 - StartofFiscalYear,
+	  adjustedFiscalMonthBaseIndex = if(FiscalMonthBaseIndex>=12 or FiscalMonthBaseIndex<0) then 0 else FiscalMonthBaseIndex,
+	  #"Added Fiscal Base Date" = Table.AddColumn(#"Inserted End of Week", "FiscalBaseDate", each Date.AddMonths([Date], adjustedFiscalMonthBaseIndex), type date),
+	  #"Inserted Fiscal Year" = Table.AddColumn(#"Added Fiscal Base Date", "Fiscal Year", each Date.Year([FiscalBaseDate]), Int64.Type),
+	  #"Inserted Fiscal Quarter" = Table.AddColumn(#"Inserted Fiscal Year", "Fiscal Quarter", each Date.QuarterOfYear([FiscalBaseDate]), Int64.Type),
+	  #"Inserted Fiscal Month" = Table.AddColumn(#"Inserted Fiscal Quarter", "Fiscal Month", each Date.Month([FiscalBaseDate]), Int64.Type),
+	  #"Quarter Name" = Table.AddColumn(#"Inserted Fiscal Month", "Quarter Name", each Text.Combine({"Q", Text.From([Quarter], "en-US")}), type text),
+	  #"Fiscal Quarter Name" = Table.AddColumn(#"Quarter Name", "Fiscal Quarter Name", each Text.Combine({"Q", Text.From([Fiscal Quarter], "en-US")}), type text),
+	  #"Day Name Shortened" = Table.AddColumn(#"Fiscal Quarter Name", "Day Name Shortened", each Text.Start([Day Name], 3), type text),
+	  #"Month Name Shortened" = Table.AddColumn(#"Day Name Shortened", "Month Name Shortened", each Text.Start([Month Name], 3), type text),
+	  #"Month Year" = Table.AddColumn(#"Month Name Shortened", "Month Year", each Text.Combine({[Month Name Shortened], " ", Text.From([Year], "en-US")}), type text),
+	  #"Fiscal Month Year" = Table.AddColumn(#"Month Year", "Fiscal Month Year", each Text.Combine({[Month Name Shortened], " ", Text.From([Fiscal Year], "en-US")}), type text),
+	  #"Quarter Year" = Table.AddColumn(#"Fiscal Month Year", "Quarter Year", each Text.Combine({[Quarter Name], " ", Text.From([Year], "en-US")}), type text),
+	  #"Fiscal Quarter Year" = Table.AddColumn(#"Quarter Year", "Fiscal Quarter Year", each Text.Combine({[Fiscal Quarter Name], " ", Text.From([Fiscal Year], "en-US")}), type text),
+	  #"==Group Indexes==" = #"Fiscal Quarter Year",
+	  #"Grouped rows" = Table.Group(#"==Group Indexes==", {"Year", "Month"}, {{"Count", each Table.RowCount(_), Int64.Type}}),
+	  #"Add Month Year Index" = Table.AddIndexColumn(#"Grouped rows", "Month Year Index", 1, 1),
+	  #"Grouped rows 1" = Table.Group(#"Fiscal Quarter Year", {"Year", "Quarter"}, {{"Count", each Table.RowCount(_), Int64.Type}}),
+	  #"Add Quarter Year Index" = Table.AddIndexColumn(#"Grouped rows 1", "Quarter Year Index", 1, 1),
+	  #"Grouped rows 2" = Table.Group(#"Fiscal Quarter Year", {"Year", "Week of Year"}, {{"Count", each Table.RowCount(_), Int64.Type}}),
+	  #"Add Week Year Index" = Table.AddIndexColumn(#"Grouped rows 2", "Year Week Index", 1, 1),
+	  #"Merged Queries" = Table.NestedJoin(#"Fiscal Quarter Year", {"Year", "Month"}, #"Add Month Year Index", {"Year", "Month"}, "Month Year Table", JoinKind.LeftOuter),
+	  #"Merged Queries1" = Table.NestedJoin(#"Merged Queries", {"Year", "Quarter"}, #"Add Quarter Year Index", {"Year", "Quarter"}, "Quarter Year Table", JoinKind.LeftOuter),
+	  #"Merged Queries2" = Table.NestedJoin(#"Merged Queries1", {"Year", "Week of Year"}, #"Add Week Year Index", {"Year", "Week of Year"}, "Week Year Table", JoinKind.LeftOuter),
+	  #"Month Year Index" = Table.ExpandTableColumn(#"Merged Queries2", "Month Year Table", {"Month Year Index"}, {"Month Year Index"}),
+	  #"Quarter Year Index" = Table.ExpandTableColumn(#"Month Year Index", "Quarter Year Table", {"Quarter Year Index"}, {"Quarter Year Index"}),
+	  #"Week Year Index" = Table.ExpandTableColumn(#"Quarter Year Index", "Week Year Table", {"Year Week Index"}, {"Year Week Index"}),
+	  #"Added Start of Fiscal Year" = Table.AddColumn(#"Week Year Index", "Start of Fiscal Year", each #date((if [Month] < Number.From(StartofFiscalYear) then [Year] - 1 else [Year]), Number.From(StartofFiscalYear), 1), type date),
+	  #"Removed Columns" = Table.RemoveColumns(#"Added Start of Fiscal Year", {"FiscalBaseDate"}),
+	  #"Is Past" = Table.AddColumn(#"Removed Columns", "Is Past", each if [Date] < DateTime.Date(DateTime.LocalNow()) then true else false, type logical),
+	  #"Added Is Current Month" = Table.AddColumn(#"Is Past", "Is Current Month", each if Date.StartOfMonth(Date.From(DateTime.LocalNow())) = [Start of Month] then true else false, type logical),
+	  #"Added Is Current Quarter" = Table.AddColumn(#"Added Is Current Month", "Is Current Quarter", each if Date.StartOfQuarter(Date.From(DateTime.LocalNow())) = [Start of Quarter] then true else false, type logical),
+	  #"Added Is Current Year" = Table.AddColumn(#"Added Is Current Quarter", "Is Current Year", each if [Year] = Date.Year(DateTime.LocalNow()) then true else false, type logical),
+	  #"Added Is Current Fiscal Year" = Table.AddColumn(#"Added Is Current Year", "Is Current Fiscal Year", each if [Fiscal Year] = (if [Month] < Number.From(StartofFiscalYear) then Date.Year(DateTime.LocalNow()) else Date.Year(DateTime.LocalNow()) + 1) then true else false, type logical),
+	  #"Added Month Offset" = Table.AddColumn(#"Added Is Current Fiscal Year", "Month Offset", each (([Year]-Date.Year(Today))*12)
+	+([Month]-Date.Month(Today)), Int64.Type),
+	  #"Added Quarter Offset" = Table.AddColumn(#"Added Month Offset", "Quarter Offset", each (([Year]-Date.Year(Today))*4)
+	+([Quarter]-Date.QuarterOfYear(Today)), Int64.Type),
+	  #"Added Year Offset" = Table.AddColumn(#"Added Quarter Offset", "Year Offset", each [Year]-Date.Year(Today), Int64.Type),
+	  #"Added is Current Rolling Year" = Table.AddColumn(#"Added Year Offset", "Is Current Rolling Year", each if [Month Offset] = 0 then true else if [Month Offset] = -1 then true else if [Month Offset] = -2 then true else if [Month Offset] = -3 then true else if [Month Offset] = -4 then true else if [Month Offset] = -5 then true else if [Month Offset] = -6 then true else if [Month Offset] = -7 then true else if [Month Offset] = -8 then true else if [Month Offset] = -9 then true else if [Month Offset] = -10 then true else if [Month Offset] = -11 then true else false, type logical),
+	  #"Add Is Weekend" = Table.AddColumn(#"Added is Current Rolling Year", "Is Weekend", each if [Day of Week] = 0 then true else if [Day of Week] = 6 then true else false, type logical),
+	  #"Replace errors" = Table.ReplaceErrorValues(#"Add Is Weekend", {{"Is Current Rolling Year", null}})
+	in
+	  #"Replace errors"
+
+	lineageTag: 2cc8ca53-abdc-48e2-80ea-d0b7ac110db0
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Start of Daylight Savings' =
+	let
+	  Source = #"Date_Dim (Ref)",
+	  #"Filtered rows" = Table.SelectRows(Source, each ([Month] = 3) and ([Day of Week] = 0) and ([Week of Month] = 2)),
+	  #"Removed other columns" = Table.SelectColumns(#"Filtered rows", {"Date", "Year"}),
+	  #"Renamed columns" = Table.RenameColumns(#"Removed other columns", {{"Date", "DST Start"}}),
+	  #"Reordered columns" = Table.ReorderColumns(#"Renamed columns", {"Year", "DST Start"})
+	in
+	  #"Reordered columns"
+
+	lineageTag: f6082295-5f52-4e86-814a-f3d84bc54f88
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'End of Daylight Savings' =
+	let
+	  Source = #"Date_Dim (Ref)",
+	  #"Filtered rows" = Table.SelectRows(Source, each ([Month] = 11) and ([Day of Week] = 0) and ([Week of Month] = 1)),
+	  #"Removed other columns" = Table.SelectColumns(#"Filtered rows", {"Date", "Year"}),
+	  #"Renamed columns" = Table.RenameColumns(#"Removed other columns", {{"Date", "DST End"}})
+	in
+	  #"Renamed columns"
+
+	lineageTag: f2d5e4a0-8125-405e-83d1-89c67543ba06
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Daylight Savings (Ref)' =
+	let
+	  Source = Table.NestedJoin(#"Start of Daylight Savings", {"Year"}, #"End of Daylight Savings", {"Year"}, "End of Daylight Savings", JoinKind.LeftOuter),
+	  #"Expanded End of Daylight Savings" = Table.ExpandTableColumn(Source, "End of Daylight Savings", {"DST End"}, {"DST End"})
+	in
+	  #"Expanded End of Daylight Savings"
+
+	lineageTag: cb8d06a7-d91d-4510-8a2d-bc344711c0b6
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Legacy Finance Reviewed' =
+	let
+	    Source = OData.Feed("https://shipley.crm.dynamics.com/api/data/v9.0/", null, [Implementation="2.0"]),
+	    opportunities_table = Source{[Name="opportunities",Signature="table"]}[Data],
+	    #"Removed Other Columns" = Table.SelectColumns(opportunities_table,{"opportunityid", "jt_financereviewed"}),
+	    #"Uppercased Text" = Table.TransformColumns(#"Removed Other Columns",{{"opportunityid", Text.Upper, type text}})
+	in
+	    #"Uppercased Text"
+
+	lineageTag: 2e093ef9-7914-4757-8f58-dfff09e1dc49
+	queryGroup: Legacy
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

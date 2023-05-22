@@ -1,0 +1,154 @@
+{
+  "Commands": [
+    {
+      "SemanticQueryDataShapeCommand": {
+        "Query": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "o",
+              "Entity": "Opportunity",
+              "Type": 0
+            },
+            {
+              "Name": "m",
+              "Entity": "Measure",
+              "Type": 0
+            }
+          ],
+          "Select": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "o"
+                  }
+                },
+                "Property": "Sales Stage"
+              },
+              "Name": "Opportunity.Sales Stage",
+              "NativeReferenceName": "Sales Stage"
+            },
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "o"
+                  }
+                },
+                "Property": "Finance Reviewed"
+              },
+              "Name": "Opportunity.Finance Reviewed",
+              "NativeReferenceName": "Finance Reviewed"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Opportunity Qty"
+              },
+              "Name": "Measure.Opportunity Qty",
+              "NativeReferenceName": "Opportunity Qty"
+            },
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "o"
+                  }
+                },
+                "Property": "Opportunity ID"
+              },
+              "Name": "Opportunity.Opportunity ID",
+              "NativeReferenceName": "Opportunity ID"
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "o"
+                          }
+                        },
+                        "Property": "Sales Stage"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Close Won'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "o"
+                          }
+                        },
+                        "Property": "Finance Reviewed"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "false"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "Binding": {
+          "Primary": {
+            "Groupings": [
+              {
+                "Projections": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "Subtotal": 1
+              }
+            ]
+          },
+          "DataReduction": {
+            "DataVolume": 3,
+            "Primary": {
+              "Window": {
+                "Count": 500
+              }
+            }
+          },
+          "Version": 1
+        },
+        "ExecutionMetricsKind": 1
+      }
+    }
+  ]
+}

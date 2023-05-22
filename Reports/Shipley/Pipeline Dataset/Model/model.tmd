@@ -1,0 +1,30 @@
+model Model
+	compatibilityLevel: 1567
+	culture: en-US
+	dataAccessOptions:
+		legacyRedirects
+		returnErrorValuesAsNull
+	defaultPowerBIDataSourceVersion: PowerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-US
+
+queryGroup Facts
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup Dimensions
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup Legacy
+
+	annotation PBI_QueryGroupOrder = 2
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.116.1145.0 (23.04)
+
+annotation PBI_QueryOrder = ["Calendar","Account","End Customer","Contact","Bookable Resource","Supervisor","Sales Person | Group","Measure","Actuals","Goal","Budget","Project Fact","Project Task Fact","Opportunity Fact","Consultant Request Fact","Project","Consultant Request","Opportunity","Project Task","Practice","Time Entry Fact","Time Entry","Labor Category","Date_Dim (Ref)","Start of Daylight Savings","End of Daylight Savings","Daylight Savings (Ref)","Project Team Fact","Opportunity History","Legacy Finance Reviewed"]
+
+annotation __TEdtr = 1
+

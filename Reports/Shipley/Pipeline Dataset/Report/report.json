@@ -1,0 +1,25 @@
+{
+  "id": 7532095,
+  "layoutOptimization": 0,
+  "publicCustomVisuals": [],
+  "reportId": 2749805,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "id": 9852927,
+        "items": [
+          {
+            "id": 88108086,
+            "name": "CY22SU11",
+            "path": "BaseThemes/CY22SU11.json",
+            "resourcePackageId": 9852927,
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ]
+}

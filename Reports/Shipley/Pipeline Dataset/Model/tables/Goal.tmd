@@ -1,0 +1,71 @@
+table Goal
+	lineageTag: 2f813ca1-a7d8-4abc-a9dc-fc3a1d04429e
+	ordinal: 10
+
+	partition 'Goal-3a1195f8-7e64-4930-969e-698729a90041' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"bc3b7432-52fb-4c89-8486-99fb169eac7c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="bc3b7432-52fb-4c89-8486-99fb169eac7c"]}[Data],
+			    Goals_ = #"bc3b7432-52fb-4c89-8486-99fb169eac7c"{[entity="Goals",version=""]}[Data],
+			    #"Filtered Rows" = Table.SelectRows(Goals_, each ([Type] = "Sales Goal")),
+			    #"Merged Queries" = Table.NestedJoin(#"Filtered Rows", {"Practice"}, #"Practice", {"Practice"}, "Practice.1", JoinKind.LeftOuter),
+			    #"Expanded Practice.1" = Table.ExpandTableColumn(#"Merged Queries", "Practice.1", {"Practice SK"}, {"Practice SK"}),
+			    #"Merged Queries1" = Table.NestedJoin(#"Expanded Practice.1", {"Employee ID"}, #"Sales Person | Group", {"Employee ID"}, "Sales Person | Group", JoinKind.LeftOuter),
+			    #"Expanded Sales Person | Group" = Table.ExpandTableColumn(#"Merged Queries1", "Sales Person | Group", {"Sales Person SK"}, {"Sales Person SK"}),
+			    #"Removed Columns" = Table.RemoveColumns(#"Expanded Sales Person | Group",{"First Name", "Last Name", "Initials", "Practice", "Type", "Employee ID"})
+			in
+			    #"Removed Columns"
+
+		queryGroup: Facts
+
+	column Month
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: 49f6bbd6-4544-491e-8b7e-552f6e27e6cc
+		sourceColumn: Month
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Goal
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: bb5d5562-b836-4f9a-bb42-47ed74745311
+		sourceColumn: Goal
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Practice SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: e3a90392-8fe1-44ab-8897-9e56b5bfb40f
+		sourceColumn: "Practice SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Person SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 4ef9ad0e-324b-4bb4-bf98-75f0e0ba1f1d
+		sourceColumn: "Sales Person SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

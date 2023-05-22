@@ -1,0 +1,128 @@
+table Supervisor
+	lineageTag: a4d6ccaa-f37c-44c3-bfd8-e47008b93922
+	ordinal: 7
+
+	partition 'Supervisor-47035c1b-82a9-4e8b-ad00-183ccd1dc118' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"f2b463bf-5fde-4afe-96ca-991c76bc280c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="f2b463bf-5fde-4afe-96ca-991c76bc280c"]}[Data],
+			    #"System User_" = #"f2b463bf-5fde-4afe-96ca-991c76bc280c"{[entity="Supervisor (EQM)",version=""]}[Data],
+			    #"Removed Other Columns" = Table.SelectColumns(#"System User_",{"User ID", "User", "Email", "Job Title", "Created On", "Disabled Reason", "Modified On", "Employee ID", "Is Disabled", "Skills", "User SK"}),
+			    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"User", "Supervisor"}, {"User SK", "Supervisor SK"}})
+			in
+			    #"Renamed Columns"
+
+		queryGroup: Dimensions
+
+	column 'Supervisor SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: ddff8ab6-825e-4492-80bd-45827ec365cd
+		sourceColumn: "Supervisor SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'User ID'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 8608c467-f9fc-429c-8196-955b09ee9a23
+		sourceColumn: "User ID"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Supervisor
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 54dc1dbb-5777-44ee-8531-8f4786ffa6fb
+		sourceColumn: Supervisor
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 33442936-2489-4c69-9327-2d6f05adea4b
+		sourceColumn: Email
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Job Title'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: eae15a96-55f0-48d0-bba7-694076442b65
+		sourceColumn: "Job Title"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created On'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: 2f8c9ba8-ec0e-4880-94e2-b2353ada10ab
+		sourceColumn: "Created On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Disabled Reason'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 88ef8fb3-fb5f-4004-a563-5f097066f3af
+		sourceColumn: "Disabled Reason"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Modified On'
+		dataType: DateTime
+		formatString:= General Date
+		isDataTypeInferred: false
+		lineageTag: 46f21c54-c939-4c13-8b33-a2c970e3e4a4
+		sourceColumn: "Modified On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee ID'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 85d01fee-091d-4a77-b347-67766bfa874e
+		sourceColumn: "Employee ID"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Disabled'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 3dbb9a77-506e-4ea4-be27-59440f1b97fd
+		sourceColumn: "Is Disabled"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Skills
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: dc2e3c88-442a-4ba3-9e66-f472c8241c91
+		sourceColumn: Skills
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

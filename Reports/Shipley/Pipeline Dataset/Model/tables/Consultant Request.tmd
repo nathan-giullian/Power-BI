@@ -1,0 +1,208 @@
+table 'Consultant Request'
+	lineageTag: 7e042e5a-a17c-4854-9940-119f0d295def
+	ordinal: 14
+
+	partition 'Consultant Request-8bc08ba8-3204-4c45-b8c3-3aaf5a080cf9' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"f2b463bf-5fde-4afe-96ca-991c76bc280c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="f2b463bf-5fde-4afe-96ca-991c76bc280c"]}[Data],
+			    #"Consultant Request_" = #"f2b463bf-5fde-4afe-96ca-991c76bc280c"{[entity="Consultant Request",version=""]}[Data],
+			    #"Removed Columns" = Table.RemoveColumns(#"Consultant Request_",{"Created On", "Account SK", "End Customer SK", "Bookable Resource SK", "Owner ID", "Labor Category ID", "Hourly Bill Rate", "Hourly Pay Rate", "Hours", "Project ID", "Opportunity ID", "Project POC ID", "Resource ID", "Resulting Project Task ID", "Practice", "Supervisor SK", "Sales Person SK", "Parent Contact SK", "Labor Category SK", "User ID", "Supervisor Name", "Original Request", "RCR", "Sales Contact Name", "Sales Contact Email", "Contact ID", "Contact ID 1", "Division ID", "NTE Hours", "Original Consultant Request ID", "RCR ID"}),
+			    #"Removed Duplicates" = Table.Distinct(#"Removed Columns", {"Consultant Request ID"})
+			in
+			    #"Removed Duplicates"
+
+		queryGroup: Dimensions
+
+	column State
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 3c337047-aa93-41c1-a651-dabee56140c9
+		sourceColumn: State
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 0c6519ce-9463-4b2e-8514-b88b7ca625b8
+		sourceColumn: Status
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Consultant Request'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 91aa8035-e83c-45c7-85e7-e9cb4e8b155b
+		sourceColumn: "Consultant Request"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resourcing Request Notes'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 33cb7224-a550-44c5-9a12-dd165aa5a474
+		sourceColumn: "Resourcing Request Notes"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resourcing Request Notes 1'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 2383b57f-10bf-447c-90e0-cbec5928a7f3
+		sourceColumn: "Resourcing Request Notes 1"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Travel
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 421ef54f-868f-4185-8294-19ec0e3585f3
+		sourceColumn: Travel
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Firewall
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 7aaab32a-3085-492a-aa35-2f5484c03956
+		sourceColumn: Firewall
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Consultant Request SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: a5f6e26e-7905-4bff-b48c-0f021662e73d
+		sourceColumn: "Consultant Request SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'End Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: edc9adf3-5a1e-44ea-9d69-4e850e08a36e
+		sourceColumn: "End Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Opportunity Close Won'
+		dataType: Boolean
+		formatString:= "TRUE";"TRUE";"FALSE"
+		isDataTypeInferred: false
+		lineageTag: 7ef6b767-816f-4027-aafb-d7d468d3539e
+		sourceColumn: "Opportunity Close Won"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: fade4329-a5d9-4d16-a0b4-1a31976488dd
+		sourceColumn: "Project SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: ea9ced45-cd13-4a3e-837d-585871651f03
+		sourceColumn: "Opportunity SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Originating Lead SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: a56764f1-0dbe-4c9d-9753-d4a5d587cafa
+		sourceColumn: "Originating Lead SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Consultant Request ID'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: c320f540-ebca-41b4-9926-2b9db0532b17
+		sourceColumn: "Consultant Request ID"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Modified On'
+		dataType: DateTime
+		formatString:= General Date
+		isDataTypeInferred: false
+		lineageTag: 8db20807-169a-45e6-b545-852dc86fd2e7
+		sourceColumn: "Modified On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Consultant Email'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 128b4167-0a6a-4502-8344-237042e54dea
+		sourceColumn: "Consultant Email"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Revision'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 4ffbc085-1944-4c61-912e-5be36fe6fe38
+		sourceColumn: "Is Revision"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Date'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: d51a0190-95cd-4b7b-8045-e0f38de802d2
+		sourceColumn: "Start Date"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Project Task SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: dd55d62b-cf18-44a0-8603-fff660745865
+		sourceColumn: "Project Task SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

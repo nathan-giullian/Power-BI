@@ -1,0 +1,132 @@
+table 'Project Task'
+	lineageTag: e2ee7bc5-a1a7-4a80-a017-9aaa7b72b9c5
+	ordinal: 17
+
+	partition 'Project Task-c3c7fa78-ba93-403e-8193-8d2d78a7b2f4' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"f2b463bf-5fde-4afe-96ca-991c76bc280c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="f2b463bf-5fde-4afe-96ca-991c76bc280c"]}[Data],
+			    Project_ = #"f2b463bf-5fde-4afe-96ca-991c76bc280c"{[entity="Project Task",version=""]}[Data],
+			    #"Removed Other Columns" = Table.SelectColumns(Project_,{"Created On", "Modified On", "State", "Status", "Task", "Is Critical", "Project Task SK", "Consultant Request SK", "Project SK", "Opportunity SK", "Originating Lead SK"}),
+			    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns", {"Project Task SK"})
+			in
+			    #"Removed Duplicates"
+
+		queryGroup: Dimensions
+
+	column 'Created On'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: 84774b13-4e29-47e8-9be6-46b4471fb2e8
+		sourceColumn: "Created On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Modified On'
+		dataType: DateTime
+		formatString:= General Date
+		isDataTypeInferred: false
+		lineageTag: 1f0e6f3a-2f6a-4cec-b7a3-1f0b15d3cc69
+		sourceColumn: "Modified On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 077fadae-bb76-4583-9a89-186485e01cbf
+		sourceColumn: State
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 3a59972a-70e6-4cc1-bc86-e43ff8485d25
+		sourceColumn: Status
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Task
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 115d010f-8bb7-4be2-b6f6-f16ac49ea951
+		sourceColumn: Task
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Critical'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: e208f042-f9bb-47ed-a423-438d0768c656
+		sourceColumn: "Is Critical"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Task SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 688bede3-c4ae-4a78-a641-2b58baa6b216
+		sourceColumn: "Project Task SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Consultant Request SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 63f0b660-c894-46f1-a730-1e8b43a9b4ae
+		sourceColumn: "Consultant Request SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: b6c8efdd-9752-45bf-a4ba-d8e0d517c5a2
+		sourceColumn: "Project SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 81da890c-8641-4295-96fa-8b50a20c8d96
+		sourceColumn: "Opportunity SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Originating Lead SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 2edcb4fb-e07e-4b21-9760-4b63c3141b8d
+		sourceColumn: "Originating Lead SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

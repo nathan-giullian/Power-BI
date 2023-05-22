@@ -1,0 +1,137 @@
+table 'Bookable Resource'
+	lineageTag: c2386c01-901f-4acf-b79c-4449a11d6499
+	ordinal: 2
+
+	partition 'Bookable Resource-03e516e5-0bed-47cb-a9dc-051e08d9d392' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"f2b463bf-5fde-4afe-96ca-991c76bc280c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="f2b463bf-5fde-4afe-96ca-991c76bc280c"]}[Data],
+			    #"Bookable Resources_" = #"f2b463bf-5fde-4afe-96ca-991c76bc280c"{[entity="Bookable Resources",version=""]}[Data],
+			    #"Renamed Columns" = Table.RenameColumns(#"Bookable Resources_",{{"Name", "Bookable Resource"}})
+			in
+			    #"Renamed Columns"
+
+		queryGroup: Dimensions
+
+	column 'Bookable Resource'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 3fe7d996-e0ea-4652-aac2-12484d3709b7
+		sourceColumn: "Bookable Resource"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target Utilization'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 36b2cd04-027d-4d18-ae4b-04485027dc8c
+		sourceColumn: "Target Utilization"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Worker Type'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 544a0b5e-f39c-4c4d-9791-2a7275553411
+		sourceColumn: "Worker Type"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee ID'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 28a4e8c8-212b-43b4-b75d-773e0429372c
+		sourceColumn: "Employee ID"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Vendor ID'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: f26c73ab-e56e-4d61-81db-825f128b6581
+		sourceColumn: "Vendor ID"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Bookable Resource SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 86d24e02-bf45-430e-a5e7-d6c9a0f1433f
+		sourceColumn: "Bookable Resource SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Bookable Resource ID'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 5b200b3e-c1ad-4341-a3a5-44d1cc07b98b
+		sourceColumn: "Bookable Resource ID"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created On'
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: a1cf6b34-c54f-4400-a5c4-dd83078049a4
+		sourceColumn: "Created On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Modified On'
+		dataType: DateTime
+		formatString:= General Date
+		isDataTypeInferred: false
+		lineageTag: 1677b1cd-8d5f-4459-a33a-d70fd1c2cc51
+		sourceColumn: "Modified On"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resource Type'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: be0dd896-efad-487b-b768-85e4be7e6649
+		sourceColumn: "Resource Type"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vendor
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 794d85fb-3bba-4a25-833b-7dbbdfe30b67
+		sourceColumn: Vendor
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'User ID'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 835c6297-d3df-4d52-813c-292599ae9fdb
+		sourceColumn: "User ID"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

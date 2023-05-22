@@ -1,0 +1,349 @@
+table Actuals
+	lineageTag: 35bb66a0-b2c4-4504-8ab0-4dafd69f52a5
+	ordinal: 9
+
+	partition 'Actuals-67c95db2-f59a-4c95-9dfc-2edda3910047' = M
+		mode: Import
+		expression:=
+			let
+			    Source = PowerPlatform.Dataflows(null),
+			    Workspaces = Source{[Id="Workspaces"]}[Data],
+			    #"357986b6-e7aa-439d-944c-3cbce71839f2" = Workspaces{[workspaceId="357986b6-e7aa-439d-944c-3cbce71839f2"]}[Data],
+			    #"bc3b7432-52fb-4c89-8486-99fb169eac7c" = #"357986b6-e7aa-439d-944c-3cbce71839f2"{[dataflowId="bc3b7432-52fb-4c89-8486-99fb169eac7c"]}[Data],
+			    Actuals_ = #"bc3b7432-52fb-4c89-8486-99fb169eac7c"{[entity="Actuals",version=""]}[Data],
+			    #"Merged Queries" = Table.NestedJoin(Actuals_, {"PRJ #"}, #"Project Fact", {"Project Code"}, "Project Fact", JoinKind.LeftOuter),
+			    #"Expanded Project Fact" = Table.ExpandTableColumn(#"Merged Queries", "Project Fact", {"Project SK", "Opportunity SK", "End Customer SK", "Supervisor SK", "Sales Person SK", "Account SK", "Parent Contact SK", "Originating Lead SK", "Practice SK"}, {"Project SK", "Opportunity SK", "End Customer SK", "Supervisor SK", "Sales Person SK (Project)", "Account SK", "Parent Contact SK", "Originating Lead SK", "Practice SK"}),
+			    #"Merged Queries1" = Table.NestedJoin(#"Expanded Project Fact", {"Employee ID"}, #"Sales Person | Group", {"Employee ID"}, "Sales Person | Group", JoinKind.LeftOuter),
+			    #"Expanded Sales Person | Group" = Table.ExpandTableColumn(#"Merged Queries1", "Sales Person | Group", {"Sales Person SK"}, {"Sales Person SK (Actuals)"}),
+			    #"Added Conditional Column" = Table.AddColumn(#"Expanded Sales Person | Group", "Sales Person SK", each if [Practice] = "Global" then 3 else if [#"Sales Person SK (Project)"] = null then [#"Sales Person SK (Actuals)"] else [#"Sales Person SK (Project)"]),
+			    #"Changed Type" = Table.TransformColumnTypes(#"Added Conditional Column",{{"Sales Person SK", Int64.Type}}),
+			    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Sales Person SK (Project)", "Sales Person SK (Actuals)"}),
+			    #"Rounded Off" = Table.TransformColumns(#"Removed Columns",{{"CONT %", each Number.Round(_, 3), type number}}),
+			    #"Merged Queries2" = Table.NestedJoin(#"Rounded Off", {"Practice"}, Practice, {"Practice"}, "Practice.1", JoinKind.LeftOuter),
+			    #"Expanded Practice.1" = Table.ExpandTableColumn(#"Merged Queries2", "Practice.1", {"Practice SK"}, {"Practice.1.Practice SK"}),
+			    #"Added Conditional Column1" = Table.AddColumn(#"Expanded Practice.1", "New Practice SK", each if [Practice SK] = null then [Practice.1.Practice SK] else [Practice SK], Int64.Type),
+			    #"Removed Columns1" = Table.RemoveColumns(#"Added Conditional Column1",{"Practice SK", "Practice.1.Practice SK"}),
+			    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns1",{{"New Practice SK", "Practice SK"}})
+			in
+			    #"Renamed Columns"
+
+		queryGroup: Facts
+
+	column Date
+		dataType: DateTime
+		formatString:= Long Date
+		isDataTypeInferred: false
+		lineageTag: 032b06af-ef00-4919-aa20-54dc40d77bf8
+		sourceColumn: Date
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Client
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 929aa98d-1c92-4b10-a8c6-2e04818b6508
+		sourceColumn: Client
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column RVP
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 2830f582-eb9a-49b0-9ddb-a916898b3c97
+		sourceColumn: RVP
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column Practice
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: ec84d07a-d098-4859-b2f6-7ab6432e16a0
+		sourceColumn: Practice
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Credit Amt'
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: 5640fe26-830a-47df-91df-d3cad5d58069
+		sourceColumn: "Credit Amt"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'INV #'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: d9f4e680-140c-411d-bb4d-ddbd4d3bfbcf
+		sourceColumn: "INV #"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONSULTANT
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 48f4f305-86ee-41f4-a780-c3e4634dba49
+		sourceColumn: CONSULTANT
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PRJ #'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 32380d47-65f0-40b2-8e7c-065342caebe9
+		sourceColumn: "PRJ #"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'OLD ACCT'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 96470925-b8fc-48ee-8bd3-9bf4c03c6d3e
+		sourceColumn: "OLD ACCT"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOTAL
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: a1958898-cc46-454c-abeb-6b42a33757f1
+		sourceColumn: TOTAL
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SHIPPING
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: 2ac61906-d70f-4f89-8301-6d6f294b9135
+		sourceColumn: SHIPPING
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'EXP/PASS'
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: 6589d6d4-16f8-4206-af13-3307d11d4e7e
+		sourceColumn: EXP/PASS
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'EXP/NOT PASS'
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: f82fee82-8a28-4dcc-8238-00f2fcce4888
+		sourceColumn: "EXP/NOT PASS"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'CONT LAB'
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: 4ec2e8e7-bbf6-46c8-8595-f9116e180274
+		sourceColumn: "CONT LAB"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PAYROLL
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: 4fbdfe71-feab-4b55-b6b1-1835deca8484
+		sourceColumn: PAYROLL
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BENE
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: ee6eb0c0-b60d-4669-88fd-9393d4eb33bf
+		sourceColumn: BENE
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MAT
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: 4c5d6dfd-be0a-4d76-9d47-979aeeb21092
+		sourceColumn: MAT
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'C M'
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: c219a1aa-5549-4881-8212-4bbf7093fab8
+		sourceColumn: "C M"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'CONT %'
+		dataType: Double
+		isDataTypeInferred: false
+		lineageTag: 8ac54d98-4460-4b00-821f-30347d7fae9c
+		sourceColumn: "CONT %"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Territory ID'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: ce504e69-ea46-4fb5-8311-1f51a9c75601
+		sourceColumn: "Territory ID"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Territory Name'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: 3742536b-c47e-45cd-8c9a-ecc585fc357d
+		sourceColumn: "Territory Name"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 9c8af23f-e93d-45fb-9fe2-966014e9c3ea
+		sourceColumn: "Project SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opportunity SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 09810589-6517-4b8d-b59b-3d68e001709f
+		sourceColumn: "Opportunity SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'End Customer SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: dd59e494-24e9-4126-ab32-2d3211238698
+		sourceColumn: "End Customer SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Supervisor SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 229609b2-a0fe-4d60-b04a-816de1d48672
+		sourceColumn: "Supervisor SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Person SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: f3fd79ef-a6a5-4f27-863d-86f521b7b67c
+		sourceColumn: "Sales Person SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 6138406b-d0a3-4628-aa38-3a861312adfc
+		sourceColumn: "Account SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parent Contact SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 583600e8-040d-452b-b031-5016c25991e5
+		sourceColumn: "Parent Contact SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Originating Lead SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: b14214cb-f5bf-4f5f-86f5-4930027f520e
+		sourceColumn: "Originating Lead SK"
+		summarizeBy: Sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee ID'
+		dataType: String
+		isDataTypeInferred: false
+		lineageTag: c375a735-fc2a-43e5-8317-061b2334c7ce
+		sourceColumn: "Employee ID"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Practice SK'
+		dataType: Int64
+		formatString:= 0
+		isDataTypeInferred: false
+		lineageTag: 58166640-83d4-4fd6-9e9e-01bea05cdb85
+		sourceColumn: "Practice SK"
+		summarizeBy: None
+
+		annotation SummarizationSetBy = Automatic
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
