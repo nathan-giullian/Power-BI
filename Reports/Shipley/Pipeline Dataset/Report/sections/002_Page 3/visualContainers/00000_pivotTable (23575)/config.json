@@ -21,12 +21,10 @@
           "active": true
         },
         {
-          "queryRef": "Calendar.Quarter Name",
-          "active": true
+          "queryRef": "Calendar.Quarter Name"
         },
         {
-          "queryRef": "Calendar.Month Year",
-          "active": true
+          "queryRef": "Calendar.Month Year"
         }
       ],
       "Values": [
@@ -216,7 +214,6 @@
                   }
                 }
               ],
-              "isToggled": true,
               "children": [
                 {
                   "identityValues": [
@@ -239,16 +236,6 @@
                   "isToggled": true
                 }
               ]
-            },
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "2024L"
-                  }
-                }
-              ],
-              "isToggled": true
             }
           ]
         }

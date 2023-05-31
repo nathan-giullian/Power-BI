@@ -6,13 +6,23 @@
           "Version": 2,
           "From": [
             {
-              "Name": "o",
-              "Entity": "Opportunity",
+              "Name": "s",
+              "Entity": "Sales Person | Group",
               "Type": 0
             },
             {
               "Name": "m",
               "Entity": "Measure",
+              "Type": 0
+            },
+            {
+              "Name": "o",
+              "Entity": "Opportunity History",
+              "Type": 0
+            },
+            {
+              "Name": "c",
+              "Entity": "Calendar",
               "Type": 0
             }
           ],
@@ -21,25 +31,13 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Source": "o"
+                    "Source": "s"
                   }
                 },
-                "Property": "Sales Stage"
+                "Property": "Sales Person | Group"
               },
-              "Name": "Opportunity.Sales Stage",
-              "NativeReferenceName": "Sales Stage"
-            },
-            {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Source": "o"
-                  }
-                },
-                "Property": "Finance Reviewed"
-              },
-              "Name": "Opportunity.Finance Reviewed",
-              "NativeReferenceName": "Finance Reviewed"
+              "Name": "Sales Person | Group.Sales Person | Group",
+              "NativeReferenceName": "Sales Person | Group"
             },
             {
               "Measure": {
@@ -48,10 +46,34 @@
                     "Source": "m"
                   }
                 },
-                "Property": "Opportunity Qty"
+                "Property": "All Bookings $"
               },
-              "Name": "Measure.Opportunity Qty",
-              "NativeReferenceName": "Opportunity Qty"
+              "Name": "Measure.All Bookings $",
+              "NativeReferenceName": "All Bookings $"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Bookings $"
+              },
+              "Name": "Measure.Bookings $",
+              "NativeReferenceName": "Bookings $"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Opp History Bookings $"
+              },
+              "Name": "Measure.Opp History Bookings $",
+              "NativeReferenceName": "Opp History Bookings $"
             },
             {
               "Column": {
@@ -60,10 +82,10 @@
                     "Source": "o"
                   }
                 },
-                "Property": "Opportunity ID"
+                "Property": "Id"
               },
-              "Name": "Opportunity.Opportunity ID",
-              "NativeReferenceName": "Opportunity ID"
+              "Name": "Opportunity History.Id",
+              "NativeReferenceName": "Id"
             }
           ],
           "Where": [
@@ -75,10 +97,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "o"
+                            "Source": "s"
                           }
                         },
-                        "Property": "Sales Stage"
+                        "Property": "Sales Person | Group"
                       }
                     }
                   ],
@@ -86,7 +108,7 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'Close Won'"
+                          "Value": "'Craig Palmer'"
                         }
                       }
                     ]
@@ -102,10 +124,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "o"
+                            "Source": "c"
                           }
                         },
-                        "Property": "Finance Reviewed"
+                        "Property": "Month Year"
                       }
                     }
                   ],
@@ -113,7 +135,7 @@
                     [
                       {
                         "Literal": {
-                          "Value": "false"
+                          "Value": "'Aug 2022'"
                         }
                       }
                     ]
@@ -131,7 +153,8 @@
                   0,
                   1,
                   2,
-                  3
+                  3,
+                  4
                 ],
                 "Subtotal": 1
               }

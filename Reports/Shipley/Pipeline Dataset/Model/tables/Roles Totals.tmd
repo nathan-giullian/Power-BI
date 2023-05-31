@@ -14,8 +14,6 @@ table 'Roles Totals'
 			)
 
 
-		calculationItem 'Number of Time Entries' = DISTINCTCOUNT('Time Entry Fact'[Hours])
-
 		calculationItem 'Current Week' =
 			    VAR CurrentDay = TODAY()-1*7
 			    VAR CurrentYear = YEAR(CurrentDay)
@@ -34,6 +32,7 @@ table 'Roles Totals'
 			    RETURN Result
 
 
+		/// Test Tooltip
 		calculationItem '3 Weeks Prior' =
 			    VAR CurrentDay = TODAY()-3*7
 			    VAR CurrentYear = YEAR(CurrentDay)
@@ -105,6 +104,8 @@ table 'Roles Totals'
 			    VAR Result = CALCULATE(SELECTEDMEASURE(), PreviousWeek)
 			    RETURN Result
 
+
+		calculationItem 'Hours to Date' = SELECTEDMEASURE ()
 
 	column Name
 		dataType: String

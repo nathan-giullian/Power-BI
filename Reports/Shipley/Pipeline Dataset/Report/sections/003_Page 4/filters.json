@@ -11,6 +11,22 @@
         "Property": "Year Offset"
       }
     },
+    "type": "Categorical",
+    "howCreated": 1,
+    "objects": {}
+  },
+  {
+    "name": "Filterdf8c05779dfbb74cdd15",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "Calendar"
+          }
+        },
+        "Property": "Month Year"
+      }
+    },
     "filter": {
       "Version": 2,
       "From": [
@@ -32,7 +48,7 @@
                         "Source": "c"
                       }
                     },
-                    "Property": "Year Offset"
+                    "Property": "Month Year"
                   }
                 }
               ],
@@ -40,7 +56,7 @@
                 [
                   {
                     "Literal": {
-                      "Value": "0L"
+                      "Value": "'Aug 2022'"
                     }
                   }
                 ]

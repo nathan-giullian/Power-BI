@@ -17,31 +17,19 @@
     "projections": {
       "Values": [
         {
-          "queryRef": "Opportunity.Opportunity"
-        },
-        {
-          "queryRef": "Measure.Estimated Revenue $"
-        },
-        {
-          "queryRef": "Opportunity Fact.Close Probability"
-        },
-        {
-          "queryRef": "Measure.Close Probability"
-        },
-        {
-          "queryRef": "Measure.Weighted Estimated Revenue Pipeline $"
-        },
-        {
-          "queryRef": "Measure.Opportunity $"
-        },
-        {
-          "queryRef": "Opportunity Fact.Estimated Close Date"
-        },
-        {
-          "queryRef": "Opportunity Fact.Actual Close Date"
+          "queryRef": "Opportunity History.Id"
         },
         {
           "queryRef": "Sales Person | Group.Sales Person | Group"
+        },
+        {
+          "queryRef": "Measure.All Bookings $"
+        },
+        {
+          "queryRef": "Measure.Bookings $"
+        },
+        {
+          "queryRef": "Measure.Opp History Bookings $"
         }
       ]
     },
@@ -49,13 +37,8 @@
       "Version": 2,
       "From": [
         {
-          "Name": "o",
-          "Entity": "Opportunity Fact",
-          "Type": 0
-        },
-        {
-          "Name": "o1",
-          "Entity": "Opportunity",
+          "Name": "s",
+          "Entity": "Sales Person | Group",
           "Type": 0
         },
         {
@@ -64,8 +47,8 @@
           "Type": 0
         },
         {
-          "Name": "s",
-          "Entity": "Sales Person | Group",
+          "Name": "o",
+          "Entity": "Opportunity History",
           "Type": 0
         }
       ],
@@ -74,46 +57,10 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Source": "o"
-              }
-            },
-            "Property": "Actual Close Date"
-          },
-          "Name": "Opportunity Fact.Actual Close Date",
-          "NativeReferenceName": "Actual Close Date"
-        },
-        {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Source": "o1"
-              }
-            },
-            "Property": "Opportunity"
-          },
-          "Name": "Opportunity.Opportunity",
-          "NativeReferenceName": "Opportunity"
-        },
-        {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Source": "o"
-              }
-            },
-            "Property": "Estimated Close Date"
-          },
-          "Name": "Opportunity Fact.Estimated Close Date",
-          "NativeReferenceName": "Estimated Close Date"
-        },
-        {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
                 "Source": "s"
               }
             },
-            "Property": "Sales Person Name"
+            "Property": "Sales Person | Group"
           },
           "Name": "Sales Person | Group.Sales Person | Group",
           "NativeReferenceName": "Sales Person | Group"
@@ -125,10 +72,10 @@
                 "Source": "m"
               }
             },
-            "Property": "Opportunity $"
+            "Property": "All Bookings $"
           },
-          "Name": "Measure.Opportunity $",
-          "NativeReferenceName": "Opportunity $"
+          "Name": "Measure.All Bookings $",
+          "NativeReferenceName": "All Bookings $"
         },
         {
           "Measure": {
@@ -137,10 +84,10 @@
                 "Source": "m"
               }
             },
-            "Property": "Weighted Estimated Revenue Pipeline $"
+            "Property": "Bookings $"
           },
-          "Name": "Measure.Weighted Estimated Revenue Pipeline $",
-          "NativeReferenceName": "Weighted Estimated Revenue Pipeline $"
+          "Name": "Measure.Bookings $",
+          "NativeReferenceName": "Bookings $"
         },
         {
           "Measure": {
@@ -149,10 +96,10 @@
                 "Source": "m"
               }
             },
-            "Property": "Estimated Revenue $"
+            "Property": "Opp History Bookings $"
           },
-          "Name": "Measure.Estimated Revenue $",
-          "NativeReferenceName": "Estimated Revenue $"
+          "Name": "Measure.Opp History Bookings $",
+          "NativeReferenceName": "Opp History Bookings $"
         },
         {
           "Column": {
@@ -161,22 +108,10 @@
                 "Source": "o"
               }
             },
-            "Property": "Close Probability"
+            "Property": "Id"
           },
-          "Name": "Opportunity Fact.Close Probability",
-          "NativeReferenceName": "Close Probability"
-        },
-        {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Source": "m"
-              }
-            },
-            "Property": "Close Probability"
-          },
-          "Name": "Measure.Close Probability",
-          "NativeReferenceName": "Close Probability1"
+          "Name": "Opportunity History.Id",
+          "NativeReferenceName": "Id"
         }
       ]
     },

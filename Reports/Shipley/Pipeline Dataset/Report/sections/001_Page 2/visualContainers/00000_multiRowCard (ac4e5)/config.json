@@ -1,0 +1,81 @@
+{
+  "name": "ac4e5621467628fbd9d6",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 914.28571428571433,
+        "y": 411.42857142857144,
+        "z": 4000,
+        "width": 299.57446808510639,
+        "height": 299.57446808510639
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "multiRowCard",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "Measure.End of Current Week"
+        },
+        {
+          "queryRef": "Measure.End of Previous Week"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "m",
+          "Entity": "Measure",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "End of Current Week"
+          },
+          "Name": "Measure.End of Current Week",
+          "NativeReferenceName": "End of Current Week"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "End of Previous Week"
+          },
+          "Name": "Measure.End of Previous Week",
+          "NativeReferenceName": "End of Previous Week"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 1,
+          "Expression": {
+            "Measure": {
+              "Expression": {
+                "SourceRef": {
+                  "Source": "m"
+                }
+              },
+              "Property": "End of Current Week"
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "hasDefaultSort": true
+  }
+}

@@ -193,5 +193,3 @@ table 'Project Team Fact'
 
 	annotation PBI_ResultType = Table
 
-	annotation PBI_NavigationStepName = Navigation
-

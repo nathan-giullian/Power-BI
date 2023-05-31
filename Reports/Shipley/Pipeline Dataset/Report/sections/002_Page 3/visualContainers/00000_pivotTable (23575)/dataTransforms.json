@@ -1,0 +1,464 @@
+{
+  "projectionOrdering": {
+    "Rows": [
+      0,
+      3,
+      1
+    ],
+    "Values": [
+      5,
+      6,
+      2
+    ],
+    "Columns": [
+      4
+    ]
+  },
+  "projectionActiveItems": {
+    "Rows": [
+      {
+        "queryRef": "Calendar.Year",
+        "suppressConcat": false
+      }
+    ],
+    "Columns": [
+      {
+        "queryRef": "Sales Person | Group.Sales Person | Group",
+        "suppressConcat": false
+      }
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "Year",
+        "Name": "Calendar.Year",
+        "Type": 3,
+        "Format": "0"
+      },
+      {
+        "Restatement": "Month Year",
+        "Name": "Calendar.Month Year",
+        "Type": 2048
+      },
+      {
+        "Restatement": "Bookings $",
+        "Name": "Measure.Bookings $",
+        "Type": 1,
+        "Format": "\\$#,0;(\\$#,0);\\$#,0"
+      },
+      {
+        "Restatement": "Quarter Name",
+        "Name": "Calendar.Quarter Name",
+        "Type": 2048
+      },
+      {
+        "Restatement": "Sales Person | Group",
+        "Name": "Sales Person | Group.Sales Person | Group",
+        "Type": 2048
+      },
+      {
+        "Restatement": "All Bookings $",
+        "Name": "Measure.All Bookings $",
+        "Type": 1,
+        "Format": "\\$#,0;(\\$#,0);\\$#,0"
+      },
+      {
+        "Restatement": "Opp History Bookings $",
+        "Name": "Measure.Opp History Bookings $",
+        "Type": 3,
+        "Format": "\\$#,0;(\\$#,0);\\$#,0"
+      }
+    ],
+    "Filters": [
+      {
+        "type": 0,
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Sales Person | Group"
+              }
+            },
+            "Property": "Include"
+          }
+        }
+      },
+      {
+        "type": 2,
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Calendar"
+              }
+            },
+            "Property": "Year"
+          }
+        }
+      },
+      {
+        "type": 0,
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Calendar"
+              }
+            },
+            "Property": "Month Year"
+          }
+        }
+      },
+      {
+        "type": 2,
+        "expression": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measure"
+              }
+            },
+            "Property": "Bookings $"
+          }
+        }
+      },
+      {
+        "type": 0,
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Calendar"
+              }
+            },
+            "Property": "Quarter Name"
+          }
+        }
+      },
+      {
+        "type": 0,
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Sales Person | Group"
+              }
+            },
+            "Property": "Sales Person | Group"
+          }
+        }
+      },
+      {
+        "type": 2,
+        "expression": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measure"
+              }
+            },
+            "Property": "All Bookings $"
+          }
+        }
+      },
+      {
+        "type": 2,
+        "expression": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measure"
+              }
+            },
+            "Property": "Opp History Bookings $"
+          }
+        }
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Rows",
+          "Projection": 0,
+          "isActive": true
+        },
+        {
+          "Name": "Rows",
+          "Projection": 3,
+          "isActive": false
+        },
+        {
+          "Name": "Rows",
+          "Projection": 1,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 5,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 6,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 2,
+          "isActive": false
+        },
+        {
+          "Name": "Columns",
+          "Projection": 4,
+          "isActive": true
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "Year",
+      "format": "0",
+      "queryName": "Calendar.Year",
+      "roles": {
+        "Rows": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 260
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Calendar"
+            }
+          },
+          "Property": "Year"
+        }
+      }
+    },
+    {
+      "displayName": "Month Year",
+      "queryName": "Calendar.Month Year",
+      "roles": {
+        "Rows": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Calendar"
+            }
+          },
+          "Property": "Month Year"
+        }
+      }
+    },
+    {
+      "displayName": "Bookings $",
+      "format": "\\$#,0;(\\$#,0);\\$#,0",
+      "queryName": "Measure.Bookings $",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Measure"
+            }
+          },
+          "Property": "Bookings $"
+        }
+      }
+    },
+    {
+      "displayName": "Quarter Name",
+      "queryName": "Calendar.Quarter Name",
+      "roles": {
+        "Rows": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Calendar"
+            }
+          },
+          "Property": "Quarter Name"
+        }
+      }
+    },
+    {
+      "displayName": "Sales Person | Group",
+      "queryName": "Sales Person | Group.Sales Person | Group",
+      "roles": {
+        "Columns": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Sales Person | Group"
+            }
+          },
+          "Property": "Sales Person | Group"
+        }
+      }
+    },
+    {
+      "displayName": "All Bookings $",
+      "format": "\\$#,0;(\\$#,0);\\$#,0",
+      "queryName": "Measure.All Bookings $",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Measure"
+            }
+          },
+          "Property": "All Bookings $"
+        }
+      }
+    },
+    {
+      "displayName": "Opp History Bookings $",
+      "format": "\\$#,0;(\\$#,0);\\$#,0",
+      "queryName": "Measure.Opp History Bookings $",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 260
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Measure"
+            }
+          },
+          "Property": "Opp History Bookings $"
+        }
+      }
+    }
+  ],
+  "expansionStates": [
+    {
+      "roles": [
+        "Rows"
+      ],
+      "levels": [
+        {
+          "queryRefs": [
+            "Calendar.Year"
+          ],
+          "isCollapsed": true,
+          "identityKeys": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Calendar"
+                  }
+                },
+                "Property": "Year"
+              }
+            }
+          ],
+          "isPinned": true
+        },
+        {
+          "queryRefs": [
+            "Calendar.Quarter Name"
+          ],
+          "isCollapsed": true,
+          "identityKeys": [
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Calendar"
+                  }
+                },
+                "Property": "Quarter Name"
+              }
+            }
+          ],
+          "isPinned": true
+        },
+        {
+          "queryRefs": [
+            "Calendar.Month Year"
+          ],
+          "isCollapsed": true,
+          "isPinned": true
+        }
+      ],
+      "root": {
+        "identityValues": null,
+        "children": [
+          {
+            "identityValues": [
+              {
+                "Literal": {
+                  "Value": "2023L"
+                }
+              }
+            ],
+            "children": [
+              {
+                "identityValues": [
+                  {
+                    "Literal": {
+                      "Value": "'Q2'"
+                    }
+                  }
+                ],
+                "isToggled": true
+              },
+              {
+                "identityValues": [
+                  {
+                    "Literal": {
+                      "Value": "'Q1'"
+                    }
+                  }
+                ],
+                "isToggled": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

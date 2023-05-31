@@ -11,51 +11,8 @@
         "Property": "Estimated Close Date"
       }
     },
-    "filter": {
-      "Version": 2,
-      "From": [
-        {
-          "Name": "o",
-          "Entity": "Opportunity Fact",
-          "Type": 0
-        }
-      ],
-      "Where": [
-        {
-          "Condition": {
-            "Not": {
-              "Expression": {
-                "In": {
-                  "Expressions": [
-                    {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Source": "o"
-                          }
-                        },
-                        "Property": "Estimated Close Date"
-                      }
-                    }
-                  ],
-                  "Values": [
-                    [
-                      {
-                        "Literal": {
-                          "Value": "null"
-                        }
-                      }
-                    ]
-                  ]
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
     "type": "Categorical",
-    "howCreated": 0,
+    "howCreated": 1,
     "objects": {
       "general": [
         {
@@ -74,7 +31,7 @@
     "isHiddenInViewMode": false
   },
   {
-    "name": "Filterdf9faef2ab7295720753",
+    "name": "Filter4d009d4116ad2d0783a9",
     "expression": {
       "Column": {
         "Expression": {
@@ -82,7 +39,7 @@
             "Entity": "Sales Person | Group"
           }
         },
-        "Property": "Sales Person Name"
+        "Property": "Sales Person | Group"
       }
     },
     "filter": {
@@ -106,7 +63,7 @@
                         "Source": "s"
                       }
                     },
-                    "Property": "Sales Person Name"
+                    "Property": "Sales Person | Group"
                   }
                 }
               ],

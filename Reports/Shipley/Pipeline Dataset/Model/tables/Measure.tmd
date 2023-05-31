@@ -863,7 +863,7 @@ table Measure
 		formatString:= 0
 		lineageTag: e37f1082-7a71-48f2-bf3b-fcea1d741bf3
 
-	measure 'Opp History Bookings $' = SUM( 'Opportunity History'[Amount] )
+	measure 'Opp History Bookings $' = CALCULATE( SUM( 'Opportunity History'[Amount] ), 'Opportunity History'[StageName] = "Closed Won" )
 		formatString:= \$#,0;(\$#,0);\$#,0
 		lineageTag: b2853f14-c601-4c3a-9b1c-0c915a1acf2f
 
@@ -964,6 +964,52 @@ table Measure
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'End of Current Week' =
+		VAR CurrentDay = TODAY()-1*7
+		    VAR CurrentYear = YEAR(CurrentDay)
+		    VAR CurrentWeek = CALCULATE(MAX('Calendar'[Week of Year]),'Calendar'[Date] = CurrentDay)
+		    VAR PreviousWeek = CALCULATE(MAX('Calendar'[End of Week]),'Calendar'[Week of Year]=CurrentWeek,'Calendar'[Year]=CurrentYear)
+		    VAR Result = FORMAT(PreviousWeek, "MM/DD/YYYY")
+		    Return PreviousWeek
+
+		lineageTag: 3206181c-3e3c-4e62-8887-3c82ab9adb43
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'End of Previous Week' =
+		VAR CurrentDay = TODAY()-2*7
+		    VAR CurrentYear = YEAR(CurrentDay)
+		    VAR CurrentWeek = CALCULATE(MAX('Calendar'[Week of Year]),'Calendar'[Date] = CurrentDay)
+		    VAR PreviousWeek = CALCULATE(MAX('Calendar'[End of Week]),'Calendar'[Week of Year]=CurrentWeek,'Calendar'[Year]=CurrentYear)
+		    Var Result = FORMAT(PreviousWeek, "MM/DD/YYYY")
+		    Return PreviousWeek
+
+		lineageTag: 3701d94d-c598-490e-b6c2-b14402e00380
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Three Weeks Prior' =
+		VAR CurrentDay = TODAY()-3*7
+		    VAR CurrentYear = YEAR(CurrentDay)
+		    VAR CurrentWeek = CALCULATE(MAX('Calendar'[Week of Year]),'Calendar'[Date] = CurrentDay)
+		    VAR PreviousWeek = CALCULATE(MAX('Calendar'[End of Week]),'Calendar'[Week of Year]=CurrentWeek,'Calendar'[Year]=CurrentYear)
+		    Return FORMAT(PreviousWeek, "MM/DD/YYYY")
+
+		lineageTag: 49741f3f-1b9a-4ca2-ac05-b63729f9fa31
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Four Weeks Prior' =
+		VAR CurrentDay = TODAY()-4*7
+		    VAR CurrentYear = YEAR(CurrentDay)
+		    VAR CurrentWeek = CALCULATE(MAX('Calendar'[Week of Year]),'Calendar'[Date] = CurrentDay)
+		    VAR PreviousWeek = CALCULATE(MAX('Calendar'[End of Week]),'Calendar'[Week of Year]=CurrentWeek,'Calendar'[Year]=CurrentYear)
+		    Return FORMAT(PreviousWeek, "MM/DD/YYYY")
+
+		lineageTag: 99d73ffe-f728-40f5-b9c6-9203eb435324
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column 'Last Refresh MT'
 		dataType: DateTime
 		displayFolder: Hidden
@@ -993,6 +1039,4 @@ table Measure
 		changedProperty = IsHidden
 
 	annotation PBI_ResultType = Table
-
-	annotation PBI_NavigationStepName = Navigation
 
