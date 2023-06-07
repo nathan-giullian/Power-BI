@@ -4,8 +4,8 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 192.92095022596277,
-        "y": 503.45024277356549
+        "x": 0,
+        "y": 0
       },
       "nodes": [
         {
@@ -18,7 +18,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 15
+          "zIndex": 17
         },
         {
           "location": {
@@ -30,7 +30,7 @@
             "height": 301.05687040024168,
             "width": 234
           },
-          "zIndex": 16
+          "zIndex": 28
         },
         {
           "location": {
@@ -42,7 +42,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 17
+          "zIndex": 18
         },
         {
           "location": {
@@ -54,7 +54,7 @@
             "height": 295.84359075437214,
             "width": 234
           },
-          "zIndex": 18
+          "zIndex": 19
         },
         {
           "location": {
@@ -66,7 +66,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 19
+          "zIndex": 20
         },
         {
           "location": {
@@ -78,7 +78,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 26
+          "zIndex": 27
         },
         {
           "location": {
@@ -90,7 +90,7 @@
             "height": 293.09702115608616,
             "width": 234
           },
-          "zIndex": 25
+          "zIndex": 26
         },
         {
           "location": {
@@ -102,7 +102,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 13
+          "zIndex": 15
         },
         {
           "location": {
@@ -114,7 +114,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 14
+          "zIndex": 16
         },
         {
           "location": {
@@ -126,7 +126,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 24
+          "zIndex": 25
         },
         {
           "location": {
@@ -138,7 +138,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 22
+          "zIndex": 23
         },
         {
           "location": {
@@ -150,7 +150,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 20
+          "zIndex": 21
         },
         {
           "location": {
@@ -162,7 +162,7 @@
             "height": 308,
             "width": 234
           },
-          "zIndex": 12
+          "zIndex": 14
         },
         {
           "location": {
@@ -174,7 +174,7 @@
             "height": 292.94984106680772,
             "width": 234
           },
-          "zIndex": 11
+          "zIndex": 13
         },
         {
           "location": {
@@ -186,7 +186,7 @@
             "height": 280.33333333333337,
             "width": 234
           },
-          "zIndex": 21
+          "zIndex": 22
         },
         {
           "location": {
@@ -198,7 +198,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 10
+          "zIndex": 12
         },
         {
           "location": {
@@ -210,7 +210,7 @@
             "height": 291.11111111111109,
             "width": 222.88888888888869
           },
-          "zIndex": 23
+          "zIndex": 24
         },
         {
           "location": {
@@ -222,7 +222,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 6
+          "zIndex": 8
         },
         {
           "location": {
@@ -234,7 +234,7 @@
             "height": 299.5025980509995,
             "width": 234
           },
-          "zIndex": 7
+          "zIndex": 9
         },
         {
           "location": {
@@ -246,7 +246,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 8
+          "zIndex": 10
         },
         {
           "location": {
@@ -258,7 +258,7 @@
             "height": 306.38932199677089,
             "width": 234
           },
-          "zIndex": 9
+          "zIndex": 11
         },
         {
           "location": {
@@ -270,7 +270,7 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 4
+          "zIndex": 6
         },
         {
           "location": {
@@ -282,7 +282,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 5
+          "zIndex": 7
         },
         {
           "location": {
@@ -294,7 +294,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 2
+          "zIndex": 4
         },
         {
           "location": {
@@ -306,7 +306,7 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 3
+          "zIndex": 5
         },
         {
           "location": {
@@ -318,7 +318,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 1
+          "zIndex": 3
         },
         {
           "location": {
@@ -330,7 +330,7 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 1
         },
         {
           "location": {
@@ -342,7 +342,7 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 2
         }
       ],
       "name": "All tables",

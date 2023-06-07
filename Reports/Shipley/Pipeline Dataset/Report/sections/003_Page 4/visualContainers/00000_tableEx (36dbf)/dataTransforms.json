@@ -1,0 +1,264 @@
+{
+  "projectionOrdering": {
+    "Values": [
+      4,
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "Sales Person | Group",
+        "Name": "Sales Person | Group.Sales Person | Group",
+        "Type": 2048
+      },
+      {
+        "Restatement": "All Bookings $",
+        "Name": "Measure.All Bookings $",
+        "Type": 1,
+        "Format": "\\$#,0;(\\$#,0);\\$#,0"
+      },
+      {
+        "Restatement": "Bookings $",
+        "Name": "Measure.Bookings $",
+        "Type": 1,
+        "Format": "\\$#,0;(\\$#,0);\\$#,0"
+      },
+      {
+        "Restatement": "Opp History Bookings $",
+        "Name": "Measure.Opp History Bookings $",
+        "Type": 3,
+        "Format": "\\$#,0;(\\$#,0);\\$#,0"
+      },
+      {
+        "Restatement": "Id",
+        "Name": "Opportunity History.Id",
+        "Type": 2048
+      }
+    ],
+    "Filters": [
+      {
+        "type": 0,
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Opportunity Fact"
+              }
+            },
+            "Property": "Estimated Close Date"
+          }
+        }
+      },
+      {
+        "type": 0,
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Sales Person | Group"
+              }
+            },
+            "Property": "Sales Person | Group"
+          }
+        }
+      },
+      {
+        "type": 2,
+        "expression": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measure"
+              }
+            },
+            "Property": "All Bookings $"
+          }
+        }
+      },
+      {
+        "type": 2,
+        "expression": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measure"
+              }
+            },
+            "Property": "Bookings $"
+          }
+        }
+      },
+      {
+        "type": 2,
+        "expression": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measure"
+              }
+            },
+            "Property": "Opp History Bookings $"
+          }
+        }
+      },
+      {
+        "type": 0,
+        "expression": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Opportunity History"
+              }
+            },
+            "Property": "Id"
+          }
+        }
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Values",
+          "Projection": 4,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 0,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 1,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 2,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 3,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "Sales Person | Group",
+      "queryName": "Sales Person | Group.Sales Person | Group",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Sales Person | Group"
+            }
+          },
+          "Property": "Sales Person | Group"
+        }
+      }
+    },
+    {
+      "displayName": "All Bookings $",
+      "format": "\\$#,0;(\\$#,0);\\$#,0",
+      "queryName": "Measure.All Bookings $",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Measure"
+            }
+          },
+          "Property": "All Bookings $"
+        }
+      }
+    },
+    {
+      "displayName": "Bookings $",
+      "format": "\\$#,0;(\\$#,0);\\$#,0",
+      "queryName": "Measure.Bookings $",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 259
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Measure"
+            }
+          },
+          "Property": "Bookings $"
+        }
+      }
+    },
+    {
+      "displayName": "Opp History Bookings $",
+      "format": "\\$#,0;(\\$#,0);\\$#,0",
+      "queryName": "Measure.Opp History Bookings $",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 260
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Measure"
+            }
+          },
+          "Property": "Opp History Bookings $"
+        }
+      }
+    },
+    {
+      "displayName": "Id",
+      "queryName": "Opportunity History.Id",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Opportunity History"
+            }
+          },
+          "Property": "Id"
+        }
+      }
+    }
+  ]
+}

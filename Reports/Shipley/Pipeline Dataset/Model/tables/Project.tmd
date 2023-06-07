@@ -512,18 +512,18 @@ table Project
 	column 'Project Customer Name' =
 		
 		VAR CurrentProjectSK = [Project SK]
-		VAR AccountSK = CALCULATE( 
-		    MAX( 'Project Fact'[Account SK] ),
+		VAR EndCustSK = CALCULATE( 
+		    MAX( 'Project Fact'[End Customer SK] ),
 		    'Project Fact'[Project SK] = CurrentProjectSK
 		)
-		VAR OwningAccountName = CONCATENATE(
+		VAR OwningCustomerName = CONCATENATE(
 		    CALCULATE(
-		        SELECTEDVALUE( Account[Account] ),
-		        Account[Account SK] = AccountSK
+		        SELECTEDVALUE( 'End Customer'[End Customer Type] ),
+		        'End Customer'[End Customer SK] = EndCustSK
 		    ),
 		    " | "
 		)
-		VAR Result = CONCATENATE( OwningAccountName, Project[Project] )
+		VAR Result = CONCATENATE( OwningCustomerName, Project[Project] )
 		
 		Return Result
 
