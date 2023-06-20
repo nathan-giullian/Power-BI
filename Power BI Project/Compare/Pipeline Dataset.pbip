@@ -3,7 +3,7 @@
   "artifacts": [
     {
       "report": {
-        "path": "Standard Composite Model with Hybrid tables.Report"
+        "path": "Pipeline Dataset.Report"
       }
     }
   ],

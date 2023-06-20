@@ -287,12 +287,12 @@
             "queryGroup": "SQL",
             "source": {
               "expression": [
-                "let",
-                "    Source = Sql.Database(server, database),",
-                "    #\"dbo_Time Entries (DQ)\" = Source{[Schema=\"dbo\",Item=\"Time Entries (DQ)\"]}[Data],",
-                "    #\"Filtered Rows\" = Table.SelectRows(#\"dbo_Time Entries (DQ)\", each [msdyn_date] >= RangeStart and [msdyn_date] <= RangeEnd),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Filtered Rows\",{{\"msdyn_date\", type date}})",
-                "in",
+                "let\r",
+                "    Source = Sql.Database(server, database),\r",
+                "    #\"dbo_Time Entries (DQ)\" = Source{[Schema=\"dbo\",Item=\"Time Entries (DQ)\"]}[Data],\r",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"dbo_Time Entries (DQ)\", each [msdyn_date] >= RangeStart and [msdyn_date] <= RangeEnd),\r",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Filtered Rows\",{{\"msdyn_date\", type date}})\r",
+                "in\r",
                 "    #\"Changed Type\""
               ],
               "type": "m"
