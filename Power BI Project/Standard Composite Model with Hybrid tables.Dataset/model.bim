@@ -287,12 +287,12 @@
             "queryGroup": "SQL",
             "source": {
               "expression": [
-                "let\r",
-                "    Source = Sql.Database(server, database),\r",
-                "    #\"dbo_Time Entries (DQ)\" = Source{[Schema=\"dbo\",Item=\"Time Entries (DQ)\"]}[Data],\r",
-                "    #\"Filtered Rows\" = Table.SelectRows(#\"dbo_Time Entries (DQ)\", each [msdyn_date] >= RangeStart and [msdyn_date] <= RangeEnd),\r",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Filtered Rows\",{{\"msdyn_date\", type date}})\r",
-                "in\r",
+                "let",
+                "    Source = Sql.Database(server, database),",
+                "    #\"dbo_Time Entries (DQ)\" = Source{[Schema=\"dbo\",Item=\"Time Entries (DQ)\"]}[Data],",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"dbo_Time Entries (DQ)\", each [msdyn_date] >= RangeStart and [msdyn_date] <= RangeEnd),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Filtered Rows\",{{\"msdyn_date\", type date}})",
+                "in",
                 "    #\"Changed Type\""
               ],
               "type": "m"
@@ -423,6 +423,12 @@
             ],
             "expression": "AVERAGE( 'Hybrid Table'[jt_hours] )",
             "lineageTag": "7965e18a-f553-4d83-9730-678d5f9b18c4"
+          },
+          {
+            "name": "This is my measure",
+            "expression": "COUNTROWS( 'Hybrid Table' )",
+            "formatString": "0",
+            "lineageTag": "dada10ec-cf6e-43eb-8520-df6aad1ba021"
           }
         ],
         "partitions": [
