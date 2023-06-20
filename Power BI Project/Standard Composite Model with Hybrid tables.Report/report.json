@@ -1,0 +1,81 @@
+{
+  "config": "{\"version\":\"5.37\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY21SU03\",\"version\":\"5.19\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"slowDataSourceSettings\":{\"isCrossHighlightingDisabled\":false,\"isSlicerSelectionsButtonEnabled\":false,\"isFilterSelectionsButtonEnabled\":false,\"isFieldWellButtonEnabled\":false,\"isApplyAllButtonEnabled\":false},\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"exportDataMode\":1,\"allowDataPointLassoSelect\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY21SU03",
+            "path": "BaseThemes/CY21SU03.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{\"objects\":{\"pageRefresh\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"duration\":{\"expr\":{\"Literal\":{\"Value\":\"'PT5S'\"}}}}}]}}",
+      "displayName": "Hybrid Table",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection3cb9a3bc65d27893a9b5",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"3e371236810a718264d8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":16,\"z\":0,\"width\":1280,\"height\":344}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Calendar.Year\",\"active\":true},{\"queryRef\":\"Calendar SQL DQ.MonthNumberOfYear\",\"active\":true},{\"queryRef\":\"Calendar SQL DQ.Date\",\"active\":true}],\"Y\":[{\"queryRef\":\"Measures Table.Hybrid MTD Hours\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calendar SQL DQ\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Measures Table\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Year\"},\"Name\":\"Calendar.Year\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"MonthNumberOfYear\"},\"Name\":\"Calendar SQL DQ.MonthNumberOfYear\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Date\"},\"Name\":\"Calendar SQL DQ.Date\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Hybrid MTD Hours\"},\"Name\":\"Measures Table.Hybrid MTD Hours\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Year\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":5,\"Percent\":0}}}}}}}]}}}",
+          "filters": "[{\"name\":null,\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Calendar SQL DQ\"}},\"Property\":\"Year\"}},\"type\":\"Categorical\",\"howCreated\":2},{\"name\":null,\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Calendar SQL DQ\"}},\"Property\":\"MonthNumberOfYear\"}},\"type\":\"Categorical\",\"howCreated\":2}]",
+          "height": 344.00,
+          "width": 1280.00,
+          "x": 0.00,
+          "y": 16.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"d42260876159eb0266dd\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":384,\"z\":1000,\"width\":1280,\"height\":336}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Calendar SQL DQ.Year\",\"active\":true},{\"queryRef\":\"Calendar SQL DQ.MonthNumberOfYear\"},{\"queryRef\":\"Calendar SQL DQ.Date\"}],\"Y\":[{\"queryRef\":\"Measures Table.Hybrid Sum of Hours\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calendar SQL DQ\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Measures Table\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Year\"},\"Name\":\"Calendar SQL DQ.Year\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"MonthNumberOfYear\"},\"Name\":\"Calendar SQL DQ.MonthNumberOfYear\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Date\"},\"Name\":\"Calendar SQL DQ.Date\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Hybrid Sum of Hours\"},\"Name\":\"Measures Table.Hybrid Sum of Hours\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Year\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 336.00,
+          "width": 1280.00,
+          "x": 0.00,
+          "y": 384.00,
+          "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection4bc861673eff0192ce00",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"51e484ddd3ebc97ef45b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":384,\"z\":0,\"width\":1280,\"height\":336}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Calendar SQL DQ.Year\",\"active\":true},{\"queryRef\":\"Calendar SQL DQ.MonthNumberOfYear\"},{\"queryRef\":\"Calendar SQL DQ.Date\"}],\"Y\":[{\"queryRef\":\"Measures Table.DQ Sum of Hours\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calendar SQL DQ\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Measures Table\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Year\"},\"Name\":\"Calendar SQL DQ.Year\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"MonthNumberOfYear\"},\"Name\":\"Calendar SQL DQ.MonthNumberOfYear\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Date\"},\"Name\":\"Calendar SQL DQ.Date\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"DQ Sum of Hours\"},\"Name\":\"Measures Table.DQ Sum of Hours\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Year\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 336.00,
+          "width": 1280.00,
+          "x": 0.00,
+          "y": 384.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"f77437748be6feacf167\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":16,\"z\":1000,\"width\":1280,\"height\":344}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Calendar.Year\",\"active\":true},{\"queryRef\":\"Calendar SQL DQ.MonthNumberOfYear\",\"active\":true},{\"queryRef\":\"Calendar SQL DQ.Date\",\"active\":true}],\"Y\":[{\"queryRef\":\"Measures Table.DQ MTD Hours\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calendar SQL DQ\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Measures Table\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Year\"},\"Name\":\"Calendar.Year\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"MonthNumberOfYear\"},\"Name\":\"Calendar SQL DQ.MonthNumberOfYear\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Date\"},\"Name\":\"Calendar SQL DQ.Date\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"DQ MTD Hours\"},\"Name\":\"Measures Table.DQ MTD Hours\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Year\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[{\"name\":null,\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Calendar SQL DQ\"}},\"Property\":\"Year\"}},\"type\":\"Categorical\",\"howCreated\":2},{\"name\":null,\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Calendar SQL DQ\"}},\"Property\":\"MonthNumberOfYear\"}},\"type\":\"Categorical\",\"howCreated\":2}]",
+          "height": 344.00,
+          "width": 1280.00,
+          "x": 0.00,
+          "y": 16.00,
+          "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

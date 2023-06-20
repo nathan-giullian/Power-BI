@@ -1,0 +1,581 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "annotations": [
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.118.665.0 (23.06)"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Measures Table\",\"Calendar SQL DQ\",\"Resources SQL DQ\",\"server\",\"database\",\"RangeStart\",\"RangeEnd\",\"Hybrid Table\"]"
+      },
+      {
+        "name": "__TEdtr",
+        "value": "1"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "DynamicImprovement": "HighConfidence",
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "expressions": [
+      {
+        "name": "server",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Text"
+          }
+        ],
+        "description": "This is the SQL server name",
+        "expression": "\"dev-ngg.database.windows.net\" meta [IsParameterQuery=true, List={\"dev-ngg.database.windows.net\"}, DefaultValue=\"dev-ngg.database.windows.net\", Type=\"Text\", IsParameterQueryRequired=true]",
+        "kind": "m",
+        "lineageTag": "0adc7a06-2471-41b4-9634-950de053777a"
+      },
+      {
+        "name": "database",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Text"
+          }
+        ],
+        "description": "This is the SQL database name",
+        "expression": "\"Clients\" meta [IsParameterQuery=true, List={\"Clients\"}, DefaultValue=\"Clients\", Type=\"Text\", IsParameterQueryRequired=true]",
+        "kind": "m",
+        "lineageTag": "22d9aa95-d607-4b64-a39b-827fedf3fbc1"
+      },
+      {
+        "name": "RangeStart",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "DateTime"
+          }
+        ],
+        "expression": "#datetime(2019, 1, 1, 0, 0, 0) meta [IsParameterQuery=true, Type=\"DateTime\", IsParameterQueryRequired=true]",
+        "kind": "m",
+        "lineageTag": "b25818ee-29d9-4b6f-882a-6edbcc23b9c2"
+      },
+      {
+        "name": "RangeEnd",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "DateTime"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "expression": "#datetime(2022, 10, 31, 0, 0, 0) meta [IsParameterQuery=true, Type=\"DateTime\", IsParameterQueryRequired=true]",
+        "kind": "m",
+        "lineageTag": "38c32e72-9fef-47ca-9cec-2b616e23cae9"
+      }
+    ],
+    "queryGroups": [
+      {
+        "annotations": [
+          {
+            "name": "PBI_QueryGroupOrder",
+            "value": "1"
+          }
+        ],
+        "folder": "SQL"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "7e5caff7-7f17-40c8-94c0-930f7590b9d1",
+        "fromColumn": "msdyn_bookableresource",
+        "fromTable": "Hybrid Table",
+        "toColumn": "bookableresourceid",
+        "toTable": "Resources SQL DQ"
+      },
+      {
+        "name": "2e8add38-61cd-42d2-b232-ec61fb5da208",
+        "fromColumn": "msdyn_date",
+        "fromTable": "Hybrid Table",
+        "toColumn": "Date",
+        "toTable": "Calendar SQL DQ"
+      }
+    ],
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "Calendar SQL DQ",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "isKey": true,
+            "isNullable": false,
+            "lineageTag": "c64b928d-dcc7-4082-931c-c2c722f34918",
+            "sourceColumn": "Date",
+            "sourceProviderType": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthNumberOfYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "629f7170-0de5-49e9-863a-1c32552d4fd6",
+            "sourceColumn": "MonthNumberOfYear",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isNullable": false,
+            "lineageTag": "a1f2c88d-557a-42b1-a9b7-9c4978f1933f",
+            "sourceColumn": "Year",
+            "sourceProviderType": "int",
+            "summarizeBy": "none"
+          }
+        ],
+        "dataCategory": "Time",
+        "lineageTag": "32d88bbe-1bb5-41f3-8222-0eb1cfcf4ba7",
+        "partitions": [
+          {
+            "name": "Calendar SQL DQ-111cff03-42a9-4f1f-a163-ebf3dfcf6f97",
+            "mode": "dual",
+            "queryGroup": "SQL",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(server, database),",
+                "    dbo_Calendar = Source{[Schema=\"dbo\",Item=\"Calendar\"]}[Data]",
+                "in",
+                "    dbo_Calendar"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Hybrid Table",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_IsMQueryFoldable",
+            "value": "True"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "columns": [
+          {
+            "name": "jt_hours",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "a460cbd5-e6d1-48b2-bd02-c2dd1832be6f",
+            "sourceColumn": "jt_hours",
+            "sourceProviderType": "float",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "msdyn_bookableresource",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "0dad6640-c84e-468b-a211-3c7a53ebb6df",
+            "sourceColumn": "msdyn_bookableresource",
+            "sourceProviderType": "nvarchar(max)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "msdyn_date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "e826b75f-e26d-40a3-9e93-2cd156a8ac85",
+            "sourceColumn": "msdyn_date",
+            "sourceProviderType": "date",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "90c814a7-d946-421b-a63a-f2ab6b9c3dd0",
+        "partitions": [
+          {
+            "name": "Hybrid Table-7c3656b9-cc1f-41e3-9e9c-092289fdff1c",
+            "mode": "import",
+            "queryGroup": "SQL",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(server, database),",
+                "    #\"dbo_Time Entries (DQ)\" = Source{[Schema=\"dbo\",Item=\"Time Entries (DQ)\"]}[Data],",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"dbo_Time Entries (DQ)\", each [msdyn_date] >= RangeStart and [msdyn_date] <= RangeEnd),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Filtered Rows\",{{\"msdyn_date\", type date}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ],
+        "refreshPolicy": {
+          "incrementalGranularity": "day",
+          "incrementalPeriods": 30,
+          "incrementalPeriodsOffset": -1,
+          "mode": "hybrid",
+          "policyType": "basic",
+          "rollingWindowGranularity": "year",
+          "rollingWindowPeriods": 5,
+          "sourceExpression": [
+            "let",
+            "    Source = Sql.Database(server, database),",
+            "    #\"dbo_Time Entries (DQ)\" = Source{[Schema=\"dbo\",Item=\"Time Entries (DQ)\"]}[Data],",
+            "    #\"Filtered Rows\" = Table.SelectRows(#\"dbo_Time Entries (DQ)\", each [msdyn_date] >= RangeStart and [msdyn_date] <= RangeEnd),",
+            "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Filtered Rows\",{{\"msdyn_date\", type date}})",
+            "in",
+            "    #\"Changed Type\""
+          ]
+        }
+      },
+      {
+        "name": "Measures Table",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Column1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "b36f0984-8487-4fca-919c-eb11a4b48c0e",
+            "sourceColumn": "Column1",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "3d2190bd-1dbf-4819-aed6-c84c8014a756",
+        "measures": [
+          {
+            "name": "Hybrid Sum of Hours",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "SUM( 'Hybrid Table'[jt_hours] )",
+            "lineageTag": "ade46a52-a7ca-4b16-a8bc-92bd17a6a653"
+          },
+          {
+            "name": "Hybrid MTD Hours",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "",
+              "// IF(",
+              "//     [DQ Scope],",
+              "//     TOTALMTD( SUM( 'Time Entries SQL DQ Date'[Sum of Hours] ), 'Calendar SQL DQ'[Date] ),",
+              "TOTALMTD (",
+              "    [Hybrid Sum of Hours],",
+              "    'Calendar SQL DQ'[Date]",
+              ")",
+              "// )"
+            ],
+            "lineageTag": "77915835-e6f5-482b-94fb-c2036af89814"
+          },
+          {
+            "name": "DQ Sum of Hours",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "SUM( 'Hybrid Table'[jt_hours] )",
+            "lineageTag": "48bd0d64-1d90-4324-83fa-45065bf15551"
+          },
+          {
+            "name": "DQ MTD Hours",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "",
+              "// IF(",
+              "//     [DQ Scope],",
+              "//     TOTALMTD( SUM( 'Time Entries SQL DQ Date'[Sum of Hours] ), 'Calendar SQL DQ'[Date] ),",
+              "TOTALMTD (",
+              "    [DQ Sum of Hours],",
+              "    'Calendar SQL DQ'[Date]",
+              ")",
+              "// )"
+            ],
+            "lineageTag": "c5a797da-c388-4ca3-aa1e-8cbba3c0786d"
+          },
+          {
+            "name": "Average Hours",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "AVERAGE( 'Hybrid Table'[jt_hours] )",
+            "lineageTag": "7965e18a-f553-4d83-9730-678d5f9b18c4"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Measures Table-0f99557f-9e4f-4c03-a2c8-b86af3254794",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i44FAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Resources SQL DQ",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "bookableresourceid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "16437236-81bd-465a-9a8c-8a9ebc155d0b",
+            "sourceColumn": "bookableresourceid",
+            "sourceProviderType": "nvarchar(max)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "jt_displayonreportsname",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8396ac6b-e52e-4f88-bb83-85be68b97247",
+            "sourceColumn": "jt_displayonreportsname",
+            "sourceProviderType": "nvarchar(max)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "jt_employeetypename",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "54db4e48-9484-442b-961d-8cc76a12b1f2",
+            "sourceColumn": "jt_employeetypename",
+            "sourceProviderType": "nvarchar(max)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "jt_enddate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "ab90a6eb-96d1-4d47-9a62-e2f326debea8",
+            "sourceColumn": "jt_enddate",
+            "sourceProviderType": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "jt_practicename",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "84a0d66b-ff99-415b-899c-5fb6a8e1d643",
+            "sourceColumn": "jt_practicename",
+            "sourceProviderType": "nvarchar(max)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "jt_targethours",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "e6b3a0e3-c64d-466a-9d67-708b72e29b4a",
+            "sourceColumn": "jt_targethours",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2538b760-5926-4201-94f9-40477f7766c6",
+            "sourceColumn": "name",
+            "sourceProviderType": "nvarchar(max)",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "68e3bac9-9db8-4d0e-9fc5-9c143f3faa42",
+        "partitions": [
+          {
+            "name": "Resources SQL DQ-fc949f85-5751-4460-a4ba-898d285e48c5",
+            "mode": "dual",
+            "queryGroup": "SQL",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(server, database),",
+                "    #\"dbo_BookableResource (DQ)\" = Source{[Schema=\"dbo\",Item=\"BookableResource (DQ)\"]}[Data],",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"dbo_BookableResource (DQ)\",{{\"jt_enddate\", type date}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
