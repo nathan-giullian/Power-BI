@@ -3561,10 +3561,9 @@
                 "    #\"Merged Queries\" = Table.NestedJoin(#\"Consultant Request_\", {\"Practice\"}, #\"Practice\", {\"Practice\"}, \"Practice.1\", JoinKind.LeftOuter),",
                 "    #\"Expanded Practice.1\" = Table.ExpandTableColumn(#\"Merged Queries\", \"Practice.1\", {\"Practice SK\"}, {\"Practice SK\"}),",
                 "    #\"Removed Other Columns\" = Table.SelectColumns(#\"Expanded Practice.1\",{\"Created On\", \"End Date\", \"Hourly Bill Rate\", \"Hourly Pay Rate\", \"NTE Hours\", \"Consultant Request SK\", \"Opportunity SK\", \"End Customer SK\", \"Supervisor SK\", \"Sales Person SK\", \"Account SK\", \"Project SK\", \"Parent Contact SK\", \"Originating Lead SK\", \"Project Task SK\", \"Labor Category SK\", \"Bookable Resource SK\", \"Practice SK\"}),",
-                "    #\"Removed Duplicates\" = Table.Distinct(#\"Removed Other Columns\", {\"Consultant Request SK\"}),",
-                "    #\"Filtered Rows\" = Table.SelectRows(#\"Removed Duplicates\", each ([Consultant Request SK] = 414))",
+                "    #\"Removed Duplicates\" = Table.Distinct(#\"Removed Other Columns\", {\"Consultant Request SK\"})",
                 "in",
-                "    #\"Filtered Rows\""
+                "    #\"Removed Duplicates\""
               ],
               "type": "m"
             }
@@ -4987,7 +4986,7 @@
               "CALCULATE (",
               "    [Current Year Forecast $],",
               "    NOT ( Opportunity[Finance Reviewed] ),",
-              "    NOT ( Opportunity[Sales Stage] IN { \"Close Loss\", \"Cancel Revenue\", \"Close Won\" } )",
+              "    KEEPFILTERS( NOT ( Opportunity[Sales Stage] IN { \"Close Loss\", \"Cancel Revenue\", \"Close Won\" } ) )",
               ")"
             ],
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
@@ -5007,7 +5006,7 @@
               "CALCULATE (",
               "    [Next Year Forecast $],",
               "    NOT ( Opportunity[Finance Reviewed] ),",
-              "    NOT ( Opportunity[Sales Stage] IN { \"Close Loss\", \"Cancel Revenue\", \"Close Won\" } )",
+              "    KEEPFILTERS( NOT ( Opportunity[Sales Stage] IN { \"Close Loss\", \"Cancel Revenue\", \"Close Won\" } ) )",
               ")"
             ],
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
@@ -5093,7 +5092,7 @@
               "CALCULATE (",
               "    [Estimated Revenue $],",
               "    NOT ( Opportunity[Finance Reviewed] ),",
-              "    NOT ( Opportunity[Sales Stage] IN { \"Close Loss\", \"Cancel Revenue\", \"Close Won\" } )",
+              "    KEEPFILTERS( NOT ( Opportunity[Sales Stage] IN { \"Close Loss\", \"Cancel Revenue\", \"Close Won\" } ) )",
               ")"
             ],
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
@@ -12251,6 +12250,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
