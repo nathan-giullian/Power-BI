@@ -1,0 +1,29 @@
+{
+  "version": "1.0.1",
+  "author": {
+    "name": "Craydec, Inc.",
+    "email": "support@craydec.com"
+  },
+  "resources": [
+    {
+      "resourceId": "rId0",
+      "sourceType": 5,
+      "file": "resources/cdTimelinesA399BDD5831D40CD8E83DCCD13A986BE.pbiviz.json"
+    }
+  ],
+  "visual": {
+    "guid": "cdTimelinesA399BDD5831D40CD8E83DCCD13A986BE",
+    "name": "cdTimelines",
+    "displayName": "Craydec Timelines",
+    "version": "1.0.1",
+    "description": "Visualize dates and ranges as timelines.",
+    "supportUrl": "https://www.craydec.com/timelines",
+    "gitHubUrl": "",
+    "visualClassName": "Visual"
+  },
+  "metadata": {
+    "pbivizjson": {
+      "resourceId": "rId0"
+    }
+  }
+}

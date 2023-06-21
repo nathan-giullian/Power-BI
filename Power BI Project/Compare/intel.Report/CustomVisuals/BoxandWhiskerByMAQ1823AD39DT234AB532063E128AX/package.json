@@ -1,0 +1,29 @@
+{
+  "version": "3.2.1",
+  "author": {
+    "name": "MAQ Software",
+    "email": "support@maqsoftware.com"
+  },
+  "resources": [
+    {
+      "resourceId": "rId0",
+      "sourceType": 5,
+      "file": "resources/BoxandWhiskerByMAQ1823AD39DT234AB532063E128AX.pbiviz.json"
+    }
+  ],
+  "visual": {
+    "guid": "BoxandWhiskerByMAQ1823AD39DT234AB532063E128AX",
+    "name": "BoxandWhiskerByMAQSoftware",
+    "displayName": "Box and Whisker by MAQ Software",
+    "version": "3.2.1",
+    "description": "This visual displays data distribution into quartiles in a box with a thin line going through it (whiskers) indicating variability outside the upper and lower quartiles.",
+    "supportUrl": "https://github.com/maqsoftware/BoxAndWhisker/issues",
+    "gitHubUrl": "https://github.com/maqsoftware/BoxAndWhisker",
+    "visualClassName": "Visual"
+  },
+  "metadata": {
+    "pbivizjson": {
+      "resourceId": "rId0"
+    }
+  }
+}

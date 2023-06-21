@@ -2,7 +2,7 @@
   "version": "1.0",
   "datasetReference": {
     "byPath": {
-      "path": "../Pipeline Dataset.Dataset"
+      "path": "../intel-skybridge_CSIMetrics_ConsolidatedDataModel.Dataset"
     },
     "byConnection": null
   }

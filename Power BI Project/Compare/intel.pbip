@@ -3,7 +3,7 @@
   "artifacts": [
     {
       "report": {
-        "path": "Pipeline Dataset.Report"
+        "path": "intel-skybridge_CSIMetrics_ConsolidatedDataModel.Report"
       }
     }
   ],

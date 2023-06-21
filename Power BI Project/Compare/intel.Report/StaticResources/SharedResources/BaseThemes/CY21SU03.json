@@ -1,5 +1,5 @@
 {
-  "name": "CY22SU09",
+  "name": "CY21SU02",
   "dataColors": [
     "#118DFF",
     "#12239E",
@@ -107,19 +107,13 @@
         "categoryAxis": [
           {
             "showAxisTitle": true,
-            "gridlineStyle": "dotted",
-            "concatenateLabels": false
+            "gridlineStyle": "dotted"
           }
         ],
         "valueAxis": [
           {
             "showAxisTitle": true,
             "gridlineStyle": "dotted"
-          }
-        ],
-        "y2Axis": [
-          {
-            "show": true
           }
         ],
         "title": [
@@ -148,6 +142,11 @@
             "backgroundColor": {
               "solid": {
                 "color": "#ffffff"
+              }
+            },
+            "foregroundColor": {
+              "solid": {
+                "color": "#252423"
               }
             },
             "transparency": 0,
@@ -216,7 +215,6 @@
         ],
         "smallMultiplesLayout": [
           {
-            "backgroundTransparency": 0,
             "gridLineType": "inner"
           }
         ]
@@ -296,17 +294,6 @@
           {
             "responsive": true
           }
-        ],
-        "date": [
-          {
-            "hideDatePickerButton": false
-          }
-        ],
-        "items": [
-          {
-            "padding": 4,
-            "accessibilityContrastProperties": true
-          }
         ]
       }
     },
@@ -333,7 +320,6 @@
         ],
         "smallMultiplesLayout": [
           {
-            "backgroundTransparency": 0,
             "gridLineType": "inner"
           }
         ]
@@ -353,7 +339,6 @@
         ],
         "smallMultiplesLayout": [
           {
-            "backgroundTransparency": 0,
             "gridLineType": "inner"
           }
         ]
@@ -373,7 +358,6 @@
         ],
         "smallMultiplesLayout": [
           {
-            "backgroundTransparency": 0,
             "gridLineType": "inner"
           }
         ]
@@ -393,7 +377,6 @@
         ],
         "smallMultiplesLayout": [
           {
-            "backgroundTransparency": 0,
             "gridLineType": "inner"
           }
         ]
@@ -413,7 +396,6 @@
         ],
         "smallMultiplesLayout": [
           {
-            "backgroundTransparency": 0,
             "gridLineType": "inner"
           }
         ]
@@ -433,7 +415,6 @@
         ],
         "smallMultiplesLayout": [
           {
-            "backgroundTransparency": 0,
             "gridLineType": "inner"
           }
         ]
@@ -448,7 +429,6 @@
         ],
         "smallMultiplesLayout": [
           {
-            "backgroundTransparency": 0,
             "gridLineType": "inner"
           }
         ]
@@ -463,7 +443,6 @@
         ],
         "smallMultiplesLayout": [
           {
-            "backgroundTransparency": 0,
             "gridLineType": "inner"
           }
         ]
@@ -475,12 +454,6 @@
           {
             "responsive": true
           }
-        ],
-        "smallMultiplesLayout": [
-          {
-            "backgroundTransparency": 0,
-            "gridLineType": "inner"
-          }
         ]
       }
     },
@@ -489,12 +462,6 @@
         "general": [
           {
             "responsive": true
-          }
-        ],
-        "smallMultiplesLayout": [
-          {
-            "backgroundTransparency": 0,
-            "gridLineType": "inner"
           }
         ]
       }
@@ -518,25 +485,6 @@
       }
     },
     "basicShape": {
-      "*": {
-        "background": [
-          {
-            "show": false
-          }
-        ],
-        "general": [
-          {
-            "keepLayerOrder": true
-          }
-        ],
-        "visualHeader": [
-          {
-            "show": false
-          }
-        ]
-      }
-    },
-    "shape": {
       "*": {
         "background": [
           {
@@ -581,39 +529,6 @@
     },
     "actionButton": {
       "*": {
-        "background": [
-          {
-            "show": false
-          }
-        ],
-        "visualHeader": [
-          {
-            "show": false
-          }
-        ]
-      }
-    },
-    "pageNavigator": {
-      "*": {
-        "background": [
-          {
-            "show": false
-          }
-        ],
-        "visualHeader": [
-          {
-            "show": false
-          }
-        ]
-      }
-    },
-    "bookmarkNavigator": {
-      "*": {
-        "background": [
-          {
-            "show": false
-          }
-        ],
         "visualHeader": [
           {
             "show": false

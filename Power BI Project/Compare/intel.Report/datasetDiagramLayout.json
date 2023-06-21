@@ -1,0 +1,384 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 4830,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 993.4
+          },
+          "nodeIndex": "Metrics",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1807.3,
+            "y": 489.4
+          },
+          "nodeIndex": "Agg_SQL_DownEventRecipe",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2128.3,
+            "y": 1246.7
+          },
+          "nodeIndex": "Agg_SQL_MasterStateFact_New",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2240.9,
+            "y": 814.6
+          },
+          "nodeIndex": "Agg_SQL_MasterStateFact_New_DC CID",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1776.2,
+            "y": 1736.1
+          },
+          "nodeIndex": "Agg_SQL_MasterStateFact_New_DC TDEID",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3778.5,
+            "y": 1067.4
+          },
+          "nodeIndex": "Date Refresh",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4201.9,
+            "y": 993.4
+          },
+          "nodeIndex": "EF_RfcScores",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4625.4,
+            "y": 1043.4
+          },
+          "nodeIndex": "Local Refresh Date",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5048.8,
+            "y": 1007.4
+          },
+          "nodeIndex": "Notifications",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1484.4,
+            "y": 978.9
+          },
+          "nodeIndex": "SQL_AllDownEventsFact",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3355.1,
+            "y": 1791.5
+          },
+          "nodeIndex": "SQL_CellDim_New",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1461.8,
+            "y": 0
+          },
+          "nodeIndex": "SQL_CollateralDim",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2931.6,
+            "y": 1381.6
+          },
+          "nodeIndex": "SQL_DateDim",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1382.6,
+            "y": 664.5
+          },
+          "nodeIndex": "SQL_DownEventDim_New",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1060.9,
+            "y": 1008.3
+          },
+          "nodeIndex": "SQL_DownEventRecipe",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2664.4,
+            "y": 892.1
+          },
+          "nodeIndex": "SQL_MasterStateFact_New",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 423.4,
+            "y": 2090.4
+          },
+          "nodeIndex": "SQL_NodeExecDim",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 637.5,
+            "y": 1266.5
+          },
+          "nodeIndex": "SQL_NodeInputsDim",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1554,
+            "y": 2225.5
+          },
+          "nodeIndex": "SQL_ProductionPlanFact",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1082.1,
+            "y": 589.4
+          },
+          "nodeIndex": "SQL_RecipeDim",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1515.8,
+            "y": 1538.6
+          },
+          "nodeIndex": "SQL_ShiftDim",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1270.3,
+            "y": 1497.8
+          },
+          "nodeIndex": "SQL_StagingSubcomponentDownEvents_New",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1004.9,
+            "y": 2175
+          },
+          "nodeIndex": "SQL_SubcomponentDim",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 846.9,
+            "y": 1713.5
+          },
+          "nodeIndex": "SQL_WorkflowDim",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2230.7,
+            "y": 73.8
+          },
+          "nodeIndex": "View_HotSwap",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5481.5,
+            "y": 0
+          },
+          "nodeIndex": "MCBI_Clean_Final",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5856.9,
+            "y": 0
+          },
+          "nodeIndex": "CSI",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1817.5,
+            "y": 1049.1
+          },
+          "nodeIndex": "SQL_ToolDim",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 6280.6,
+            "y": 26
+          },
+          "nodeIndex": "SQL_SiteDim",
+          "nodeLineageTag": "957a3026-79f8-4eda-ae8e-2c7060da9b09",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 6704.3,
+            "y": 0
+          },
+          "nodeIndex": "View_HotSwap_New",
+          "nodeLineageTag": "402bbf7b-e2c5-4505-ba02-c5d9ffd5ba97",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 42.409761837248482,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

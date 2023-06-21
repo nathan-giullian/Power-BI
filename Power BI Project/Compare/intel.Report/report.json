@@ -1,0 +1,440 @@
+{
+  "config": "{\"version\":\"5.42\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY21SU03\",\"version\":\"5.19\",\"type\":2},\"customTheme\":{\"name\":\"Innovate\",\"version\":\"5.19\",\"type\":2}},\"activeSectionIndex\":0,\"bookmarks\":[{\"displayName\":\"Hide Slicer\",\"name\":\"Bookmarkb46190939391e29cbe96\",\"explorationState\":{\"version\":\"1.3\",\"activeSection\":\"ReportSection5261111d0e7039d96085\",\"sections\":{\"ReportSection5261111d0e7039d96085\":{\"filters\":{\"byExpr\":[{\"name\":\"Filter6aaf6b2073645606004b\",\"type\":\"Advanced\",\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"EF_ShiftDim\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"TCM_SiteName\"}},\"Right\":{\"Literal\":{\"Value\":\"null\"}}}}}}}]},\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"EF_ShiftDim\"}},\"Property\":\"TCM_SiteName\"}},\"howCreated\":1}]},\"visualContainers\":{},\"visualContainerGroups\":{\"2f5abf586e056c45bc52\":{\"isHidden\":true}}}},\"objects\":{\"merge\":{\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}},\"options\":{\"targetVisualNames\":[],\"suppressData\":true}},{\"displayName\":\"Show Slicer\",\"name\":\"Bookmark4909a4f912c9cc192ae3\",\"explorationState\":{\"version\":\"1.3\",\"activeSection\":\"ReportSection5261111d0e7039d96085\",\"sections\":{\"ReportSection5261111d0e7039d96085\":{\"filters\":{\"byExpr\":[{\"name\":\"Filter6aaf6b2073645606004b\",\"type\":\"Advanced\",\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"EF_ShiftDim\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"TCM_SiteName\"}},\"Right\":{\"Literal\":{\"Value\":\"null\"}}}}}}}]},\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"EF_ShiftDim\"}},\"Property\":\"TCM_SiteName\"}},\"howCreated\":1}]},\"visualContainers\":{},\"visualContainerGroups\":{\"2f5abf586e056c45bc52\":{\"isHidden\":false}}}},\"objects\":{\"merge\":{\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}},\"options\":{\"targetVisualNames\":[\"2f5abf586e056c45bc52\",\"4324e8890a70056d5e23\",\"bed726d770da02caa727\",\"fa27959e9074d7a19a91\",\"db1efd2c39c2448db6ac\",\"8f3755716d3d53b2ea40\",\"74ce7c404e2e30850942\",\"dc74f9b006117110ea59\",\"b0cdaad49ab57eac5576\"],\"suppressData\":true}},{\"displayName\":\"Clear Slicers\",\"name\":\"Bookmark5fab612c38d58a48ff20\",\"explorationState\":{\"version\":\"1.3\",\"activeSection\":\"ReportSection5261111d0e7039d96085\",\"sections\":{\"ReportSection5261111d0e7039d96085\":{\"filters\":{\"byExpr\":[{\"name\":\"Filter6aaf6b2073645606004b\",\"type\":\"Advanced\",\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"EF_ShiftDim\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"TCM_SiteName\"}},\"Right\":{\"Literal\":{\"Value\":\"null\"}}}}}}}]},\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"EF_ShiftDim\"}},\"Property\":\"TCM_SiteName\"}},\"howCreated\":1}]},\"visualContainers\":{},\"visualContainerGroups\":{\"2f5abf586e056c45bc52\":{\"isHidden\":false}}}},\"objects\":{\"merge\":{\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}},\"options\":{\"targetVisualNames\":[]}}],\"defaultDrillFilterOtherVisuals\":true,\"filterSortOrder\":3,\"slowDataSourceSettings\":{\"isCrossHighlightingDisabled\":false,\"isSlicerSelectionsButtonEnabled\":false,\"isFilterSelectionsButtonEnabled\":false,\"isFieldWellButtonEnabled\":false,\"isApplyAllButtonEnabled\":false},\"linguisticSchemaSyncVersion\":2,\"settings\":{\"isPersistentUserStateDisabled\":false,\"hideVisualContainerHeader\":false,\"useStylableVisualContainerHeader\":true,\"exportDataMode\":0,\"useNewFilterPaneExperience\":true,\"optOutNewFilterPaneExperience\":false,\"defaultFilterActionIsDataFilter\":false,\"useCrossReportDrillthrough\":true,\"allowChangeFilterTypes\":true,\"allowInlineExploration\":false,\"disableFilterPaneSearch\":false,\"enableDeveloperMode\":false,\"useEnhancedTooltips\":false,\"filterPaneHiddenInEditMode\":false,\"pauseQueries\":false},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}",
+  "filters": "[{\"name\":\"Filter0a02af011e436aab542d\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_CollateralDim\"}},\"Property\":\"ToolFamily\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"SQL_CollateralDim\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ToolFamily\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'HBI'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{},\"ordinal\":0},{\"name\":\"Filter06485e810e0c89bca508\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_ToolDim\"}},\"Property\":\"ModuleName\"}},\"type\":\"Categorical\",\"howCreated\":1,\"ordinal\":1},{\"name\":\"Filter753a5bc5bd0798cd4006\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_ShiftDim\"}},\"Property\":\"TCM_SiteName\"}},\"type\":\"Categorical\",\"howCreated\":1,\"ordinal\":2},{\"name\":\"Filter47e1b4ebf2a5ecdde06e\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_CollateralDim\"}},\"Property\":\"Type\"}},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{\"general\":[{\"properties\":{}}]},\"ordinal\":3},{\"name\":\"Filter150ac6e647b4254348cb\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_CollateralDim\"}},\"Property\":\"ProductPrefix\"}},\"type\":\"Categorical\",\"howCreated\":1,\"ordinal\":4},{\"name\":\"Filterfeaf5ec017ed7bb31ed0\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_ShiftDim\"}},\"Property\":\"WW\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"SQL_ShiftDim\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"WW\"}},\"Right\":{\"Literal\":{\"Value\":\"'2023'\"}}}}}]},\"type\":\"Advanced\",\"howCreated\":1,\"ordinal\":5},{\"name\":\"Filterd1ab37537bc6126448dc\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Notifications\"}},\"Property\":\"Report\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"n\",\"Entity\":\"Notifications\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"n\"}},\"Property\":\"Report\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'CSI Metrics'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{},\"isLockedInViewMode\":true,\"ordinal\":6}]",
+  "layoutOptimization": 0,
+  "pods": [
+    {
+      "boundSection": "ReportSectionabf23e040373e039ea89",
+      "config": "{}",
+      "name": "Pod",
+      "parameters": "[{\"name\":\"Param_Filter16455ae7b8ae40b451e1\",\"boundFilter\":\"Filter16455ae7b8ae40b451e1\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"SiteName\"}}},{\"name\":\"Param_Filtere3a6a5c262906c11b549\",\"boundFilter\":\"Filtere3a6a5c262906c11b549\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"Local Date\"}}},{\"name\":\"Param_Filter79764267315b2409a5d4\",\"boundFilter\":\"Filter79764267315b2409a5d4\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"Local Time\"}}}]",
+      "type": 2
+    },
+    {
+      "boundSection": "ReportSection0de6277af3bca5525e0f",
+      "config": "{}",
+      "name": "Pod1",
+      "parameters": "[{\"name\":\"Param_Filter47c60551879983c12080\",\"boundFilter\":\"Filter47c60551879983c12080\",\"fieldExpr\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Metrics\"}},\"Property\":\"NPF Rate\"}}},{\"name\":\"Param_Filter972ae13770e2d0e91027\",\"boundFilter\":\"Filter972ae13770e2d0e91027\",\"fieldExpr\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Metrics\"}},\"Property\":\"Total_NPF\"}}}]",
+      "type": 1
+    }
+  ],
+  "publicCustomVisuals": [
+    "asTimeline3ECFC8FDEB264A3ABB1C0E31EC19FE14",
+    "eventViewer0D4E4EFE0AEC4A0A9CB3C14B04685C64"
+  ],
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY21SU03",
+            "path": "BaseThemes/CY21SU03.json",
+            "type": 202
+          },
+          {
+            "name": "Innovate",
+            "path": "BuiltInThemes/Innovate.json",
+            "type": 201
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "path": "asTimeline3ECFC8FDEB264A3ABB1C0E31EC19FE14.pbiviz.json",
+            "type": 5
+          }
+        ],
+        "name": "asTimeline3ECFC8FDEB264A3ABB1C0E31EC19FE14",
+        "type": 0
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "path": "AttributeSlicer1652434005853.pbiviz.json",
+            "type": 5
+          }
+        ],
+        "name": "AttributeSlicer1652434005853",
+        "type": 0
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "path": "BoxandWhiskerByMAQ1823AD39DT234AB532063E128AX.pbiviz.json",
+            "type": 5
+          }
+        ],
+        "name": "BoxandWhiskerByMAQ1823AD39DT234AB532063E128AX",
+        "type": 0
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "path": "BoxWhiskerChart1455240051538.pbiviz.json",
+            "type": 5
+          }
+        ],
+        "name": "BoxWhiskerChart1455240051538",
+        "type": 0
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "path": "cdTimelinesA399BDD5831D40CD8E83DCCD13A986BE.pbiviz.json",
+            "type": 5
+          }
+        ],
+        "name": "cdTimelinesA399BDD5831D40CD8E83DCCD13A986BE",
+        "type": 0
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "path": "eventViewer0D4E4EFE0AEC4A0A9CB3C14B04685C64.pbiviz.json",
+            "type": 5
+          }
+        ],
+        "name": "eventViewer0D4E4EFE0AEC4A0A9CB3C14B04685C64",
+        "type": 0
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "path": "textFilter25A4896A83E0487089E2B90C9AE57C8A.pbiviz.json",
+            "type": 5
+          }
+        ],
+        "name": "textFilter25A4896A83E0487089E2B90C9AE57C8A",
+        "type": 0
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "path": "Timeline1447991079100.pbiviz.json",
+            "type": 5
+          }
+        ],
+        "name": "Timeline1447991079100",
+        "type": 0
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{\"visibility\":1}",
+      "displayName": "NPF %",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"Filter47c60551879983c12080\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Metrics\"}},\"Property\":\"NPF Rate\"}},\"type\":\"Categorical\",\"howCreated\":5},{\"name\":\"Filter2f5aed7de16049cf7d51\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_DownEventRecipe\"}},\"Property\":\"TerminationAction\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"SQL_DownEventRecipe\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"TerminationAction\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'NoProblemFound'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}},{\"name\":\"Filter972ae13770e2d0e91027\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Metrics\"}},\"Property\":\"Total_NPF\"}},\"type\":\"Categorical\",\"howCreated\":5}]",
+      "height": 720.00,
+      "name": "ReportSection0de6277af3bca5525e0f",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"47cc83ba5f49fe7db36d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":15.562310030395137,\"y\":50.577507598784194,\"z\":2000,\"width\":612.7659574468086,\"height\":68.08510638297872,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"No Problem Found Metrics\",\"textStyle\":{\"fontSize\":\"32pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 68.09,
+          "width": 612.77,
+          "x": 15.56,
+          "y": 50.58,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"59a9154656f01a181012\",\"layouts\":[{\"id\":0,\"position\":{\"x\":752.7044025157232,\"y\":16.10062893081761,\"z\":3000,\"width\":267.67295597484275,\"height\":46.289308176100626,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Min(Date Refresh.Refresh DateTime)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date Refresh\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Refresh DateTime\"}},\"Function\":3},\"Name\":\"Min(Date Refresh.Refresh DateTime)\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"}},\"Function\":3}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Latest Refresh'\"}}},\"heading\":{\"expr\":{\"Literal\":{\"Value\":\"'Normal'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"10D\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 46.29,
+          "width": 267.67,
+          "x": 752.70,
+          "y": 16.10,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"80f94ab67bd9bfe99352\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"width\":100,\"height\":40,\"z\":5000,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"actionButton\",\"drillFilterOtherVisuals\":true,\"objects\":{\"icon\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'back'\"}}}},\"selector\":{\"id\":\"default\"}}]},\"vcObjects\":{\"visualLink\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"type\":{\"expr\":{\"Literal\":{\"Value\":\"'Back'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 40.00,
+          "width": 100.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"a554e15b8cf12714aecf\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1029.1891891891892,\"y\":7.207207207207207,\"z\":4000,\"width\":240.72072072072072,\"height\":86.48648648648648,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"SQL_ShiftDim.DateStart\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"SQL_ShiftDim\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"DateStart\"},\"Name\":\"SQL_ShiftDim.DateStart\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"DateStart\"}}}]},\"syncGroup\":{\"groupName\":\"DateStart\",\"fieldChanges\":true,\"filterChanges\":true},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Relative'\"}}},\"relativeRange\":{\"expr\":{\"Literal\":{\"Value\":\"'Last'\"}}},\"relativePeriod\":{\"expr\":{\"Literal\":{\"Value\":\"'Weeks'\"}}},\"relativeDuration\":{\"expr\":{\"Literal\":{\"Value\":\"4D\"}}}}}],\"dateRange\":[{\"properties\":{\"includeToday\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"SQL_ShiftDim\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Between\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"DateStart\"}},\"LowerBound\":{\"DateSpan\":{\"Expression\":{\"DateAdd\":{\"Expression\":{\"DateAdd\":{\"Expression\":{\"Now\":{}},\"Amount\":1,\"TimeUnit\":0}},\"Amount\":-4,\"TimeUnit\":1}},\"TimeUnit\":0}},\"UpperBound\":{\"DateSpan\":{\"Expression\":{\"Now\":{}},\"TimeUnit\":0}}}}}]}}}}],\"header\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Time Period'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 86.49,
+          "width": 240.72,
+          "x": 1029.19,
+          "y": 7.21,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"a9bf67e9bf0944fc8e1a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":323.9263803680982,\"y\":131.53374233128835,\"z\":1000,\"width\":939.7137014314928,\"height\":271.5746421267894,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"lineClusteredColumnComboChart\",\"projections\":{\"Category\":[{\"queryRef\":\"SQL_ShiftDim.WW\",\"active\":true}],\"Y2\":[{\"queryRef\":\"Metrics.NPF Rate\"}],\"Series\":[{\"queryRef\":\"SQL_DownEventDim_New.DownEventType\"}],\"Y\":[{\"queryRef\":\"Metrics.Total_NPF\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"SQL_ShiftDim\",\"Type\":0},{\"Name\":\"s1\",\"Entity\":\"SQL_DownEventDim_New\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Metrics\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"WW\"},\"Name\":\"SQL_ShiftDim.WW\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"DownEventType\"},\"Name\":\"SQL_DownEventDim_New.DownEventType\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Total_NPF\"},\"Name\":\"Metrics.Total_NPF\",\"NativeReferenceName\":\"Total_NPF\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"NPF Rate\"},\"Name\":\"Metrics.NPF Rate\",\"NativeReferenceName\":\"NPF Rate\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"WW\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"seriesLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"categoryAxis\":[{\"properties\":{\"concatenateLabels\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#F12742'\"}}}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_DownEventDim_New\"}},\"Property\":\"DownEventType\"}},\"Right\":{\"Literal\":{\"Value\":\"'AutoTicket'\"}}}}}]}},{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0}}}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_DownEventDim_New\"}},\"Property\":\"DownEventType\"}},\"Right\":{\"Literal\":{\"Value\":\"'Manual'\"}}}}}]}},{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":3,\"Percent\":0}}}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_DownEventDim_New\"}},\"Property\":\"DownEventType\"}},\"Right\":{\"Literal\":{\"Value\":\"'PCS'\"}}}}}]}},{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}},\"selector\":{\"metadata\":\"Metrics.NPF Rate\"}}]}}}",
+          "filters": "[{\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_DownEventDim_New\"}},\"Property\":\"DownEventType\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s1\",\"Entity\":\"SQL_DownEventDim_New\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"DownEventType\"}},\"Right\":{\"Literal\":{\"Value\":\"null\"}}}}}}}]},\"type\":\"Advanced\",\"howCreated\":0,\"isHiddenInViewMode\":false}]",
+          "height": 271.57,
+          "width": 939.71,
+          "x": 323.93,
+          "y": 131.53,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"c17e8a0c302cdd51af3d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":15.562310030395137,\"y\":426.0182370820669,\"z\":6000,\"width\":1253.7386018237082,\"height\":284.98480243161094,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"SQL_ShiftDim.TCM_SiteName\"},{\"queryRef\":\"CountNonNull(SQL_DownEventRecipe.TriggerDownEventId)\"},{\"queryRef\":\"SQL_CollateralDim.CollateralId\"},{\"queryRef\":\"SQL_DownEventRecipe.SubcomponentId\"},{\"queryRef\":\"SQL_DownEventRecipe.SubDownReason\"},{\"queryRef\":\"SQL_NodeInputsDim.InputValue\"},{\"queryRef\":\"SQL_DownEventDim_New.DownEventReason\"},{\"queryRef\":\"SQL_DownEventDim_New.DownEventComment\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"SQL_CollateralDim\",\"Type\":0},{\"Name\":\"s1\",\"Entity\":\"SQL_DownEventDim_New\",\"Type\":0},{\"Name\":\"s2\",\"Entity\":\"SQL_NodeInputsDim\",\"Type\":0},{\"Name\":\"s3\",\"Entity\":\"SQL_DownEventRecipe\",\"Type\":0},{\"Name\":\"s4\",\"Entity\":\"SQL_ShiftDim\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"CollateralId\"},\"Name\":\"SQL_CollateralDim.CollateralId\",\"NativeReferenceName\":\"CollateralId\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"DownEventReason\"},\"Name\":\"SQL_DownEventDim_New.DownEventReason\",\"NativeReferenceName\":\"DownEventReason\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"DownEventComment\"},\"Name\":\"SQL_DownEventDim_New.DownEventComment\",\"NativeReferenceName\":\"DownEventComment\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s2\"}},\"Property\":\"InputValue\"},\"Name\":\"SQL_NodeInputsDim.InputValue\",\"NativeReferenceName\":\"NPFComment\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s3\"}},\"Property\":\"SubDownReason\"},\"Name\":\"SQL_DownEventRecipe.SubDownReason\",\"NativeReferenceName\":\"SubDownReason\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s3\"}},\"Property\":\"SubcomponentId\"},\"Name\":\"SQL_DownEventRecipe.SubcomponentId\",\"NativeReferenceName\":\"SubcomponentId\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s3\"}},\"Property\":\"TriggerDownEventId\"},\"Name\":\"CountNonNull(SQL_DownEventRecipe.TriggerDownEventId)\",\"NativeReferenceName\":\"TriggerDownEventId1\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s4\"}},\"Property\":\"TCM_SiteName\"},\"Name\":\"SQL_ShiftDim.TCM_SiteName\",\"NativeReferenceName\":\"Site\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s3\"}},\"Property\":\"TriggerDownEventId\"}}}]},\"columnProperties\":{\"SQL_NodeInputsDim.InputValue\":{\"displayName\":\"NPFComment\"},\"SQL_ShiftDim.TCM_SiteName\":{\"displayName\":\"Site\"}},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[{\"name\":\"Filter99f40f7cd5dd486939d7\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_NodeInputsDim\"}},\"Property\":\"InputName\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"SQL_NodeInputsDim\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"InputName\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'NPFComments'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{},\"isHiddenInViewMode\":false}]",
+          "height": 284.98,
+          "width": 1253.74,
+          "x": 15.56,
+          "y": 426.02,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"f3d514dd2e19eb04bccd\",\"layouts\":[{\"id\":0,\"position\":{\"x\":15.562310030395137,\"y\":131.30699088145897,\"z\":0,\"width\":269.42249240121583,\"height\":284.98480243161094,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"multiRowCard\",\"projections\":{\"Values\":[{\"queryRef\":\"SQL_ShiftDim.TCM_SiteName\"},{\"queryRef\":\"Metrics.NPF Rate\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"SQL_ShiftDim\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Metrics\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"TCM_SiteName\"},\"Name\":\"SQL_ShiftDim.TCM_SiteName\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"NPF Rate\"},\"Name\":\"Metrics.NPF Rate\",\"NativeReferenceName\":\"NPF Rate\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"TCM_SiteName\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"dataLabels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"27D\"}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"cardTitle\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"15D\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'NPF Rate Per Site'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"heading\":{\"expr\":{\"Literal\":{\"Value\":\"'Heading3'\"}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"position\":{\"expr\":{\"Literal\":{\"Value\":\"'Inner'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 284.98,
+          "width": 269.42,
+          "x": 15.56,
+          "y": 131.31,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{\"visibility\":1,\"type\":1}",
+      "displayName": "TotalRepairs",
+      "displayOption": 3,
+      "filters": "[]",
+      "height": 240.00,
+      "name": "ReportSection55f32316de230ee9ac5e",
+      "ordinal": 4,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"bb65d08acb2101943d66\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":0,\"width\":320,\"height\":240,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"SQL_ShiftDim.WW\"},{\"queryRef\":\"Metrics.Total Collaterals Repaired\"},{\"queryRef\":\"Metrics.Total Repair Time\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"SQL_ShiftDim\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Metrics\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"WW\"},\"Name\":\"SQL_ShiftDim.WW\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Total Repair Time\"},\"Name\":\"Metrics.Total Repair Time\",\"NativeReferenceName\":\"Total Repair Time (mins)\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Total Collaterals Repaired\"},\"Name\":\"Metrics.Total Collaterals Repaired\",\"NativeReferenceName\":\"Total Collaterals Repaired\"}]},\"columnProperties\":{\"Metrics.Total Repair Time\":{\"displayName\":\"Total Repair Time (mins)\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnHeaders\":[{\"properties\":{\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"total\":[{\"properties\":{\"totals\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"127D\"}}}},\"selector\":{\"metadata\":\"Metrics.Total Repair Time\"}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"115D\"}}}},\"selector\":{\"metadata\":\"Metrics.Total Collaterals Repaired\"}}]},\"vcObjects\":{\"stylePreset\":[{\"properties\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'BoldHeaderFlashyRows'\"}}}}}],\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'CSIMetrics_TotalRepairs'\"}}},\"heading\":{\"expr\":{\"Literal\":{\"Value\":\"'Normal'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"8D\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#3A3A3A'\"}}}}}}}]}}}",
+          "filters": "[{\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_CollateralDim\"}},\"Property\":\"CollateralId\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s1\",\"Entity\":\"SQL_CollateralDim\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"CollateralId\"}},\"Right\":{\"Literal\":{\"Value\":\"null\"}}}}}}}]},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false}]",
+          "height": 240.00,
+          "width": 320.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 320.00
+    },
+    {
+      "config": "{\"visibility\":1,\"type\":1}",
+      "displayName": "TotalRepairTimeTT",
+      "displayOption": 3,
+      "filters": "[]",
+      "height": 240.00,
+      "name": "ReportSectionaa88902cd6f6cd0544ad",
+      "ordinal": 3,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"0af50780f9841602daf8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":0,\"width\":320,\"height\":240,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"barChart\",\"projections\":{\"Series\":[{\"queryRef\":\"SQL_ShiftDim.WW\"}],\"Category\":[{\"queryRef\":\"SQL_CollateralDim.CollateralId\",\"active\":true}],\"Y\":[{\"queryRef\":\"Metrics.Total Repair Time\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"SQL_ShiftDim\",\"Type\":0},{\"Name\":\"s1\",\"Entity\":\"SQL_CollateralDim\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Metrics\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"WW\"},\"Name\":\"SQL_ShiftDim.WW\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"CollateralId\"},\"Name\":\"SQL_CollateralDim.CollateralId\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Total Repair Time\"},\"Name\":\"Metrics.Total Repair Time\",\"NativeReferenceName\":\"Total Repair Time\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Total Repair Time\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"totals\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"categoryAxis\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"8D\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'Calibri'\"}}},\"concatenateLabels\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[{\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_CollateralDim\"}},\"Property\":\"CollateralId\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s1\",\"Entity\":\"SQL_CollateralDim\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"CollateralId\"}},\"Right\":{\"Literal\":{\"Value\":\"null\"}}}}}}}]},\"type\":\"Advanced\",\"howCreated\":0,\"isHiddenInViewMode\":false}]",
+          "height": 240.00,
+          "width": 320.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 320.00
+    },
+    {
+      "config": "{\"objects\":{\"displayArea\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Middle'\"}}}}}]},\"visibility\":1,\"type\":1}",
+      "displayName": "Local refresh Date",
+      "displayOption": 3,
+      "filters": "[{\"name\":\"Filter16455ae7b8ae40b451e1\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"SiteName\"}},\"type\":\"Categorical\",\"howCreated\":5},{\"name\":\"Filtere3a6a5c262906c11b549\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"Local Date\"}},\"type\":\"Categorical\",\"howCreated\":5},{\"name\":\"Filter79764267315b2409a5d4\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"Local Time\"}},\"type\":\"Categorical\",\"howCreated\":5},{\"name\":\"Filter079a63d91b8bb60c2406\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"SiteName\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"l\",\"Entity\":\"Local Refresh Date\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"SiteName\"}},\"Right\":{\"Literal\":{\"Value\":\"'UNDEFINED'\"}}}}}}}]},\"type\":\"Advanced\",\"howCreated\":1}]",
+      "height": 240.00,
+      "name": "ReportSectionabf23e040373e039ea89",
+      "ordinal": 5,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"c3dd3f14babb0adb2a98\",\"layouts\":[{\"id\":0,\"position\":{\"x\":38,\"y\":24,\"z\":0,\"width\":244,\"height\":192,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Local Refresh Date.TCM_SiteName\"},{\"queryRef\":\"Local Refresh Date.Local Date\"},{\"queryRef\":\"Local Refresh Date.Local Time\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"l\",\"Entity\":\"Local Refresh Date\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"SiteName\"},\"Name\":\"Local Refresh Date.TCM_SiteName\",\"NativeReferenceName\":\"TCM_SiteName\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"Local Date\"},\"Name\":\"Local Refresh Date.Local Date\",\"NativeReferenceName\":\"Local Date\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"Local Time\"},\"Name\":\"Local Refresh Date.Local Time\",\"NativeReferenceName\":\"Local Time\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"SiteName\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"grid\":[{\"properties\":{\"imageHeight\":{\"expr\":{\"Literal\":{\"Value\":\"75D\"}}}}}],\"values\":[{\"properties\":{\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'\"}}}}}],\"columnHeaders\":[{\"properties\":{\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Segoe UI Bold'', wf_segoe-ui_bold, helvetica, arial, sans-serif'\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Local Refresh DateTime'\"}}},\"heading\":{\"expr\":{\"Literal\":{\"Value\":\"'Heading2'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0}}}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Segoe UI Bold'', wf_segoe-ui_bold, helvetica, arial, sans-serif'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"background\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"null\"}}}}}}}],\"visualTooltip\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"titleFontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"background\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"null\"}}}}}}}],\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":1,\"Percent\":0}}}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"stylePreset\":[{\"properties\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'Default'\"}}}}}]}}}",
+          "filters": "[{\"name\":\"Filtera5edbe7161010549de20\",\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"l\",\"Entity\":\"Local Refresh Date\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"SiteName\"}},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"Local Date\"}},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"l\"}},\"Property\":\"Local Time\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'UNDEFINED'\"}},{\"Literal\":{\"Value\":\"'3/1/2023'\"}},{\"Literal\":{\"Value\":\"datetime'1899-12-30T16:57:33.863'\"}}],[{\"Literal\":{\"Value\":\"'UNDEFINED'\"}},{\"Literal\":{\"Value\":\"'3/1/2023'\"}},{\"Literal\":{\"Value\":\"datetime'1899-12-30T18:15:30.817'\"}}],[{\"Literal\":{\"Value\":\"'UNDEFINED'\"}},{\"Literal\":{\"Value\":\"'3/1/2023'\"}},{\"Literal\":{\"Value\":\"datetime'1899-12-30T18:52:45.577'\"}}],[{\"Literal\":{\"Value\":\"'UNDEFINED'\"}},{\"Literal\":{\"Value\":\"'3/1/2023'\"}},{\"Literal\":{\"Value\":\"datetime'1899-12-30T20:59:29.29'\"}}],[{\"Literal\":{\"Value\":\"'UNDEFINED'\"}},{\"Literal\":{\"Value\":\"'3/1/2023'\"}},{\"Literal\":{\"Value\":\"datetime'1899-12-30T22:30:49.523'\"}}]]}}}}}]},\"type\":\"Exclude\",\"howCreated\":4,\"filterExpressionMetadata\":{\"expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"SiteName\"}},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"Local Date\"}},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"Local Time\"}},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"TCM_SiteName\"}}],\"cachedValueItems\":[{\"identities\":[{\"scopeId\":{\"And\":{\"Left\":{\"And\":{\"Left\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"SiteName\"}},\"Right\":{\"Literal\":{\"Value\":\"'UNDEFINED'\"}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"Local Date\"}},\"Right\":{\"Literal\":{\"Value\":\"'3/1/2023'\"}}}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"Local Time\"}},\"Right\":{\"Literal\":{\"Value\":\"datetime'1899-12-30T22:30:49.523'\"}}}}}}}],\"valueMap\":{\"0\":\"UNDEFINED\",\"1\":\"3/1/2023\",\"2\":\"10:30:49 PM\"}},{\"identities\":[{\"scopeId\":{\"And\":{\"Left\":{\"And\":{\"Left\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"SiteName\"}},\"Right\":{\"Literal\":{\"Value\":\"'UNDEFINED'\"}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"Local Date\"}},\"Right\":{\"Literal\":{\"Value\":\"'3/1/2023'\"}}}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"Local Time\"}},\"Right\":{\"Literal\":{\"Value\":\"datetime'1899-12-30T20:59:29.29'\"}}}}}}}],\"valueMap\":{\"0\":\"UNDEFINED\",\"1\":\"3/1/2023\",\"2\":\"8:59:29 PM\"}},{\"identities\":[{\"scopeId\":{\"And\":{\"Left\":{\"And\":{\"Left\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"SiteName\"}},\"Right\":{\"Literal\":{\"Value\":\"'UNDEFINED'\"}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"Local Date\"}},\"Right\":{\"Literal\":{\"Value\":\"'3/1/2023'\"}}}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"Local Time\"}},\"Right\":{\"Literal\":{\"Value\":\"datetime'1899-12-30T18:52:45.577'\"}}}}}}}],\"valueMap\":{\"0\":\"UNDEFINED\",\"1\":\"3/1/2023\",\"2\":\"6:52:45 PM\"}},{\"identities\":[{\"scopeId\":{\"And\":{\"Left\":{\"And\":{\"Left\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"SiteName\"}},\"Right\":{\"Literal\":{\"Value\":\"'UNDEFINED'\"}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"Local Date\"}},\"Right\":{\"Literal\":{\"Value\":\"'3/1/2023'\"}}}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"Local Time\"}},\"Right\":{\"Literal\":{\"Value\":\"datetime'1899-12-30T18:15:30.817'\"}}}}}}}],\"valueMap\":{\"0\":\"UNDEFINED\",\"1\":\"3/1/2023\",\"2\":\"6:15:30 PM\"}},{\"identities\":[{\"scopeId\":{\"And\":{\"Left\":{\"And\":{\"Left\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"TCM_SiteName\"}},\"Right\":{\"Literal\":{\"Value\":\"'UNDEFINED'\"}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"Local Date\"}},\"Right\":{\"Literal\":{\"Value\":\"'3/1/2023'\"}}}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Local Refresh Date\"}},\"Property\":\"Local Time\"}},\"Right\":{\"Literal\":{\"Value\":\"datetime'1899-12-30T16:57:33.863'\"}}}}}}}],\"valueMap\":{\"1\":\"3/1/2023\",\"2\":\"4:57:33 PM\",\"3\":\"UNDEFINED\"}}]}}]",
+          "height": 192.00,
+          "width": 244.00,
+          "x": 38.00,
+          "y": 24.00,
+          "z": 0.00
+        }
+      ],
+      "width": 320.00
+    },
+    {
+      "config": "{}",
+      "displayName": "CSI",
+      "displayOption": 3,
+      "filters": "[{\"name\":\"Filtera639454e0db79ac2e394\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_CollateralDim\"}},\"Property\":\"CollateralId\"}},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+      "height": 720.00,
+      "name": "ReportSectionb0bd997ba06f4c970ff0",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"0be26e349220a491ae4f\",\"layouts\":[{\"id\":0,\"position\":{\"x\":752.7044025157232,\"y\":16.10062893081761,\"z\":3000,\"width\":267.67295597484275,\"height\":46.289308176100626,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Min(Date Refresh.Refresh DateTime)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date Refresh\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Refresh DateTime\"}},\"Function\":3},\"Name\":\"Min(Date Refresh.Refresh DateTime)\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"}},\"Function\":3}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Latest Refresh'\"}}},\"heading\":{\"expr\":{\"Literal\":{\"Value\":\"'Normal'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"10D\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}],\"visualTooltip\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"section\":{\"expr\":{\"Literal\":{\"Value\":\"'ReportSectionabf23e040373e039ea89'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 46.29,
+          "width": 267.67,
+          "x": 752.70,
+          "y": 16.10,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"2aaa4f85795136ce8e73\",\"layouts\":[{\"id\":0,\"position\":{\"x\":11.671732522796352,\"y\":16.534954407294833,\"z\":5000,\"width\":472.7051671732523,\"height\":68.08510638297872,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"CSI Metrics Dashboard\",\"textStyle\":{\"fontSize\":\"32pt\"}}]}]}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Page Title'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 68.09,
+          "width": 472.71,
+          "x": 11.67,
+          "y": 16.53,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"2ad307abe3435015ec9d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":319,\"y\":93,\"z\":2000,\"width\":950,\"height\":190,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"SQL_ShiftDim.WW\",\"active\":true},{\"queryRef\":\"SQL_ShiftDim.WW_Shift\"},{\"queryRef\":\"SQL_CollateralDim.Type\"},{\"queryRef\":\"SQL_CollateralDim.CollateralId\"}],\"Y\":[{\"queryRef\":\"Metrics.Availability\"},{\"queryRef\":\"Metrics.EE\"},{\"queryRef\":\"Metrics.SDT\"},{\"queryRef\":\"Metrics.USDT\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s2\",\"Entity\":\"SQL_ShiftDim\",\"Type\":0},{\"Name\":\"s1\",\"Entity\":\"SQL_CollateralDim\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Metrics\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s2\"}},\"Property\":\"WW_Shift\"},\"Name\":\"SQL_ShiftDim.WW_Shift\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"Type\"},\"Name\":\"SQL_CollateralDim.Type\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"CollateralId\"},\"Name\":\"SQL_CollateralDim.CollateralId\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Availability\"},\"Name\":\"Metrics.Availability\",\"NativeReferenceName\":\"Availability\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"EE\"},\"Name\":\"Metrics.EE\",\"NativeReferenceName\":\"EE\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"SDT\"},\"Name\":\"Metrics.SDT\",\"NativeReferenceName\":\"SDT\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"USDT\"},\"Name\":\"Metrics.USDT\",\"NativeReferenceName\":\"USDT\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s2\"}},\"Property\":\"WW\"},\"Name\":\"SQL_ShiftDim.WW\",\"NativeReferenceName\":\"WW1\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s2\"}},\"Property\":\"WW\"}}},{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s2\"}},\"Property\":\"WW_Shift\"}}},{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"Type\"}}},{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"CollateralId\"}}}]},\"queryFieldParametersByRole\":{\"Category\":[{\"index\":0,\"length\":1,\"expr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"CSI\"}},\"Property\":\"CSI\"}}}]},\"columnProperties\":{\"Sum(StateRollupMetricsFact.AVA)\":{\"displayName\":\"Availability\"},\"Avg(StateRollupMetricsFact.AVA)\":{\"displayName\":\"Availability(%)\"},\"SQL_ShiftDim.WW\":{\"displayName\":\"WW\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#A713FC'\"}}}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"StateChangesFact\"}},\"Property\":\"Type\"}},\"Right\":{\"Literal\":{\"Value\":\"'Tester'\"}}}}}]}},{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":3,\"Percent\":0}}}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"StateChangesFact\"}},\"Property\":\"Type\"}},\"Right\":{\"Literal\":{\"Value\":\"'TIU'\"}}}}}]}},{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#A713FC'\"}}}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"EF_CollateralDim\"}},\"Property\":\"Facility\"}},\"Right\":{\"Literal\":{\"Value\":\"'CATD'\"}}}}}]}},{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":6,\"Percent\":0}}}}}}},{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#F12742'\"}}}}}},\"selector\":{\"metadata\":\"Metrics.USDT\"}},{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":3,\"Percent\":0}}}}}},\"selector\":{\"metadata\":\"Metrics.SDT\"}},{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":4,\"Percent\":0.2}}}}}},\"selector\":{\"metadata\":\"Metrics.EE\"}},{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":5,\"Percent\":0}}}}}},\"selector\":{\"metadata\":\"Metrics.Availability\"}}],\"valueAxis\":[{\"properties\":{\"end\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}},\"labelColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"9D\"}}}}}],\"categoryAxis\":[{\"properties\":{\"labelColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"legend\":[{\"properties\":{\"labelColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'All TCM Availability'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 190.00,
+          "width": 950.00,
+          "x": 319.00,
+          "y": 93.00,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"56fd7b1d0736d1a62734\",\"layouts\":[{\"id\":0,\"position\":{\"x\":319,\"y\":526,\"z\":0,\"width\":950,\"height\":190,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"lineStackedColumnComboChart\",\"projections\":{\"Category\":[{\"queryRef\":\"SQL_ShiftDim.WW\",\"active\":true},{\"queryRef\":\"SQL_ShiftDim.WW_Shift\"},{\"queryRef\":\"SQL_CollateralDim.Type\"},{\"queryRef\":\"SQL_CollateralDim.CollateralId\"}],\"Y2\":[{\"queryRef\":\"Metrics.NPF Rate\"}],\"Series\":[{\"queryRef\":\"SQL_DownEventDim_New.DownEventType\"}],\"Y\":[{\"queryRef\":\"Metrics.Total_NPF\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s1\",\"Entity\":\"SQL_DownEventDim_New\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Metrics\",\"Type\":0},{\"Name\":\"s\",\"Entity\":\"SQL_CollateralDim\",\"Type\":0},{\"Name\":\"s2\",\"Entity\":\"SQL_ShiftDim\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"DownEventType\"},\"Name\":\"SQL_DownEventDim_New.DownEventType\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Total_NPF\"},\"Name\":\"Metrics.Total_NPF\",\"NativeReferenceName\":\"Total_NPF\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"NPF Rate\"},\"Name\":\"Metrics.NPF Rate\",\"NativeReferenceName\":\"NPF Rate\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s2\"}},\"Property\":\"WW_Shift\"},\"Name\":\"SQL_ShiftDim.WW_Shift\",\"NativeReferenceName\":\"WW_Shift\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Type\"},\"Name\":\"SQL_CollateralDim.Type\",\"NativeReferenceName\":\"Type\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"CollateralId\"},\"Name\":\"SQL_CollateralDim.CollateralId\",\"NativeReferenceName\":\"CollateralId\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s2\"}},\"Property\":\"WW\"},\"Name\":\"SQL_ShiftDim.WW\",\"NativeReferenceName\":\"WW1\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s2\"}},\"Property\":\"WW\"}}},{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s2\"}},\"Property\":\"WW_Shift\"}}},{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Type\"}}},{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"CollateralId\"}}}]},\"queryFieldParametersByRole\":{\"Category\":[{\"index\":0,\"length\":1,\"expr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"CSI\"}},\"Property\":\"CSI\"}}}]},\"columnProperties\":{\"SQL_ShiftDim.WW\":{\"displayName\":\"WW\"}},\"drillFilterOtherVisuals\":true,\"filterSortOrder\":3,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"enableBackground\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"seriesLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"categoryAxis\":[{\"properties\":{\"concatenateLabels\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":9,\"Percent\":0}}}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_DownEventDim_New\"}},\"Property\":\"DownEventType\"}},\"Right\":{\"Literal\":{\"Value\":\"'AutoTicket'\"}}}}}]}},{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0}}}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_DownEventDim_New\"}},\"Property\":\"DownEventType\"}},\"Right\":{\"Literal\":{\"Value\":\"'Manual'\"}}}}}]}},{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":3,\"Percent\":0}}}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_DownEventDim_New\"}},\"Property\":\"DownEventType\"}},\"Right\":{\"Literal\":{\"Value\":\"'PCS'\"}}}}}]}},{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}},\"selector\":{\"metadata\":\"Metrics.NPF Rate\"}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'All Total NPF and NPF Rate by WW and DownEventType'\"}}}}}]}}}",
+          "filters": "[{\"name\":\"Filter0e26f7c747264ac6cd0a\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_CollateralDim\"}},\"Property\":\"CollateralId\"}},\"type\":\"Categorical\",\"howCreated\":0,\"isHiddenInViewMode\":false,\"ordinal\":0},{\"name\":\"Filter3e46b0aa403c1cda3972\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_DownEventDim_New\"}},\"Property\":\"DownEventType\"}},\"type\":\"Categorical\",\"howCreated\":0,\"isHiddenInViewMode\":false,\"ordinal\":1},{\"name\":\"Filter17df07ce90a76c338c41\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Metrics\"}},\"Property\":\"NPF Rate\"}},\"type\":\"Advanced\",\"howCreated\":0,\"isHiddenInViewMode\":false,\"ordinal\":2},{\"name\":\"Filterca682d1ac464d4d050e0\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Metrics\"}},\"Property\":\"Total_NPF\"}},\"type\":\"Advanced\",\"howCreated\":0,\"isHiddenInViewMode\":false,\"ordinal\":3},{\"name\":\"Filterc0157b102a73beaa0a96\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_CollateralDim\"}},\"Property\":\"Type\"}},\"type\":\"Categorical\",\"howCreated\":0,\"isHiddenInViewMode\":false,\"ordinal\":4},{\"name\":\"Filterc7d4c112301112c6b201\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_ShiftDim\"}},\"Property\":\"WW\"}},\"type\":\"Categorical\",\"howCreated\":0,\"isHiddenInViewMode\":false,\"ordinal\":5},{\"name\":\"Filtercc724a2a24c769c94220\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SQL_ShiftDim\"}},\"Property\":\"WW_Shift\"}},\"type\":\"Categorical\",\"howCreated\":0,\"isHiddenInViewMode\":false,\"ordinal\":6}]",
+          "height": 190.00,
+          "width": 950.00,
+          "x": 319.00,
+          "y": 526.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"7bed46b0c78527022a36\",\"layouts\":[{\"id\":0,\"position\":{\"x\":15,\"y\":525,\"z\":14000,\"width\":282,\"height\":150,\"tabOrder\":14000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Metrics.NPF Rate\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Metrics\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"NPF Rate\"},\"Name\":\"Metrics.NPF Rate\",\"NativeReferenceName\":\"NPF Rate\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"NPF Rate\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'NPF Rate Card'\"}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":5,\"Percent\":0}}}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"position\":{\"expr\":{\"Literal\":{\"Value\":\"'Inner'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 150.00,
+          "width": 282.00,
+          "x": 15.00,
+          "y": 525.00,
+          "z": 14000.00
+        },
+        {
+          "config": "{\"name\":\"b1a476b7377b386f7c8f\",\"layouts\":[{\"id\":0,\"position\":{\"x\":599,\"y\":11,\"z\":15000,\"width\":147,\"height\":65,\"tabOrder\":15000}}],\"singleVisual\":{\"visualType\":\"actionButton\",\"drillFilterOtherVisuals\":true,\"objects\":{\"icon\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'blank'\"}}}},\"selector\":{\"id\":\"default\"}}],\"text\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}},{\"properties\":{\"text\":{\"expr\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Metrics\"}},\"Property\":\"NotificationText\"}}}},\"selector\":{\"id\":\"default\"}}],\"fill\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}},{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Metrics\"}},\"Property\":\"NotificationFill\"}}}}}},\"selector\":{\"id\":\"default\"}}]},\"vcObjects\":{\"visualLink\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"type\":{\"expr\":{\"Literal\":{\"Value\":\"'PageNavigation'\"}}},\"navigationSection\":{\"expr\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Metrics\"}},\"Property\":\"NotificationNavigation\"}}}}}],\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'NotificationsButton'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 65.00,
+          "width": 147.00,
+          "x": 599.00,
+          "y": 11.00,
+          "z": 15000.00
+        },
+        {
+          "config": "{\"name\":\"cb7fe3e4cd8cff8b906b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1029.1891891891892,\"y\":7.207207207207207,\"z\":4000,\"width\":240.72072072072072,\"height\":86.48648648648648,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"SQL_ShiftDim.DateStart\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"SQL_ShiftDim\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"DateStart\"},\"Name\":\"SQL_ShiftDim.DateStart\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"DateStart\"}}}]},\"syncGroup\":{\"groupName\":\"DateStart\",\"fieldChanges\":true,\"filterChanges\":true},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Relative'\"}}},\"relativeRange\":{\"expr\":{\"Literal\":{\"Value\":\"'Last'\"}}},\"relativeDuration\":{\"expr\":{\"Literal\":{\"Value\":\"4D\"}}},\"relativePeriod\":{\"expr\":{\"Literal\":{\"Value\":\"'Weeks'\"}}}}}],\"dateRange\":[{\"properties\":{\"includeToday\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"SQL_ShiftDim\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Between\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"DateStart\"}},\"LowerBound\":{\"DateSpan\":{\"Expression\":{\"DateAdd\":{\"Expression\":{\"DateAdd\":{\"Expression\":{\"Now\":{}},\"Amount\":1,\"TimeUnit\":0}},\"Amount\":-4,\"TimeUnit\":1}},\"TimeUnit\":0}},\"UpperBound\":{\"DateSpan\":{\"Expression\":{\"Now\":{}},\"TimeUnit\":0}}}}}]}}}}],\"header\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Time Period'\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Time Period Slicer'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 86.49,
+          "width": 240.72,
+          "x": 1029.19,
+          "y": 7.21,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"d7a4080c25c5d15f8401\",\"layouts\":[{\"id\":0,\"position\":{\"x\":319,\"y\":312,\"z\":1000,\"width\":950,\"height\":190,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"SQL_ShiftDim.WW\",\"active\":true},{\"queryRef\":\"SQL_ShiftDim.WW_Shift\"},{\"queryRef\":\"SQL_CollateralDim.Type\"},{\"queryRef\":\"SQL_CollateralDim.CollateralId\"}],\"Y\":[{\"queryRef\":\"Metrics.AVG Repair Time (mins)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Metrics\",\"Type\":0},{\"Name\":\"s\",\"Entity\":\"SQL_CollateralDim\",\"Type\":0},{\"Name\":\"s1\",\"Entity\":\"SQL_ShiftDim\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"AVG Repair Time (mins)\"},\"Name\":\"Metrics.AVG Repair Time (mins)\",\"NativeReferenceName\":\"AVG Repair Time (mins)\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"WW_Shift\"},\"Name\":\"SQL_ShiftDim.WW_Shift\",\"NativeReferenceName\":\"WW_Shift\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Type\"},\"Name\":\"SQL_CollateralDim.Type\",\"NativeReferenceName\":\"Type\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"CollateralId\"},\"Name\":\"SQL_CollateralDim.CollateralId\",\"NativeReferenceName\":\"CollateralId\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"WW\"},\"Name\":\"SQL_ShiftDim.WW\",\"NativeReferenceName\":\"WW1\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"WW\"}}},{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"WW_Shift\"}}},{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Type\"}}},{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"CollateralId\"}}}]},\"queryFieldParametersByRole\":{\"Category\":[{\"index\":0,\"length\":1,\"expr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"CSI\"}},\"Property\":\"CSI\"}}}]},\"columnProperties\":{\"SQL_ShiftDim.WW\":{\"displayName\":\"WW\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"labelDisplayUnits\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}},\"labelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"2L\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'All Average Repair Time (mins)'\"}}}}}],\"visualTooltip\":[{\"properties\":{\"section\":{\"expr\":{\"Literal\":{\"Value\":\"'ReportSection55f32316de230ee9ac5e'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 190.00,
+          "width": 950.00,
+          "x": 319.00,
+          "y": 312.00,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"d8821f34312dbf7f248f\",\"layouts\":[{\"id\":0,\"position\":{\"x\":15,\"y\":150,\"z\":6000,\"width\":282,\"height\":150,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Metrics.Availability\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Metrics\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Availability\"},\"Name\":\"Metrics.Availability\",\"NativeReferenceName\":\"Availability\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Availability\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Availability Card'\"}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":5,\"Percent\":0}}}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"position\":{\"expr\":{\"Literal\":{\"Value\":\"'Inner'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 150.00,
+          "width": 282.00,
+          "x": 15.00,
+          "y": 150.00,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"f681a4cdb03b98c1e076\",\"layouts\":[{\"id\":0,\"position\":{\"x\":15,\"y\":333,\"z\":13000,\"width\":282,\"height\":150,\"tabOrder\":13000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Metrics.AVG Repair Time (mins)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Metrics\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"AVG Repair Time (mins)\"},\"Name\":\"Metrics.AVG Repair Time (mins)\",\"NativeReferenceName\":\"AVG Repair Time (mins)\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"AVG Repair Time (mins)\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Avg Repair Time Card'\"}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":5,\"Percent\":0}}}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"position\":{\"expr\":{\"Literal\":{\"Value\":\"'Inner'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 150.00,
+          "width": 282.00,
+          "x": 15.00,
+          "y": 333.00,
+          "z": 13000.00
+        },
+        {
+          "config": "{\"name\":\"fb67afe7f5063ae395ac\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":85,\"z\":16000,\"width\":311,\"height\":54,\"tabOrder\":16000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"CSI.CSI\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"CSI\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"CSI\"},\"Name\":\"CSI.CSI\",\"NativeReferenceName\":\"CSI\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}},\"outlineColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":3,\"Percent\":0}}}}},\"outlineWeight\":{\"expr\":{\"Literal\":{\"Value\":\"2D\"}}},\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"CSI\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"CSI Fields\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'''SQL_ShiftDim''[WW]'\"}}]]}}}]}}}}],\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"items\":[{\"properties\":{\"background\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#333333'\"}}}}},\"outlineStyle\":{\"expr\":{\"Literal\":{\"Value\":\"15D\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":3,\"Percent\":0}}}}},\"padding\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'Verdana'\"}}},\"textSize\":{\"expr\":{\"Literal\":{\"Value\":\"14D\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'CSIFieldSlicer'\"}}}}}],\"padding\":[{\"properties\":{\"left\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"right\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"top\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]},\"cachedFilterDisplayItems\":[{\"id\":{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"CSI\"}},\"Property\":\"CSI Fields\"}},\"Right\":{\"Literal\":{\"Value\":\"'''SQL_ShiftDim''[WW]'\"}}}}},\"displayName\":\"WW\"}]}}",
+          "filters": "[]",
+          "height": 54.00,
+          "width": 311.00,
+          "x": 0.00,
+          "y": 85.00,
+          "z": 16000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{\"visibility\":1}",
+      "displayName": "Notifications",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSectionf60cc01632a865b773de",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"5c0d8f8d9c7345e73581\",\"layouts\":[{\"id\":0,\"position\":{\"x\":7.781155015197569,\"y\":104.07294832826749,\"z\":1000,\"width\":1235.258358662614,\"height\":567.0516717325228,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Notifications.Date\"},{\"queryRef\":\"Notifications.Change\"},{\"queryRef\":\"Notifications.TFS\"},{\"queryRef\":\"Notifications.TFSLink\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"n\",\"Entity\":\"Notifications\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"n\"}},\"Property\":\"Change\"},\"Name\":\"Notifications.Change\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"n\"}},\"Property\":\"Date\"},\"Name\":\"Notifications.Date\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"n\"}},\"Property\":\"TFS\"},\"Name\":\"Notifications.TFS\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"n\"}},\"Property\":\"TFSLink\"},\"Name\":\"Notifications.TFSLink\",\"NativeReferenceName\":\"TFSLink\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"n\"}},\"Property\":\"Date\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnHeaders\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"backColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0}}}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Center'\"}}}}}],\"grid\":[{\"properties\":{\"gridHorizontalColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"gridHorizontalWeight\":{\"expr\":{\"Literal\":{\"Value\":\"3D\"}}},\"gridVertical\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"gridVerticalColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"gridVerticalWeight\":{\"expr\":{\"Literal\":{\"Value\":\"3D\"}}},\"outlineColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"outlineWeight\":{\"expr\":{\"Literal\":{\"Value\":\"3D\"}}},\"outlineStyle\":{\"expr\":{\"Literal\":{\"Value\":\"4D\"}}}}}],\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"430.5881803680504D\"}}}},\"selector\":{\"metadata\":\"Notifications.Change\"}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"539.3083175012613D\"}}}},\"selector\":{\"metadata\":\"Notifications.TFS\"}}],\"values\":[{\"properties\":{\"wordWrap\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"urlIcon\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}},{\"properties\":{\"backColor\":{\"solid\":{\"color\":{\"expr\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Metrics\"}},\"Property\":\"NotificationFill\"}}}}}},\"selector\":{\"data\":[{\"dataViewWildcard\":{\"matchingOption\":1}}],\"metadata\":\"Notifications.Date\"}}],\"total\":[{\"properties\":{\"totals\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"columnFormatting\":[{\"properties\":{\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"backColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":4,\"Percent\":0.6}}}}}},\"selector\":{\"metadata\":\"Notifications.TFSLink\"}}]},\"vcObjects\":{\"stylePreset\":[{\"properties\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'BoldHeader'\"}}}}}],\"lockAspect\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'CSIMetrics_ChangeNotificationTable'\"}}},\"heading\":{\"expr\":{\"Literal\":{\"Value\":\"'Normal'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"8D\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#3A3A3A'\"}}}}}}}]}}}",
+          "filters": "[]",
+          "height": 567.05,
+          "width": 1235.26,
+          "x": 7.78,
+          "y": 104.07,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"73b861063042b13ced77\",\"layouts\":[{\"id\":0,\"position\":{\"x\":200.3647416413374,\"y\":8.753799392097266,\"z\":0,\"width\":588.4498480243161,\"height\":77.81155015197568,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Change Notification Table\",\"textStyle\":{\"fontSize\":\"32pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 77.81,
+          "width": 588.45,
+          "x": 200.36,
+          "y": 8.75,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"802581ea6c94e9d9540e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"width\":100,\"height\":40,\"z\":2000,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"actionButton\",\"drillFilterOtherVisuals\":true,\"objects\":{\"icon\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'back'\"}}}},\"selector\":{\"id\":\"default\"}}]},\"vcObjects\":{\"visualLink\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"type\":{\"expr\":{\"Literal\":{\"Value\":\"'Back'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 40.00,
+          "width": 100.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 2000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ],
+  "theme": "Innovate"
+}
